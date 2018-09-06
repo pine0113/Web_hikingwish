@@ -9,6 +9,8 @@
   </head>
 
   <body>
+    <%= link_to '登出', destroy_user_session_path, method: :delete %> |
+    <%= link_to '登入', user_session_path %>
     <% if flash[:notice] %>
       <div class="container">
         <div class="row">
