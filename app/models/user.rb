@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  mount_uploader :avatar, AvatarUploader
+
   # email 跟 password欄位 deivse 已強制要求
   validates_presence_of :name
 
