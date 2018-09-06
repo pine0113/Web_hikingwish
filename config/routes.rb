@@ -4,4 +4,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update]
   root "users#index"
+
+  namespace :admin, path: :make_backend_url_abstruse do
+    resources :plans
+    root "plans#index"
+  end
 end
