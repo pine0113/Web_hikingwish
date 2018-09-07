@@ -10,7 +10,61 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180906010753) do
+ActiveRecord::Schema.define(version: 20180907015815) do
+
+  create_table "hikings", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "level"
+    t.integer "day"
+    t.integer "miles"
+    t.text "intro"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_member_applies", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "user_id"
+    t.boolean "accept"
+    t.boolean "notified"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_members", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_owner_invites", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "user_id"
+    t.boolean "accept"
+    t.boolean "notified"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "budget_bottom"
+    t.integer "budget_top"
+    t.integer "budget_final"
+    t.integer "level"
+    t.integer "day"
+    t.integer "miles"
+    t.text "intro"
+    t.integer "join_count"
+    t.integer "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +81,24 @@ ActiveRecord::Schema.define(version: 20180906010753) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "wish_hikings", force: :cascade do |t|
+    t.integer "wish_id"
+    t.integer "hiking_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wishes", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "budget_bottom"
+    t.integer "budget_top"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
