@@ -1,0 +1,2 @@
+class PlanMemberApply < ApplicationRecord
+end

@@ -9,4 +9,25 @@ Rails.application.routes.draw do
     resources :plans
     root "plans#index"
   end
+
+  resources :hikings, only: [:index, :show] do
+    member do
+      get :plans
+      get :wishes
+    end
+  end
+  
+  resources :wishes, only: [:index, :show, :edit, :update] do
+    member do
+      get :make_plan
+      get :plan
+    end
+  end
+
+  resources :plans, only: [:index, :show, :edit, :update] do
+  end
+
+  get 'plans/search' => 'plans#search'
+
+
 end

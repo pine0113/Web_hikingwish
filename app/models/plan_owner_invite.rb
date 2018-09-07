@@ -1,0 +1,2 @@
+class PlanOwnerInvite < ApplicationRecord
+end

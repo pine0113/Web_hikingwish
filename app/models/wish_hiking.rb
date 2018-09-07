@@ -1,0 +1,2 @@
+class WishHiking < ApplicationRecord
+end

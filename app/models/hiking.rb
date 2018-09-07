@@ -1,0 +1,2 @@
+class Hiking < ApplicationRecord
+end
