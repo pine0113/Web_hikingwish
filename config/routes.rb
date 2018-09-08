@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :plans, only: [:index, :show, :edit, :update] do
   end
 
-  get 'plans/search' => 'plans#search'
+  get 'search' => 'plans#search'
 
 
 end
