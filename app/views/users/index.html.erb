@@ -1,6 +1,7 @@
-<h1>users index</h1>
+<h2>users index</h2>
+<hr>
 
 <% @users.each do |user| %>
-  <%= link_to user.name, edit_user_path(user) %>
+  <%= link_to user.name, edit_user_path(user) %> <br>
   <%= image_tag user.avatar, width: "300px" %>
 <% end %>

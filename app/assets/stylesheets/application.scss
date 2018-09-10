@@ -10,6 +10,72 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require_tree .
+ *= require_self
+ *= require jquery-ui
  */
+
+ @import "bootstrap";
+
+
+html {
+    width: 100%;
+    height: 100%;
+}
+body {
+    width: 100%;  
+}
+
+#wrapper
+{
+    min-height: calc(100vh - 50px)
+}
+
+
+footer {
+    height: 100px;
+    
+    padding: 30px 0;
+    background-color: #999999;
+    color: #fff;
+    text-align: center;
+  }
   
-  @import "bootstrap";
+  .footer-container {
+ 
+    width: 85%;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .footer-content p {
+    line-height: 22px;
+  }
+  
+  .footer-social-icon a i {
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 15px;
+    margin-right: 15px;
+  }
+
+  #registration_form,#change_password_form
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:500px;
+
+}
+#registration_form h2,#change_password_form h2
+{
+    font-size:1.3em;
+}
+
+
+#user_profile th
+{
+    text-align:right;
+}
