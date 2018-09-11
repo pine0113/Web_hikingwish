@@ -25,6 +25,7 @@
         </div>
         <div class="form-group">
           <%= f.file_field :image, class: "form-control  bg-light" %>
+          <%= image_tag @hiking.image, width: "150px"  if @hiking.image %>
         </div>
 
         <div class="form-group">

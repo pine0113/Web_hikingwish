@@ -43,7 +43,7 @@ class Admin::HikingsController < ApplicationController
   private
 
   def hiking_params
-    params.require(:hiking).permit(:name, :iamge, :level, :day, :miles, :intro)
+    params.require(:hiking).permit(:name, :image, :level, :day, :miles, :intro)
   end
 
   def find_hiking
