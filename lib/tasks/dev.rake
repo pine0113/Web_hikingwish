@@ -4,12 +4,13 @@ namespace :dev do
 
 
   task fake_wishes: :environment do
+    Wish.destroy_all
     10.times do
-      start = Faker::Date.forward(rand(100))
+      endday = Faker::Date.forward(100)
       Wish.create!(
         name:  FFaker::Name.first_name,
-        start_date: start,
-        end_date: Faker::Date.between(rand(10).days.ago, start),
+        start_date: Faker::Date.between(10.days.ago, endday),
+        end_date: endday,
         user_id: User.all.sample.id,
         level: rand(5)
       )

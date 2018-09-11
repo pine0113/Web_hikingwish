@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+  <div id="app">
+    <component-main></component-main>
+    <component-right></component-right>
+  </div>
+
+  <script type="text/x-template" id="navbar">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Hiking Wish</a>
+        </div>
+      </div>
+    </nav>
+  </script>
+
+  <script type="text/x-template" id="main">
+    <div>
+      <h1>{{header}}</h1>
+      <p>{{content}}</p>
+    </div>
+  </script>
+
+  <script type="text/x-template" id="right">
+    <div>
+      <h2>{{header}}</h2>
+      <p> {{content}}</p>
+    </div>
+  </script>
+
+</html>
+
+
+<script>
+  var componentNavbar = {
+    template: "#navbar"
+  };
+
+  var app = new Vue({
+    el: "#app",
+    components: {
+      "component-navbar": componentNavbar
+    }
+  });
+
+  var componentMain = {
+    data: function() {
+      return {
+        header: "Main Page",
+        content:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quis minus inventore vitae numquam odit laborum, sequi ad quo itaque quasi sed necessitatibus laudantium, minima ut odio qui magnam in?"
+      };
+    },
+    template: "#main"
+  };
+
+  var componentRight = {
+    data: function() {
+      return {
+        header: "Right sidebar",
+        content:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia at a autem delectus quis doloremque qui molestias culpa voluptatem eos aliquid esse minima, reprehenderit soluta nesciunt in, veniam non minus!"
+      };
+    },
+    template: "#right"
+  };
+
+  var app = new Vue({
+    el: "#app",
+    components: {
+      "component-navbar": componentNavbar,
+      "component-main": componentMain,
+      "component-right": componentRight
+    }
+  });
+
+</script>
