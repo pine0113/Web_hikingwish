@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= form_for [:admin, @hiking] do |f| %>
+      <%= form_for [:admin, hiking] do |f| %>
         <div class="form-group">
            <%= f.label :name, "路線名稱" %>
           <%= f.text_field :name, placeholder: "路線名稱", class: "form-control bg-light" %>
