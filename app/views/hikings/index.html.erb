@@ -14,7 +14,7 @@
     <tbody>
       <% @hikings.each do |hiking| %>
       <tr>
-        <th scope="row"><%= hiking.name %></th>
+        <th scope="row"><%= link_to hiking.name, hiking_path(hiking) %></th>
         <td><%= hiking.level %></td>
         <td><%= hiking.day %></td>
         <td><%= hiking.miles %></td>

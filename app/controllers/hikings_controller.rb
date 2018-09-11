@@ -5,6 +5,7 @@ class HikingsController < ApplicationController
   end
 
   def show
+    @hiking = Hiking.find(params[:id])
   end
 
   def plans
