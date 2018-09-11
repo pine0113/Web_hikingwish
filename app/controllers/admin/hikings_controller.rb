@@ -1,4 +1,5 @@
 class Admin::HikingsController < ApplicationController
+  before_action :find_hiking, only: [:edit, :update]
 
   def index
     @hikings = Hiking.all
@@ -21,11 +22,9 @@ class Admin::HikingsController < ApplicationController
   end
 
   def edit
-    @hiking = Hiking.find(params[:id])
   end
 
   def update
-    @hiking = Hiking.find(params[:id])
     if @hiking.update(hiking_params)
       flash[:notice] = "已更新路線資訊"
       redirect_to admin_hikings_path
@@ -39,6 +38,10 @@ class Admin::HikingsController < ApplicationController
 
   def hiking_params
     params.require(:hiking).permit(:name, :iamge, :level, :day, :miles, :intro)
+  end
+
+  def find_hiking
+    @hiking = Hiking.find(params[:id])
   end
 
 end
