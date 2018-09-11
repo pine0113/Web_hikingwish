@@ -1,5 +1,9 @@
 class Admin::HikingsController < ApplicationController
 
+  def index
+    @hikings = Hiking.all
+  end
+
   def new
     @hiking = Hiking.new
   end
