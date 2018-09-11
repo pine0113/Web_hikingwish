@@ -16,7 +16,7 @@ class Admin::HikingsController < ApplicationController
       flash[:notice] = "已成功新增路線"
       redirect_to admin_hikings_path
     else
-      flash[:alert] = @hiking.errors.full_messages.to_centence
+      flash[:alert] = @hiking.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -29,7 +29,7 @@ class Admin::HikingsController < ApplicationController
       flash[:notice] = "已更新路線資訊"
       redirect_to admin_hikings_path
     else
-      flash[:alert] = @hiking.errors.full_messages.to_centence
+      flash[:alert] = @hiking.errors.full_messages.to_sentence
       render :edit
     end
   end
