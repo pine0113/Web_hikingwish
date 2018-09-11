@@ -19,7 +19,7 @@
         <td><%= hiking.day %></td>
         <td><%= hiking.miles %></td>
         <td>
-          <%= link_to 'Edit', edit_admin_hiking_path(id: hiking.id) %>
+          <%= link_to 'Edit', edit_admin_hiking_path(hiking) %>
           
           
           <%= link_to 'Delete', admin_hiking_path(hiking), method: :delete, data: { confirm: "Are you sure?"} %>  

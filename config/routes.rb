@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   namespace :admin, path: :make_backend_url_abstruse do
     resources :plans
-    root "hikings#index"
     resources :hikings
+    root "hikings#index"
   end
 
   resources :hikings, only: [:index, :show] do

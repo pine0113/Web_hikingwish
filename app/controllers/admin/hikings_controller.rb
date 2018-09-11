@@ -13,10 +13,25 @@ class Admin::HikingsController < ApplicationController
 
     if @hiking.save
       flash[:notice] = "已成功新增路線"
-      redirect_to admin_plans_path
+      redirect_to admin_hikings_path
     else
       flash[:alert] = @hiking.errors.full_messages.to_centence
       render :new
+    end
+  end
+
+  def edit
+    @hiking = Hiking.find(params[:id])
+  end
+
+  def update
+    @hiking = Hiking.find(params[:id])
+    if @hiking.update(hiking_params)
+      flash[:notice] = "已更新路線資訊"
+      redirect_to admin_hikings_path
+    else
+      flash[:alert] = @hiking.errors.full_messages.to_centence
+      render :edit
     end
   end
 
