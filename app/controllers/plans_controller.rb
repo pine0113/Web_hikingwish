@@ -37,6 +37,12 @@ class PlansController < ApplicationController
     end
   end
 
+  def destroy
+    @plan.destroy
+    flash[:alert] = "路線已刪除"
+    redirect_to plans_path
+  end
+
   def search
   end
 
