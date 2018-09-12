@@ -26,7 +26,7 @@ class WishesController < ApplicationController
     else
       flash[:alert] = "wish was failed to create"
     end
-    redirect_back(fallback_location: wishes_path)
+    redirect_to wishes_path
   end
 
   def show
