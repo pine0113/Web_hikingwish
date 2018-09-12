@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   has_many :plans
+  has_many :wishes
 
   def admin?
     self.role == "admin"
