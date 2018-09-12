@@ -1,4 +1,5 @@
 class PlansController < ApplicationController
+  before_action :find_plan, only: [:show, :edit, :update, :destroy]
 
   def index
     @plans = Plan.all
@@ -21,13 +22,19 @@ class PlansController < ApplicationController
   end
 
   def show
-    @plan = Plan.find(params[:id])
   end
 
   def edit
   end
 
   def update
+    if @plan.update(plan_params)
+      flash[:notice] = "計畫已更新"
+      redirect_to @plan
+    else
+      flash[:alert] = @plan.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   def search
@@ -37,6 +44,10 @@ class PlansController < ApplicationController
 
   def plan_params
     params.require(:plan).permit(:name, :image, :start_date, :end_date, :budget_top, :budget_bottom, :budget_final, :level, :day, :miles, :intro)
+  end
+
+  def find_plan
+    @plan = Plan.find(params[:id])
   end
 
 end
