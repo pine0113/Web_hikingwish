@@ -19,7 +19,7 @@
     <tbody>
       <% @plans.each do |plan| %>
       <tr>
-        <th scope="row"><%= plan.name %> </th>
+        <th scope="row"><%= link_to plan.name, plan_path(plan) %> </th>
         <td><%= plan.user.name %></td>
         <td><%= plan.start_date %><%= plan.end_date %> 總共需要天數:<%= plan.day %></td>
         <td>預算估計:<%= plan.budget_bottom %> ~ <%= plan.budget_top %></td>
