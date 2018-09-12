@@ -9,6 +9,8 @@ class User < ApplicationRecord
   # email 跟 password欄位 deivse 已強制要求
   validates_presence_of :name
 
+  has_many :wishes
+
   def admin?
     self.role == "admin"
   end

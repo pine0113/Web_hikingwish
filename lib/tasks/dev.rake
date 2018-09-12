@@ -5,7 +5,7 @@ namespace :dev do
 
   task fake_wishes: :environment do
     Wish.destroy_all
-    10.times do
+    12.times do
       endday = Faker::Date.forward(100)
       Wish.create!(
         name:  FFaker::Name.first_name,
