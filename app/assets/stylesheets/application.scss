@@ -13,8 +13,9 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
+ *= require font-awesome
  */
-
+ @import "font-awesome";
  @import "bootstrap";
 
 
@@ -30,37 +31,6 @@ body {
 {
     min-height: calc(100vh - 50px)
 }
-
-
-footer {
-    height: 100px;
-    
-    padding: 30px 0;
-    background-color: #999999;
-    color: #fff;
-    text-align: center;
-  }
-  
-  .footer-container {
- 
-    width: 85%;
-    max-width: 1170px;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .footer-content p {
-    line-height: 22px;
-  }
-  
-  .footer-social-icon a i {
-    color: #fff;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 20px;
-    margin-top: 15px;
-    margin-right: 15px;
-  }
 
   #registration_form,#change_password_form
 {
@@ -78,4 +48,67 @@ footer {
 #user_profile th
 {
     text-align:right;
+}
+
+
+
+
+.category{
+    border: 1px #ccc solid;
+    border-radius:10px;
+    margin:10px;
+    width:250px;
+    float: left;
+}
+
+.category img{
+    border-radius:10px 0 0 10px;
+}
+
+.plan{
+
+    padding:10px;
+    border: 1px #ccc solid;
+    border-radius:10px;
+    margin: 10px;
+}
+
+
+
+/* */
+#quick_wish
+{
+    height:450px;
+    padding-top:40px;
+}
+
+.plan 
+{
+    height:172 px;
+}
+
+.plan_iamge, .plan_info, .plan_descript
+{
+    float:left;
+}
+
+.plan_info
+{
+    width: 200px;
+    padding-left:10px;
+    font-size: 14px;
+
+}
+
+.plan_descript
+{
+    width: 500px;
+    font-size: 10px;
+
+}
+
+.plan_action
+{
+
+
 }

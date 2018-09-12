@@ -27,6 +27,7 @@ gem 'kaminari'
 gem 'simple_form', '~> 4.0', '>= 4.0.1'
 gem 'ffaker', '~> 2.10'
 gem 'carrierwave', '~> 1.2', '>= 1.2.3'
+gem "font-awesome-rails"
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

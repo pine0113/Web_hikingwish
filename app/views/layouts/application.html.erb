@@ -22,11 +22,24 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar">
               <ul class="navbar-nav mr-auto">
-            
-                <li class="nav-item"> <%= link_to '前台', root_path, class:" nav-link" %> </li>
-                <li class="nav-item"> <%= link_to '後台', admin_root_path , class:" nav-link"%> </li>
-                <li class="nav-item"> <%= link_to('Logout', destroy_user_session_path, method: :delete,class:" nav-link") %> </li>
-                <li class="nav-item"> <%= link_to('Login', new_user_session_path,class:" nav-link") %> </li>
+                <li class="nav-item"> <%= link_to '路線', hikings_path, class:" nav-link" %><span class="badge badge-light">2</span>  </li>
+                <li class="nav-item"> <%= link_to '願望', wishes_path, class:" nav-link" %> <span class="badge badge-light">3</span>   </li>
+                <li class="nav-item"> <%= link_to '計畫', plans_path, class:" nav-link" %>  </li>
+                <li class="nav-item"> <%= link_to '通知', plans_path, class:" nav-link" %> <span class="badge badge-light">5</span>  </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Profile
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <%= link_to '編輯個人資料', root_path, class:" nav-link" %> 
+                    <%= link_to '邀請好友', root_path, class:" nav-link" %> 
+                    <hr>
+                    <%= link_to '設定', root_path, class:" nav-link" %> 
+                    <%= link_to 'admin', admin_root_path , class:" nav-link"%> 
+                    <%= link_to('Logout', destroy_user_session_path, method: :delete,class:" nav-link") %>
+                    <%= link_to('Login', new_user_session_path,class:" nav-link") %>
+                  </div>
+                </li>
               </ul>
             </div><!-- /.navbar-collapse -->
 
