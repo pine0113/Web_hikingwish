@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   end
 
   get 'search' => 'plans#search'
-
+  get 'pages/index' => 'pages#index'
+  get 'pages/plan_list' => 'pages#plan_list'
+  get 'pages/plan_edit' => 'pages#plan_edit'
 
 end
