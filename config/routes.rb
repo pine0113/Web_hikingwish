@@ -5,11 +5,12 @@ Rails.application.routes.draw do
   get 'pages/about', :to => 'pages#about'
   
   resources :users, only: [:index, :show, :edit, :update]
-  root "users#index"
+  root "hikings#index"
 
   namespace :admin, path: :make_backend_url_abstruse do
     resources :plans
-    root "plans#index"
+    resources :hikings
+    root "hikings#index"
   end
 
   resources :hikings, only: [:index, :show] do
