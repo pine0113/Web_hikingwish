@@ -1,0 +1,41 @@
+<br>
+<div class="container">
+  <div class="row">
+    <h3><%= link_to '新增計畫', new_plan_path %></h3>
+    <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>活動名稱</th>
+        <th>Host</th>
+        <th>起始時間 ~ 結束時間</th>
+        <th>估計預算</th>
+        <th>最後預算</th>
+        <th>公里數</th>
+        <th>圖片</th>
+        <th>介紹</th>
+        <th>#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @plans.each do |plan| %>
+      <tr>
+        <th scope="row"><%= link_to plan.name, plan_path(plan) %> </th>
+        <td><%= plan.user.name %></td>
+        <td><%= plan.start_date %><%= plan.end_date %> 總共需要天數:<%= plan.day %></td>
+        <td>預算估計:<%= plan.budget_bottom %> ~ <%= plan.budget_top %></td>
+        <td><%= plan.budget_final %></td>
+        <td>level:<%= plan.level %> 公里數:<%= plan.miles %></td>
+        <td><%= plan.intro %></td>
+        <td><%#= image_tag plan.image, width: "300px" if hiking.image %></td>
+        <td>
+          <%= link_to 'Edit', edit_plan_path(plan) %>
+          
+          
+          <%= link_to 'Delete', plan_path(plan), method: :delete, data: { confirm: "Are you sure?"} %>  
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
