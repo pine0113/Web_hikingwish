@@ -33,12 +33,13 @@ Rails.application.routes.draw do
   get 'search' => 'plans#search'
 
   get 'pages/index' => 'pages#index'
+  get 'pages/wish_edit' => 'pages#wish_edit'
   get 'pages/wishes' => 'pages#wishes'
   get 'pages/wishes_empty' => 'pages#wishes_empty'
   get 'pages/plans' => 'pages#plans'
   get 'pages/plans_empty' => 'pages#plans_empty'
+  get 'pages/hikings' => 'pages#hikings'
 
-  get 'pages/plan_list' => 'pages#plan_list'
   get 'pages/plan_edit' => 'pages#plan_edit'
-  get 'pages/wishes' => 'pages#wishes'
+
 end

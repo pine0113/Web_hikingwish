@@ -5,11 +5,17 @@ class PagesController < ApplicationController
 
   def index
   end
+
+  def hikings
+  end
   
   def wishes
   end
 
   def wishes_empty
+  end
+
+  def wish_edit
   end
 
   def plans
