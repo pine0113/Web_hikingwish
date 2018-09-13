@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :set_wish, :only => [:edit, :update]
+  before_action :set_wish, :only => [:edit, :update, :destroy]
 
   def index
     @wishes = current_user.wishes.order(created_at: :desc)
@@ -26,6 +26,11 @@ class WishesController < ApplicationController
     else
       flash[:alert] = "wish was failed to create"
     end
+    redirect_to wishes_path
+  end
+
+  def destroy
+    @wish.destroy
     redirect_to wishes_path
   end
 

@@ -44,6 +44,7 @@
     <br>
     <%= f.submit %>
     <% end %>
+    <button id="delete-wish" class="my-btn my-btn-transparent"><%= link_to 'Delete', wish_path(@wish), method: :delete, data:{ confirm: "Are you sure?" } %></button>
     <br>
   </div>
 
