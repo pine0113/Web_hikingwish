@@ -40,5 +40,5 @@ Rails.application.routes.draw do
 
   get 'pages/plan_list' => 'pages#plan_list'
   get 'pages/plan_edit' => 'pages#plan_edit'
-
+  get 'pages/wishes' => 'pages#wishes'
 end

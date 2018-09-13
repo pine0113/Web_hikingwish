@@ -65,13 +65,6 @@ body {
     border-radius:10px 0 0 10px;
 }
 
-.plan{
-
-    padding:10px;
-    border: 1px #ccc solid;
-    border-radius:10px;
-    margin: 10px;
-}
 
 .navbar
 {
@@ -102,6 +95,7 @@ font-size:20px;
     padding-top:40px;
 }
 
+
 .plan 
 {
     height:172 px;
@@ -128,6 +122,46 @@ font-size:20px;
 }
 
 .plan_action
+{
+
+
+}
+
+
+
+.wish{
+
+    padding:10px;
+    border: 1px #ccc solid;
+    border-radius:10px;
+    margin: 10px;
+}
+.wish 
+{
+    height:172 px;
+}
+
+.wish_iamge, .wish_info, .wish_descript
+{
+    float:left;
+}
+
+.wish_info
+{
+    width: 200px;
+    padding-left:10px;
+    font-size: 14px;
+
+}
+
+.wish_descript
+{
+    width: 500px;
+    font-size: 10px;
+
+}
+
+.wish_action
 {
 
 

@@ -3,6 +3,9 @@ class PagesController < ApplicationController
   def about
   end
 
+  def index
+  end
+  
   def wishes
   end
 
@@ -13,5 +16,6 @@ class PagesController < ApplicationController
   end
 
   def plans_empty
+
   end
 end
