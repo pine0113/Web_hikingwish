@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require font-awesome
  */
  @import "font-awesome";
  @import "bootstrap";
@@ -96,6 +95,13 @@ font-size:20px;
 }
 
 
+
+.plan{
+    padding:10px;
+    border: 1px #ccc solid;
+    border-radius:10px;
+    margin: 10px;
+}
 .plan 
 {
     height:172 px;
@@ -165,4 +171,17 @@ font-size:20px;
 {
 
 
+}
+
+.member_list img
+{
+
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+
+}
+
+.fa-star
+{
+  color: #F7C242
 }
