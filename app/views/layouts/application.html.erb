@@ -22,10 +22,10 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item"> <%= link_to '路線', hikings_path, class:" nav-link" %><span class="badge badge-light">2</span>  </li>
-                <li class="nav-item"> <%= link_to '願望', wishes_path, class:" nav-link" %> <span class="badge badge-light">3</span>   </li>
-                <li class="nav-item"> <%= link_to '計畫', plans_path, class:" nav-link" %>  </li>
-                <li class="nav-item"> <%= link_to '通知', plans_path, class:" nav-link" %> <span class="badge badge-light">5</span>  </li>
+                <li class="nav-item"> <%= link_to hikings_path, :class => "nav-link" do%> 路線 <span class="badge badge-danger">2</span> <% end %> </li>
+                <li class="nav-item"> <%= link_to wishes_path, class:"nav-link" do%> 願望 <span class="badge badge-danger">3</span>    <% end %></li>
+                <li class="nav-item"> <%= link_to plans_path, class:"nav-link" do%>  計畫 <% end %></li>
+                <li class="nav-item"> <%= link_to plans_path, class:"nav-link" do %> 通知 <span class="badge badge-danger">5</span>  <% end %> </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Profile

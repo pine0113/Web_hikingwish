@@ -34,7 +34,9 @@ Rails.application.routes.draw do
 
   get 'pages/index' => 'pages#index'
   get 'pages/wishes' => 'pages#wishes'
+  get 'pages/wishes_empty' => 'pages#wishes_empty'
   get 'pages/plans' => 'pages#plans'
+  get 'pages/plans_empty' => 'pages#plans_empty'
 
   get 'pages/plan_list' => 'pages#plan_list'
   get 'pages/plan_edit' => 'pages#plan_edit'
