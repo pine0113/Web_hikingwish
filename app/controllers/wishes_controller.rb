@@ -59,7 +59,6 @@ class WishesController < ApplicationController
     end
 
     def wish_params
-      params.require(:wish).permit(:name, :level, :start_day, :end_day, :user_id)
+      params.require(:wish).permit(:name, :level, :start_date, :end_date, :user_id, :budget_bottom, :budget_top, :description, )
     end  
-
 end

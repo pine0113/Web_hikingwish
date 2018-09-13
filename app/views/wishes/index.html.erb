@@ -16,14 +16,14 @@
     </div>
   </div>
   <h4 id="end" class="text-center"></h4>
-  <!-- Add new todo -->
-  <%= link_to 'Create Wish', new_wish_path %>
+  <!-- Add new wish -->
+  <button id="create-wish" class="my-btn my-btn-transparent"><%= link_to 'Create Wish', new_wish_path %></button>
   <div><p class="num">testtest</p></div>
 </div>
 
 <script>
 
-  $("#wishlist").on("click", "#edit-wish", function(event) {
+  $("#wishlist").on("click", "#get-wish-id", function(event) {
     var id = event.target.parentNode.id;
     var wish = $('<div class="col-xs-4"></div>');
     wish.append('<p class="num"></p>');
