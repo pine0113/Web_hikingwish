@@ -48,8 +48,7 @@
         <div class="button-group"> 
             <%= link_to hiking_path(hiking), class: "btn btn-light" do %><i class="far fa-eye"></i> 詳情  <% end %>
             <%= link_to add_to_wish_hiking_path(hiking), class: "btn btn-outline-danger", method: "post" do %> <i class="fas fa-heart"></i> 加入願望 <% end %>
-            <button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 相關計畫 </button>
-            
+            <%= link_to plans_hiking_path(hiking), class: "btn btn-outline-info" do %> <i class="fas fa-location-arrow"></i>   相關計畫 <% end %>          
         </div>
         <div class="clearfix"></div>
     </div>

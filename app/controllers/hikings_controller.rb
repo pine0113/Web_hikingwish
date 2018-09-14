@@ -9,6 +9,8 @@ class HikingsController < ApplicationController
   end
 
   def plans
+    set_hiking
+    plans = @hiking.plans
   end
 
   def wishes

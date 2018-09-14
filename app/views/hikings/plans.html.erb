@@ -1,0 +1,59 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-5"> 與 <%= @hiking.name %> 相關的登山計畫 </h3>
+    <p class="lead">總共有 [ ] 個計畫</p>
+   
+  </div>
+</div>
+
+
+<h5>排序方式 
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-light">天數</button>
+  <button type="button" class="btn btn-light">難度</button>
+ 
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-light">正序</button>
+  <button type="button" class="btn btn-light">逆序</button>
+</div>
+
+
+</h5>
+
+  <% @hiking.plans.each do |plan| %>
+    <div class="plan">
+        <div class="plan_iamge">
+            <img src="https://fakeimg.pl/200x150/">
+        </div>
+        <div class="plan_info">
+            <div> <%= plan.name %> </div>
+            <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> <%= plan.day %> 兩天兩夜 </span> </div>
+            <div> <i class="fas fa-bolt"></i>  <%= plan.level %><span class="badge badge-light"> 中等難度 </span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div> <span class="badge badge-light">百岳路線</span> <span class="badge badge-light">過夜行程</span>   </div>
+            <div> <span class="badge badge-light">雪山山系</span> </div>
+        </div>
+        <div class="plan_descript">
+            <div> 
+              <%= plan.intro %>      
+            <hr>
+            </div>
+            <div>
+            <h6>相關路線<span class="badge badge-light">武陵四秀</span><span class="badge badge-light">武陵二秀 - 品田池有 </span></h6>
+                
+            </div>
+
+        </div>
+        <div class="button-group"> 
+            <!-- 如果 User 已加入要更換樣式 -->
+            <%= link_to plan_path(plan), class: "btn btn-light" do %><i class="far fa-eye"></i> 詳情  <% end %>
+            <%= link_to add_to_wish_hiking_path(hiking), class: "btn btn-outline-danger", method: "post" do %> <i class="fas fa-heart"></i> 加入願望 <% end %>
+            <button class="btn btn-outline-info"> 申請加入 </button>
+            <button class="btn btn-outline-info"> <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-danger">!</span></button>     
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+ <% end %>
