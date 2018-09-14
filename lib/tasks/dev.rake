@@ -17,7 +17,7 @@ namespace :dev do
         day: rand(5),
         hiking: hiking_sample.sample,
         budget_bottom: rand(5000),
-        budget_top: rand(10000)
+        budget_top: rand(5000...10000)
       )
     end
     puts 'have created fake wishes'
