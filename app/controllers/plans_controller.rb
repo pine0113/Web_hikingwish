@@ -1,8 +1,9 @@
 class PlansController < ApplicationController
-  before_action :find_plan, only: [:show, :edit, :update, :destroy]
+  before_action :set_plan, only: [:show, :edit, :update, :destroy, :prepare, :prepare_team]
 
   def index
-    @plans = Plan.all
+    @plans = Plan.where('owner_id = :user_id', {user_id: current_user.id})
+    
   end
 
   def new
@@ -27,6 +28,10 @@ class PlansController < ApplicationController
   def edit
   end
 
+  def all
+      @plans = Plan.where('owner_id != :user_id', {user_id: current_user.id})
+  end
+
   def update
     if @plan.update(plan_params)
       flash[:notice] = "計畫已更新"
@@ -43,12 +48,18 @@ class PlansController < ApplicationController
     redirect_to plans_path
   end
 
+  def prepare
+  end
+
+  def prepare_team
+  end
+
   def search
   end
 
   private
 
-  def find_plan
+  def set_plan
     @plan = Plan.find(params[:id])
   end
 

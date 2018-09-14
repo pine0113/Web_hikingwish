@@ -28,7 +28,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :plans
+  resources :plans do
+    member do
+      get :prepare_team
+      get :prepare
+    end
+  end
+
+  get 'all_plans' => 'plans#all'
 
   get 'search' => 'plans#search'
 
