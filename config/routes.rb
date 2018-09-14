@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :notifications, only: [:index]
+
   get 'all_plans' => 'plans#all'
 
   get 'search' => 'plans#search'
