@@ -20,6 +20,13 @@ namespace :dev do
         budget_top: rand(5000...10000)
       )
     end
+
+    40.times do
+      wish=Wish.all.sample
+      wish.car_list.add("car")
+      wish.food_list.add("food1")
+    end
+
     puts 'have created fake wishes'
     puts "now you have #{Wish.count} wishes data"
   end

@@ -72,7 +72,12 @@
       <hr>
       <label>交通方式</label>
       <div>
-        <p>之後再加</p>
+        <div><%= f.text_field :car_list, value: @wish.car_list.to_s %></div>
+        <div><%= f.text_field :car_list, input_html: {value: @wish.car_list.to_s} %></div>
+        <div><%= @wish.car_list %></div>
+        <% @wish.car_list do |car| %>
+        <%= puts car %>
+        <% end %>
       </div>
       <hr>
       <label>食</label>
