@@ -48,10 +48,6 @@ class PlansController < ApplicationController
 
   private
 
-  def plan_params
-    params.require(:plan).permit(:name, :image, :start_date, :end_date, :budget_top, :budget_bottom, :budget_final, :level, :day, :miles, :intro)
-  end
-
   def find_plan
     @plan = Plan.find(params[:id])
   end

@@ -1,58 +1,219 @@
-<div class="container">
-  <div class="row">
-    <%= form_for @plan do |f| %>
-      <div class="form-group">
-        <%= f.label :name, "計劃名稱" %>
-        <%= f.text_field :name, class: "form-control bg-light" %>
-      </div>
-      <div class="form-row">
-        <div class="col-md-6 mb-3">
-          <%= f.label :start_date %>
-          <%= f.text_field :start_date %>
-        </div>
-        <div class="col-md-6 mb-3">
-          <%= f.label :end_date %>
-          <%= f.text_field :end_date %>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <%= f.select :day, ["請選擇總天數", 1, 2, 3, 4, 5, 6, "其他"] %>
-        </div>
-        <div class="col-md-4 mb-3">
-          <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5, 6, "其他"] %>
-        </div>
-        <div class="col-md-4 mb-3">
-          <%= f.select :miles, ["請選擇公里數", 5, 10, 15, 20, 25, 30, "其他"] %>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-4 mb-3">
-          <%= f.label :budget_top %>
-          <%= f.text_field :budget_top %>
-        </div>
-        <div class="col-md-4 mb-3">
-          <%= f.label :budget_bottom %>
-          <%= f.text_field :budget_bottom %>
-        </div>
-        <div class="col-md-4 mb-3">
-          <%= f.label :budget_final %>
-          <%= f.text_field :budget_final %>
-        </div>
-      </div>
-      <div class="form-group">
-        <%= f.label :intro %>
-        <%= f.text_area :intro, class: "form-control bg-light" %>
-      </div>
-      <div class="form-group">
-        <%= f.file_field :image, class: "form-control  bg-light" %>
-        <%= image_tag @plan.image, width: "150px"  if @plan.image %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.submit class: "btn btn-info" %>
-      </div>
-    <% end %>
+<h3> 編輯登山計畫</h3>
+
+ <%= form_for @plan do |f| %>
+
+<div class="form-group row">
+    <div class="col-sm-10">
+       <%= f.text_field :name, class: "form-control form-control-lg", placeholder: "計劃名" %>
+    </div>
+</div>
+
+<div class="form-group row">
+  <%= image_tag @plan.image, width: "150px"  if @plan.image %>
+</div>
+
+<label>時間區間</label>
+<div class="form-group row"> 
+   <div class="col-sm-3">
+    <%= f.text_field :start_date, class: "form-control", placeholder: "起始時間" %>
+   </div>
+   到
+   <div class="col-sm-3">
+   <%= f.text_field :end_date, class: "form-control", placeholder: "起始時間" %>
+   </div>
+</div>
+
+<label>備註</label>
+<%= f.text_area :intro, class: "form-control bg-light" %>
+
+
+<label>組團方式</label>
+<div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <label class="form-check-label" for="inlineRadio1">未定</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+    <label class="form-check-label" for="inlineRadio1">自組隊伍</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+    <label class="form-check-label" for="inlineRadio2">外包商業隊伍</label>
   </div>
 </div>
+
+<br>
+<label>計畫狀態</label><br>
+  <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">公開</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">私人</label>
+</div>
+  <button class="btn btn-info"> 存檔 </button>
+
+<hr>
+<label>費用預算</label><br>
+計費方式 <br>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">預先收費，不退不捕</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">預先收費，多退少補</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">結算後均攤</label>
+</div>
+<br><br>
+收費包含<br>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">D0住宿</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">交通</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">晚餐</label>
+  </div>
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">保險</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">未定</label>
+  </div>
+
+<br>
+預算範圍 <br>
+<div class="form-group row"> 
+   <div class="col-sm-3">
+   <%= f.text_field :budget_bottom, class:"form-control", placeholder:"最低預算" %>
+   </div>
+   到
+   <div class="col-sm-3">
+    <%= f.text_field :budget_top, class:"form-control", placeholder:"最高預算" %>
+   </div>
+   
+   <br>
+  
+</div>
+
+<label>最終預算</label>
+<div class="form-group row"> 
+<div class="col-sm-3">
+  <%= f.text_field :budget_final, class:"form-control", placeholder:"最終預算" %>
+</div>
+</div>
+
+<hr>
+<label>參考路線 <button class="btn btn-light"> 重設為範本預設值 </button></label>
+<div>
+  武陵二秀 - 桃山喀拉業 兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
+ 
+   <span class="badge badge-light"> 中等難度 </span>  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+
+<br>
+<label>日程表</label>
+  <textarea class="form-control">
+  
+  </textarea>
+</div>
+
+<hr>
+<label>住宿資訊</label>
+<div class="form-group row"> 
+   <div class="col-sm-1"> D0 </div>
+   <div class="col-sm-3">
+   <input class="form-control" type="text" placeholder="住宿地點" value="">
+   </div>
+</div>
+
+住宿備註
+  <textarea class="form-control">
+  
+  </textarea>
+<hr>
+
+<label>交通方式</label>
+<div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">未定</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">自駕 油錢分擔</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option2">
+    <label class="form-check-label" for="inlineCheckbox2">共乘 油錢分擔</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox3" value="option3">
+    <label class="form-check-label" for="inlineCheckbox3">包車</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox3" value="option3">
+    <label class="form-check-label" for="inlineCheckbox3">大眾運輸</label>
+  </div>
+</div>
+
+交通備註
+  <textarea class="form-control">
+  
+  </textarea>
+
+<hr>
+
+<label>食</label>
+<div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">未定</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
+    <label class="form-check-label" for="inlineCheckbox1">包餐</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option2">
+    <label class="form-check-label" for="inlineCheckbox2">公糧公炊 費用分攤</label>
+  </div>
+  <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" id="inlineCheckbox3" value="option3">
+    <label class="form-check-label" for="inlineCheckbox3">私糧私炊</label>
+  </div>
+</div>
+
+
+食物備註
+  <textarea class="form-control">
+  
+  </textarea>
+
+<hr>
+
+<label>計畫狀態</label><br>
+  <div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+  <label class="form-check-label" for="inlineRadio1">公開</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+  <label class="form-check-label" for="inlineRadio2">私人</label>
+</div>
+  <%= f.submit class: "btn btn-info", value: "存檔" %> 
+  <button class="btn btn-danger"> 鎖定 </button>
+
+<% end %>
 

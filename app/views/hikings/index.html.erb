@@ -1,26 +1,57 @@
-<br>
-<div class="container">
-  <div class="row">
-    <table class="table table-striped table-bordered">
-      <h2>所有路線</h2>
-    <thead>
-      <tr>
-        <th>路線名稱</th>
-        <th>難度</th>
-        <th>天數</th>
-        <th>公里數</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @hikings.each do |hiking| %>
-      <tr>
-        <th scope="row"><%= link_to hiking.name, hiking_path(hiking) %></th>
-        <td><%= hiking.level %></td>
-        <td><%= hiking.day %></td>
-        <td><%= hiking.miles %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h3 class="display-5">登山路線</h3>
+    <p class="lead">跟可以去哪裡不太熟悉嗎？按分類、難度瀏覽就對拉</p>
+    或者... <button class="btn btn-outline-info"> 新手推薦哪些路線？ </button>  <button class="btn btn-outline-info"> 想看已經可以加入的登山計畫 </button>
   </div>
 </div>
+
+<h5>排序方式 
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-light">天數</button>
+  <button type="button" class="btn btn-light">難度</button>
+ 
+</div>
+
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-light">正序</button>
+  <button type="button" class="btn btn-light">逆序</button>
+</div>
+
+
+</h5>
+
+  <% @hikings.each do |hiking| %>
+    <div class="plan">
+        <div class="plan_iamge">
+            <img src="https://fakeimg.pl/200x150/">
+        </div>
+        <div class="plan_info">
+            <div> <%= hiking.name %> </div>
+            <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> <%= hiking.day %> 兩天兩夜 </span> </div>
+            <div> <i class="fas fa-bolt"></i>  <%= hiking.level %><span class="badge badge-light"> 中等難度 </span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            <div> <span class="badge badge-light">百岳路線</span> <span class="badge badge-light">過夜行程</span>   </div>
+            <div> <span class="badge badge-light">雪山山系</span> </div>
+        </div>
+        <div class="plan_descript">
+            <div> 
+              <%= hiking.intro %>      
+            <hr>
+            </div>
+            <div>
+            <h6>相關路線<span class="badge badge-light">武陵四秀</span><span class="badge badge-light">武陵二秀 - 品田池有 </span></h6>
+                
+            </div>
+
+        </div>
+        <div class="button-group"> 
+            <%= link_to hiking_path(hiking), class: "btn btn-light" do %><i class="far fa-eye"></i> 詳情  <% end %>
+            <%= link_to add_to_wish_hiking_path(hiking), class: "btn btn-outline-danger", method: "post" do %> <i class="fas fa-heart"></i> 加入願望 <% end %>
+            <button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 相關計畫 </button>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+ <% end %>

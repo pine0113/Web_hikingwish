@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     member do
       get :plans
       get :wishes
+      post :add_to_wish
     end
   end
   

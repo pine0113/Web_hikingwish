@@ -14,3 +14,16 @@ User.destroy_all
   User.create(name:"user",email: "user@example.com", password: "12345678", role: "user")
   
 puts "Default users created!"
+
+
+Plan.destroy_all
+
+  #Plan.create(name: "嘉明湖", image: "1", start_date: Date.today, end_date: Date.today, budget_final:0,  budget_bottom: 7000, budget_top: 10000,level:3,day: 72,miles: 20,intro: "",join_count: 0,owner_id: 1)
+
+puts "Default Plan created!"
+
+
+Hiking.destroy_all
+  Hiking.create( name:"武稜二秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
+
+puts "Default Hiking created!"
