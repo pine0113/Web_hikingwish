@@ -1,16 +1,39 @@
-<td class="my-title">
-  <p class="title my-font">
-    <p>Name: <%=wish.name %></p>
-    <p>Level: <%= wish.level %></p>
-    <p>Start Date: <%= wish.start_date %></p>
-    <p>End Date: <%= wish.end_date %></p>
-    <p>Budget Bottom: <%= wish.budget_bottom %></p>
-    <p>Budget Top: <%= wish.budget_top %></p>
-  </p>
-</td>
+    <div class="plan">
+        <div class="plan_iamge">
+            <img src="https://fakeimg.pl/200x150/">
+        </div>
+        <div class="wish_info">
+            
+            <div> <span class="badge badge-info">自組團</span></div>
+            <div> <%=wish.name %> </div>
+            <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
+            <div> <span class="badge badge-light"><%= wish.hiking %></span>   </div>
+            <div> <i class="fas fa-dollar-sign"></i> <span class="badge badge-light">預算區間</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  </div>
+            <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 </span> </div>
+            <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
+                <% (1..wish.level).each do |i| %>
+                    <i class="fas fa-star"></i>
+                <% end %>
+            </div>
+        </div>
+        <div class="plan_descript">
+            <div> <span class="badge badge-secondary">自駕 油錢分擔</span> or <span class="badge badge-secondary">共乘 油錢分擔</span> or <span class="badge badge-secondary">包車</span> or <span class="badge badge-secondary">大眾運輸</span> <hr>
+                  <span class="badge badge-secondary">私糧自炊</span> or  <span class="badge badge-secondary">公糧公炊 費用分擔</span> or  <span class="badge badge-secondary">包餐</span> <hr>
+            </div>
+
+        </div>
+        <div class="button-group"> 
+            <button class="btn btn-light"> <i class="fas fa-edit"></i><%= link_to '修改', edit_wish_path(wish) %></button>
+            <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 收到邀請 (3) </button>
+            <button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 展開行動 </button>
+            
+        </div>
+        <div class="clearfix"></div>
+    </div>
 <td class="my-operation">
     <button id="get-wish-id" class="my-btn my-btn-transparent">Get Wish id</button>
     <button id="search-related" class="my-btn my-btn-transparent">找團</button>
-    <button id="edit-wish" class="my-btn my-btn-transparent"><%= link_to 'Edit', edit_wish_path(wish) %></button>
 </td>
-<hr>
+
+
+
