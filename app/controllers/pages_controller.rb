@@ -22,6 +22,8 @@ class PagesController < ApplicationController
   end
 
   def plans_empty
+  end
 
+  def plan_edit
   end
 end
