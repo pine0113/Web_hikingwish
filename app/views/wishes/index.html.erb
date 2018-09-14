@@ -1,3 +1,10 @@
+<style>
+  .toggler { width: 500px; height: 200px; }
+  #button { padding: .5em 1em; text-decoration: none; }
+  #effect { width: 240px; height: 170px; padding: 0.4em; position: relative; }
+  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+</style>
+
 <div class="wish_container">
 
   <h1 class="text-center">願望清單</h1>
@@ -16,23 +23,74 @@
     </div>
   </div>
   <h4 id="end" class="text-center"></h4>
-  <!-- Add new todo -->
-  <%= link_to 'Create Wish', new_wish_path %>
-  <div><p class="num">testtest</p></div>
+  <!-- Add new wish -->
+  <button id="create-wish" class="my-btn my-btn-transparent"><%= link_to 'Create Wish', new_wish_path %></button>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
+  <div class="toggler">
+    <div id="effect" class="ui-widget-content ui-corner-all">
+      <h3 class="ui-widget-header ui-corner-all">Show</h3>
+      <p>
+        popup window內容放在這
+      </p>
+    </div>
+  </div>
+   
+  <select name="effects" id="effectTypes">
+    <option value="slide">Slide</option>
+  </select>
+ 
+<button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
+
 </div>
 
 <script>
-
-  $("#wishlist").on("click", "#edit-wish", function(event) {
+  $( function() {
+    // run the currently selected effect
+    function runEffect() {
+      // get effect type from
+      var selectedEffect = $( "#effectTypes" ).val();
+ 
+      // Most effect types need no options passed by default
+      var options = {};
+      // some effects have required parameters
+      if ( selectedEffect === "scale" ) {
+        options = { percent: 50 };
+      } else if ( selectedEffect === "size" ) {
+        options = { to: { width: 280, height: 185 } };
+      }
+ 
+      // Run the effect
+      $( "#effect" ).show( selectedEffect, options, 500, callback );
+    };
+ 
+    //callback function to bring a hidden box back
+    function callback() {
+      setTimeout(function() {
+        $( "#effect:visible" ).removeAttr( "style" );
+      }, 1000 );
+    };
+ 
+    // Set effect from select menu value
+    $( "#button" ).on( "click", function() {
+      runEffect();
+    });
+ 
+    $( "#effect" ).hide();
+  
+  $("#wishlist").on("click", "#get-wish-id", function(event) {
     var id = event.target.parentNode.id;
-    var wish = $('<div class="col-xs-4"></div>');
-    wish.append('<p class="num"></p>');
-    wish.append('<div class="name"></div>');
-
-    wish.find("p").html('#' + id );
-    wish.find(".name").html(name);
+    var wish = document.getElementById( id )
+    $("#wishlist").empty();
     $("#wishlist").append(wish);
+    $("#create-wish").remove();
+    $(".ui-widget-content").append("testtest");
+    runEffect();
   });
+
+} );
 
 </script>
 
