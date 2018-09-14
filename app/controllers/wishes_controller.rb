@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :set_wish, :only => [:edit, :update]
+  before_action :set_wish, :only => [:edit, :update, :destroy]
 
   def index
     @wishes = current_user.wishes.order(created_at: :desc)
@@ -26,7 +26,12 @@ class WishesController < ApplicationController
     else
       flash[:alert] = "wish was failed to create"
     end
-    redirect_back(fallback_location: wishes_path)
+    redirect_to wishes_path
+  end
+
+  def destroy
+    @wish.destroy
+    redirect_to wishes_path
   end
 
   def show
@@ -59,7 +64,6 @@ class WishesController < ApplicationController
     end
 
     def wish_params
-      params.require(:wish).permit(:name, :level, :start_day, :end_day, :user_id)
+      params.require(:wish).permit(:name, :level, :start_date, :end_date, :user_id, :budget_bottom, :budget_top, :description, )
     end  
-
 end
