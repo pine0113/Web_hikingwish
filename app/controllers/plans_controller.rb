@@ -2,8 +2,11 @@ class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy, :prepare, :prepare_team]
 
   def index
-    @plans = Plan.where('owner_id = :user_id', {user_id: current_user.id})
-    
+    if user_signed_in? 
+      @plans = (Plan.where('owner_id = :user_id', {user_id: current_user.id})+current_user.plans).uniq
+     else
+      @plans = Plan.all
+     end
   end
 
   def new
@@ -29,7 +32,11 @@ class PlansController < ApplicationController
   end
 
   def all
+     if user_signed_in? 
       @plans = Plan.where('owner_id != :user_id', {user_id: current_user.id})
+     else
+      @plans = Plan.all
+     end
   end
 
   def update
