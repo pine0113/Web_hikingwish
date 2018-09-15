@@ -10,12 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180914175700) do
-=======
 ActiveRecord::Schema.define(version: 20180915014901) do
->>>>>>> plan_form
-
   create_table "hikings", force: :cascade do |t|
     t.string "name"
     t.string "image"
