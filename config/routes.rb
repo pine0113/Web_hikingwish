@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'pages/about', :to => 'pages#about'
   
   resources :users, only: [:index, :show, :edit, :update]
-  root "hikings#index"
+  root "pages#landing"
 
   namespace :admin, path: :make_backend_url_abstruse do
     resources :plans
