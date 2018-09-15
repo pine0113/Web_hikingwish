@@ -287,6 +287,6 @@ Devise.setup do |config|
   # ActiveSupport.on_load(:devise_failure_app) do
   #   include Turbolinks::Controller
   # end
-
+  fb_config = Rails.application.config_for(:facebook)
   config.omniauth :facebook, fb_config["app_id"], fb_config["secret"], scope: "public_profile,email", info_fields: "email,name", callback_url:  "https://hikingwish.tw/users/auth/facebook/callback"
 end
