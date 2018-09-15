@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180914175700) do
+=======
+ActiveRecord::Schema.define(version: 20180915014901) do
+>>>>>>> plan_form
 
   create_table "hikings", force: :cascade do |t|
     t.string "name"
@@ -74,6 +78,16 @@ ActiveRecord::Schema.define(version: 20180914175700) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "hiking_id"
+    t.string "type"
+    t.string "food_type"
+    t.text "food_info"
+    t.string "car_type"
+    t.text "car_info"
+    t.text "money_type"
+    t.string "publish_status"
+    t.string "lock_status"
+    t.text "schedule"
+    t.string "group_type"
   end
 
   create_table "users", force: :cascade do |t|
