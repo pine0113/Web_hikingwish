@@ -23,7 +23,7 @@ set :repo_url, "git@github.com:pine0113/hikingwish.git"
 # set :pty, true
 
 # Default value for :linked_files is []
- append :linked_files, "config/database.yml", 'config/secrets.yml'
+ append :linked_files, "config/database.yml", 'config/secrets.yml', 'config/facebook.yml'
 
 # Default value for linked_dirs is []
  append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", 'public/uploads'

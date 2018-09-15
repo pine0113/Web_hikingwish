@@ -30,6 +30,7 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.3'
 gem "font-awesome-rails"
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'faker'
+gem 'omniauth-facebook'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
