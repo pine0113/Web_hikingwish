@@ -1,4 +1,3 @@
-<h3> 編輯登山計畫</h3>
 
  <%= form_for @plan do |f| %>
 
@@ -15,11 +14,11 @@
 <label>時間區間</label>
 <div class="form-group row"> 
    <div class="col-sm-3">
-    <%= f.text_field :start_date, class: "form-control", placeholder: "起始時間" %>
+    <%= f.date_field :start_date, class: "form-control", placeholder: "起始時間" %>
    </div>
    到
    <div class="col-sm-3">
-   <%= f.text_field :end_date, class: "form-control", placeholder: "起始時間" %>
+   <%= f.date_field :end_date, class: "form-control", placeholder: "起始時間" %>
    </div>
 </div>
 
@@ -30,46 +29,47 @@
 <label>組團方式</label>
 <div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-    <label class="form-check-label" for="inlineRadio1">未定</label>
+      <%= f.radio_button :group_type, '未定', class: "form-check-input" %>
+      <%= label :group_type, '未定', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-    <label class="form-check-label" for="inlineRadio1">自組隊伍</label>
+      <%= f.radio_button :group_type, '自組隊伍', class: "form-check-input" %>
+      <%= label :group_type, '自組隊伍', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-    <label class="form-check-label" for="inlineRadio2">外包商業隊伍</label>
+      <%= f.radio_button :group_type, '外包商業隊伍', class: "form-check-input" %>
+      <%= label :group_type, '外包商業隊伍', class: "form-check-label" %>
   </div>
 </div>
 
 <br>
 <label>計畫狀態</label><br>
   <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1">公開</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">私人</label>
-</div>
-  <button class="btn btn-info"> 存檔 </button>
+      <%= f.radio_button :publish_status, '公開', class: "form-check-input" %>
+      <%= label :publish_status, '公開', class: "form-check-label" %>
+  </div>
+  <div class="form-check form-check-inline">
+      <%= f.radio_button :publish_status, '私人', class: "form-check-input" %>
+      <%= label :publish_status, '私人', class: "form-check-label" %>
+  </div>
+  <%= f.submit class: "btn btn-info", value: "存檔" %> 
 
 <hr>
 <label>費用預算</label><br>
 計費方式 <br>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1">預先收費，不退不捕</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-  <label class="form-check-label" for="inlineRadio1">預先收費，多退少補</label>
-</div>
-<div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-  <label class="form-check-label" for="inlineRadio2">結算後均攤</label>
-</div>
+  <div class="form-check form-check-inline">
+      <%= f.radio_button :money_type, '預先收費，不退不捕', class: "form-check-input" %>
+      <%= label :money_type, '預先收費，不退不捕', class: "form-check-label" %>
+  </div>
+  <div class="form-check form-check-inline">
+      <%= f.radio_button :money_type, '預先收費，多退少補', class: "form-check-input" %>
+      <%= label :money_type, '預先收費，多退少補', class: "form-check-label" %>
+  </div>
+  <div class="form-check form-check-inline">
+      <%= f.radio_button :money_type, '結算後均攤', class: "form-check-input" %>
+      <%= label :money_type, '結算後均攤', class: "form-check-label" %>
+  </div>
+
 <br><br>
 收費包含<br>
   <div class="form-check form-check-inline">
@@ -124,9 +124,7 @@
 
 <br>
 <label>日程表</label>
-  <textarea class="form-control">
-  
-  </textarea>
+<%= f.text_area :schedule, class: "form-control bg-light" %>
 </div>
 
 <hr>
@@ -147,59 +145,50 @@
 <label>交通方式</label>
 <div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">未定</label>
+      <%= f.radio_button :car_type, '未定', class: "form-check-input" %>
+      <%= label :car_type, '未定', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">自駕 油錢分擔</label>
+      <%= f.radio_button :car_type, '共乘 油錢分擔', class: "form-check-input" %>
+      <%= label :car_type, '共乘 油錢分擔', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">共乘 油錢分擔</label>
+      <%= f.radio_button :car_type, '包車', class: "form-check-input" %>
+      <%= label :car_type, '包車', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox3" value="option3">
-    <label class="form-check-label" for="inlineCheckbox3">包車</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox3" value="option3">
-    <label class="form-check-label" for="inlineCheckbox3">大眾運輸</label>
+      <%= f.radio_button :car_type, '大眾運輸', class: "form-check-input" %>
+      <%= label :car_type, '大眾運輸', class: "form-check-label" %>
   </div>
 </div>
 
 交通備註
-  <textarea class="form-control">
-  
-  </textarea>
+<%= f.text_area :car_info, class: "form-control bg-light" %>
 
 <hr>
 
 <label>食</label>
 <div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">未定</label>
+      <%= f.radio_button :food_type, '未定', class: "form-check-input" %>
+      <%= label :food_type, '未定', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">包餐</label>
+      <%= f.radio_button :food_type, '包餐', class: "form-check-input" %>
+      <%= label :food_type, '包餐', class: "form-check-label" %>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option2">
-    <label class="form-check-label" for="inlineCheckbox2">公糧公炊 費用分攤</label>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :food_type, '公糧公炊 費用分攤', class: "form-check-input" %>
+      <%= label :food_type, '公糧公炊 費用分攤', class: "form-check-label" %>
   </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" id="inlineCheckbox3" value="option3">
-    <label class="form-check-label" for="inlineCheckbox3">私糧私炊</label>
+    <div class="form-check form-check-inline">
+      <%= f.radio_button :food_type, '私糧私炊', class: "form-check-input" %>
+      <%= label :food_type, '私糧私炊', class: "form-check-label" %>
   </div>
 </div>
 
-
 食物備註
-  <textarea class="form-control">
-  
-  </textarea>
+<%= f.text_area :food_info, class: "form-control bg-light" %>
 
 <hr>
 
