@@ -3,7 +3,7 @@ class PlansController < ApplicationController
 
   def index
     if user_signed_in? 
-      @plans = (Plan.where('owner_id = :user_id', {user_id: current_user.id})+current_user.plans).uniq
+      @plans = (current_user.plans).uniq
      else
       @plans = Plan.all
      end
