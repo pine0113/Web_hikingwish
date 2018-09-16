@@ -55,5 +55,6 @@ class WishesController < ApplicationController
   
     def set_wish
       @wish = Wish.find(params[:id])
+    end
    
 end
