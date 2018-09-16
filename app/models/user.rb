@@ -13,6 +13,15 @@ class User < ApplicationRecord
   has_many :wishes
   has_many :notifications
 
+  # been plan member
+  has_many :plan_members
+  # check user already in plan
+  has_many :been_plan_members, through: :plan_members, source: :user
+  # for user been invite
+  has_many :plan_owner_invites, -> {where status: false}
+  # get plan for user show
+  has_many :respond_invite, through: :plan_owner_invites, source: :plan 
+
   def admin?
     self.role == "admin"
   end

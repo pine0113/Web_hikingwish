@@ -4,4 +4,14 @@ class Plan < ApplicationRecord
   has_many :notification, :as => :notifiable
   validates :name, :presence => true
   validates :user_id, :presence => true # 一定要有user id
+
+  # has many plan member
+  has_many :plan_members
+  # check user already in plan
+  has_many :been_plan_members, through: :plan_members, source: :user
+  # has many memebr apply
+  has_many :plan_member_applies, -> { where status: false}
+  # get member for plan
+  has_many :respond_apply, through: :plan_member_applies, source: :user
+
 end
