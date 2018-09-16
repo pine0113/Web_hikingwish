@@ -23,7 +23,7 @@
 
         </div>
         <div class="button-group"> 
-            <button class="btn btn-light"> <i class="fas fa-edit"></i><%= link_to '修改', edit_wish_path(wish) %></button>
+            <%= link_to  edit_wish_path(wish), class:"btn btn-light" do %> <i class="fas fa-edit"></i>修改<%end%>
             <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 收到邀請 (3) </button>
             <button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 展開行動 </button>
             
