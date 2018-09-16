@@ -56,4 +56,11 @@ class WishesController < ApplicationController
     def set_wish
       @wish = Wish.find(params[:id])
     end
+<<<<<<< HEAD
+=======
+
+    def wish_params
+      params.require(:wish).permit(:name, :level, :start_date, :end_date, :user_id, :budget_bottom, :budget_top, :description, :car_list, :food_list, )
+    end  
+>>>>>>> 519d576de6fb97b9bad3c6aec91d095a05983c4e
 end

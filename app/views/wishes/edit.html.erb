@@ -1,51 +1,96 @@
-<div class="form container">
+<div class="container"> 
+  <div class="form container">
 
-  <div class="col-sm-4 col-md-4">
-    <h4><%= @wish.name %></h4>
+    <div class="col-sm-8 col-md-8">
+      <%= form_for  [@wish] do |f| %>
+      <div class="form-group">
+        <br>
+        <h3> 編輯願望 </h3>
+        <%= f.text_field :name , class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <label>難度</label>
+        <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
+      </div>
+      
+      <label>時間區間</label>
+      <div class="form-group row"> 
+        <div class="col-sm-4 form-group">
+          <%= f.date_field :start_date, class: "form-control" %>
+        </div>
+        <p>到</p>
+        <div class="col-sm-4 form-group">
+          <%= f.date_field :end_date, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>備註</label>
+        <%= f.text_area :description, :cols => "10", :rows => "5", class: "form-control" %>
+      </div>
+
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label" for="inlineRadio1">公開</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">私人</label>
+      </div>
+        
+      <hr>
+      
+      <label>參考路線</label>
+      <div>
+        <%= @wish.hiking %> 兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
+       
+        <span class="badge badge-light"> 中等難度 </span>
+        <% (1..@wish.level).each do |i| %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      </div>
+
+
+      <hr>
+      <label>組團方式</label>
+      <div>
+        <p>之後再加</p>
+      </div>
+      <hr>
+      <label>預算區間</label>
+      <div class="form-group row"> 
+        <div class="col-sm-4 form-group">
+          <%= f.number_field :budget_bottom, class: "form-control" %>
+        </div>
+        <p>到</p>
+        <div class="col-sm-4 form-group">
+          <%= f.number_field :budget_top, class: "form-control" %>
+        </div>
+      </div>
+
+      <hr>
+      <label>交通方式</label>
+      <div>
+        <div><%= f.text_field :car_list, value: @wish.car_list.to_s %></div>
+        <div><%= f.text_field :car_list, input_html: {value: @wish.car_list.to_s} %></div>
+        <div><%= @wish.car_list %></div>
+        <% @wish.car_list do |car| %>
+        <%= puts car %>
+        <% end %>
+      </div>
+      <hr>
+      <label>食</label>
+      <div>
+        <p>之後再加</p>
+      </div>
+    </div>
+
+      <br>
+      <button class="btn btn-info"><%= link_to '存檔', wish_path(@wish), method: :update %></button>
+      <button id="delete-wish" class="btn btn-info"><%= link_to 'Delete', wish_path(@wish), method: :delete, data:{ confirm: "Are you sure?" } %></button>
+      <% end %>
+      <br>
+
   </div>
-
-  <div class="col-sm-8 col-md-8">
-    <%= form_for  [@wish] do |f| %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name , class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :level %>
-      <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :start_date %>
-      <%= f.date_field :start_date, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :end_date %>
-      <%= f.date_field :end_date, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :budget_bottom %>
-      <%= f.number_field :budget_bottom, step: 2000, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :budget_top %>
-      <%= f.number_field :budget_top, step: 2000, class: "form-control" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label "description" %>
-      <%= f.text_field :description, class: "form-control" %>
-    </div>
-
-    <br>
-    <%= f.submit %>
-    <% end %>
-    <button id="delete-wish" class="my-btn my-btn-transparent"><%= link_to 'Delete', wish_path(@wish), method: :delete, data:{ confirm: "Are you sure?" } %></button>
-    <br>
-  </div>
-
 </div>
