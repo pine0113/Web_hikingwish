@@ -7,14 +7,27 @@
         <div class="col-md-8">
     
                 <h4 id="member">隊伍成員</h4>
-                <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
+                <div class="member_list"> <span class="badge badge-light"> 隊員 <%= @plan.members.count %> /7</span><br>
+                            <% @plan.members.each do |user| %>
+                                <%= user.email %> <br>
+                            <% end %>
                             <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
+
+                      <h5>待審核申請</h5>
+                           
+                            <% @plan.sent_applies.each do |apply|  %>
+                                <%= apply.user.email %> <%= link_to "核准", approval_plan_member_apply_path(apply),method: "post", class: "btn btn-info"%><%= link_to "聊聊", plan_member_apply_path(apply), class: "btn btn-light" %> <br>
+                            <% end %>
+
+                      <h5>等待回覆邀請</h5>
+                            <% @plan.receive_invites.each do |invite| %>
+                                  <%= invite.user.email %> <%= link_to "聊聊", approval_plan_owner_invite(invite), class: "btn btn-light" %> <br>
+                            <% end %>
+
                 </div> 
+
+              
+                
 
                 <h4 id="status">準備狀況</h4>
                 <div>

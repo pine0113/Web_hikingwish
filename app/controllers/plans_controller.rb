@@ -2,11 +2,19 @@ class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy, :prepare, :prepare_team]
 
   def index
-    if user_signed_in? 
-      @plans = (Plan.where('owner_id = :user_id', {user_id: current_user.id}))
-     else
-      @plans = Plan.all
-     end
+    if user_signed_in?
+      case params[:type]
+      when 'applied'
+        @plans = current_user.applied_plans
+      when 'invited'
+        @plans = current_user.invited_plans
+      else
+        @plans = (current_user.plans + current_user.joined_plans).uniq
+      end
+
+    else
+      @plans = Plan.all.limit(10)
+    end
   end
 
   def new
@@ -62,6 +70,20 @@ class PlansController < ApplicationController
   end
 
   def search
+  end
+
+  def apply
+    set_plan
+    
+    @apply = current_user.sent_applies.build
+    @apply.plan = @plan
+    if @apply.save
+      flash[:notice] = "apply was successfully created"
+    else
+      flash[:alert] = "apply was failed to create"
+    end
+    session[:return_to] ||= request.referer
+    redirect_to session[:return_to]
   end
 
   private

@@ -1,0 +1,2 @@
+module PlanMemberAppliesHelper
+end
