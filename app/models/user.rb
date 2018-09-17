@@ -17,6 +17,8 @@ class User < ApplicationRecord
   # user applay plan
   has_many :plan_member_applies
   has_many :plan_members
+  # 
+  has_many :plan_owner_invite
 
   def admin?
     self.role == "admin"
