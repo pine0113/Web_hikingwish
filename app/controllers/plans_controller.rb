@@ -97,6 +97,10 @@ class PlansController < ApplicationController
     end
   end
 
+  def invite_user
+    
+  end
+
   private
 
   def set_plan
