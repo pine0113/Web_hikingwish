@@ -61,6 +61,8 @@ class PlansController < ApplicationController
   def prepare_team
     @respond_join = @plan.respond_join
     @confirm_users = @plan.confirm_users
+    # for owner invite user
+    @users = User.all
   end
 
   def search
