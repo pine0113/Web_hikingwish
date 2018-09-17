@@ -60,6 +60,10 @@
                         <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   
                     <% end %>
 
+                    <%= link_to respond_invite_plan_path(plan), method: :post do %>
+                      <button class="btn btn-outline-info"> 回覆加入 </button>
+                    <% end %>
+
                     <!-- User  不是 plan member -->
                      <!-- 加入心願 -->
                      <!-- 申請加入 -->

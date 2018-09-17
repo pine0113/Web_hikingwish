@@ -109,7 +109,20 @@ class PlansController < ApplicationController
       flash[:alert] = invite_user.errors.full_messages.to_sentence
       redirect_back(fallback_location: plans_path)
     end
+  end
 
+  def respond_invite
+    set_plan
+    @respond_invite = PlanOwnerInvite.where(plan_id: params[:id], user_id: current_user.id)
+
+    if @respond_invite.update(accept: true)
+      # PlanMember.create(plan_id: @plan, user_id: @user)
+      flash[:notice] = "參加#{@plan.name}"
+      redirect_back(fallback_location: plans_path)
+    else
+      flash[:alert] = respond_invite.errors.full_messages.to_sentence
+      redirect_back(fallback_location: plans_path)
+    end
   end
 
   private
