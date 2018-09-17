@@ -14,5 +14,7 @@
 <div class="col-md-4">
   <% @users.each do |user| %>
     <%= link_to user.name, user_path(user) %> 
+    <%= link_to 'invite', invite_user_path(@plan, user), method: :post, class: 'btn btn-info btn-sm' %>
+    <br>
   <% end %>
 </div>

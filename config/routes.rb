@@ -35,6 +35,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post "plans/:plan_id/users/:user_id/", to: "plans#invite_user", :as => :invite_user
+
   resources :notifications, only: [:index]
 
   get 'all_plans' => 'plans#all'
