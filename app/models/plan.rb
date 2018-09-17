@@ -13,4 +13,6 @@ class Plan < ApplicationRecord
   has_many :plan_members
   # got confirm user for plan page
   has_many :confirm_users, through: :plan_members, source: :user
+  # for owner invite user
+  has_many :plan_owner_invite
 end

@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   end
   
   post "/plans/:plan_id/users/:user_id", to: "plans#accept_join", :as => :accept_join
+  post "/users/:user_id/plans/:plan_id", to: "plans#invite_user", :as => :invite_user
 
   resources :notifications, only: [:index]
   resources :tags, only: [:show]
