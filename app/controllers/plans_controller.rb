@@ -64,6 +64,10 @@ class PlansController < ApplicationController
   def search
   end
 
+  def join_plan
+    
+  end
+
   private
 
   def set_plan
