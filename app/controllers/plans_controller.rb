@@ -65,7 +65,17 @@ class PlansController < ApplicationController
   end
 
   def join_plan
-    
+    # @plan = Plan.find(params[:id])
+    set_plan
+    @join = current_user.plan_member_applies.build(plan_id: params[:id], accept: false)
+
+    if @join.save
+      flash[:notice] = "申請加入#{@plan.name}"
+      redirect_back(fallback_location: plans_path)
+    else
+      flash[:alert] = @join.errors.full_messages.to_sentence
+      redirect_back(fallback_location: plans_path)
+    end
   end
 
   private
