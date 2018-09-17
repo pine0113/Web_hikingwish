@@ -14,5 +14,9 @@ class Plan < ApplicationRecord
   has_many :plan_member_applies, -> { where status: false}
   # get member for plan
   has_many :respond_apply, through: :plan_member_applies, source: :user
+  # plan can invite user
+  has_many :plan_owner_invites
+  # get plan for user show
+  # has_many :respond_invite, through: :plan_owner_invites, source: :plan 
 
 end

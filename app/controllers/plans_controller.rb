@@ -57,6 +57,20 @@ class PlansController < ApplicationController
   def search
   end
 
+  def invite_user
+    @plan = Plan.find(params[:plan_id])
+    @user = User.find(params[:user_id])
+    @invite_user = @plan.plan_owner_invites.build(user_id: @user)
+
+    if @invite_user.save
+      flash[:notice] = "邀請 #{params[:user_id]} 加入"
+      redirect_to plan_path(@plan)
+    else
+      flash[:alert] = @invite_user.errors.full_messages.to_sentence
+      redirect_back(fallback_location: plans_path)
+    end
+  end
+
   private
 
   def set_plan
