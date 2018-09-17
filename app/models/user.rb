@@ -17,8 +17,9 @@ class User < ApplicationRecord
   # user applay plan
   has_many :plan_member_applies
   has_many :plan_members
-  # 
-  has_many :plan_owner_invite
+  # got owner_plan for user
+  has_many :plan_owner_invite, -> { where accept: false }
+  has_many :owner_invite_plan, through: :plan_owner_invite, source: :plan
 
   def admin?
     self.role == "admin"

@@ -1,0 +1,5 @@
+<h3>owner invite to join plan</h3>
+<% @owner_invite_plan.each do |plan| %>
+  <%= link_to plan.name, plan_path(plan) %>
+  <br>
+<% end %>
