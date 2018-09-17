@@ -24,6 +24,10 @@ puts "Default Plan created!"
 
 
 Hiking.destroy_all
+  Hiking.create( name:"武稜一秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
   Hiking.create( name:"武稜二秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
+  Hiking.create( name:"武稜三秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
+  Hiking.create( name:"武稜四秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
+  Hiking.create( name:"武稜五秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
 
 puts "Default Hiking created!"

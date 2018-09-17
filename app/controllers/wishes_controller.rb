@@ -4,6 +4,7 @@ class WishesController < ApplicationController
   def index
     @wishes = current_user.wishes.order(created_at: :desc)
     @user = current_user
+    @plans = Plan.all
   end
 
   def new

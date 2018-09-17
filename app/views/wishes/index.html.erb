@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <h5>排序方式 
+  <h5 id="seq">排序方式 
 
   <div class="btn-group" role="group" aria-label="Basic example">
     <button type="button" class="btn btn-light">日期</button>
@@ -50,20 +50,80 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
 
-  <div class="toggler">
-    <div id="effect" class="ui-widget-content ui-corner-all">
-      <h3 class="ui-widget-header ui-corner-all">Show</h3>
-      <p>
-        popup window內容放在這
-      </p>
-    </div>
+  <div class="toggler hider" style="display: none; width: 100%;">
+    <hr>
+      <% for i in 1..3 %>
+      <% @plans.each do |plan| %>
+
+          <div class="plan">
+              <div class="plan_iamge">
+                  <img src="https://fakeimg.pl/200x150/">
+              </div>
+              <div class="plan_info">
+                  <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
+                  
+                  <div><%= plan.name %></div>
+                  <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
+                  <div> <span class="badge badge-light"> 武陵二秀 - 桃山 喀拉葉 </span> </div>
+                  <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 <%= plan.day %></span> </div>
+                  <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                 
+                 
+              </div>
+              <div class="plan_descript">
+                  <div>由 <a> <b> <%= plan.user.name %> </b></a> 主辦 <% if plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
+                  <div>
+                        <% if plan.budget_final.nil? %>
+                            <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用 尚未決定</span> 
+                            
+                            <% unless (plan.budget_bottom.nil? && plan.budget_top.nil?) %> 預算範圍目前為 <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <% end %>
+
+                        <% else %>
+
+                          <span class="badge badge-light"> <i class="fas fa-dollar-sign"></i>  費用</span> 每人 <%= plan.budget_final %> 元 <br>
+                          <span class="badge badge-secondary"> 含交通、保險、食宿 </span> 
+
+                        <% end %>
+
+                        <span class="badge badge-secondary">  <%= plan.money_type %> </span> 
+                        
+                  </div>
+                  <hr>
+                  
+                  <div> 
+                    <span class="badge badge-secondary"><%= plan.car_type %></span>  
+                    <span class="badge badge-secondary"><%= plan.food_type %></span>
+                  </div>
+
+                  <hr>
+                  <% if plan.user == current_user %>
+                  <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                  </div>
+                  <% else %>
+
+                    <%= plan.intro %>
+                      
+                  <% end %>
+
+              </div>
+              <div class="button-group"> 
+                <% if plan.user == current_user %> <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <% end %> <% end %>
+                <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
+                <% if plan.user == current_user %> <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> <% end %> <% end %>
+                <%= link_to prepare_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   <% end %>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+       <% end %>
+      <% end %>
   </div>
-   
-  <select name="effects" id="effectTypes">
-    <option value="slide">Slide</option>
-  </select>
- 
-<button id="button" class="ui-state-default ui-corner-all">Run Effect</button>
 
 </div>
 
@@ -72,7 +132,8 @@
     // run the currently selected effect
     function runEffect() {
       // get effect type from
-      var selectedEffect = $( "#effectTypes" ).val();
+      //var selectedEffect = $( "#effectTypes" ).val();
+      var selectedEffect = "slide"
  
       // Most effect types need no options passed by default
       var options = {};
@@ -101,15 +162,20 @@
  
     $( "#effect" ).hide();
   
-  $("#wishlist").on("click", "#get-wish-id", function(event) {
-    var id = event.target.parentNode.id;
+$(".plan").click( ".do-wish", function() {
+    var id = event.target.parentNode.parentNode.parentNode.id;
     var wish = document.getElementById( id )
+    $(".jumbotron-fluid").remove();
+    $("h5").remove();
     $("#wishlist").empty();
     $("#wishlist").append(wish);
     $("#create-wish").remove();
-    $(".ui-widget-content").append("testtest");
-    runEffect();
+  $(".toggler").slideToggle("slow", function(even) {
+  //$(".plan").on("click", ".do-wish", function(event) {
+
+    //runEffect();
   });
+});
 
 } );
 

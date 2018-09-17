@@ -15,9 +15,10 @@ namespace :dev do
         user_id: User.all.sample.id,
         level: rand(1...5),
         day: rand(5),
-        hiking: hiking_sample.sample,
+        routename: hiking_sample.sample,
         budget_bottom: rand(5000),
-        budget_top: rand(5000...10000)
+        budget_top: rand(5000...10000),
+        hiking_id: Hiking.all.sample.id,
       )
     end
 
@@ -29,6 +30,27 @@ namespace :dev do
 
     puts 'have created fake wishes'
     puts "now you have #{Wish.count} wishes data"
+  end
+
+  task fake_plans: :environment do
+    Wish.destroy_all
+    12.times do
+      endday = Faker::Date.forward(100)
+      Plan.create!(
+        name:  FFaker::Name.first_name,
+        start_date: Faker::Date.between(10.days.ago, endday),
+        end_date: endday,
+        owner_id: User.all.sample.id,
+        level: rand(1...5),
+        day: rand(5),
+        hiking_id: Hiking.all.sample.id,
+        budget_bottom: rand(5000),
+        budget_top: rand(5000...10000)
+      )
+    end
+
+    puts 'have created fake plans'
+    puts "now you have #{Plan.count} plans data"
   end
 
 end
