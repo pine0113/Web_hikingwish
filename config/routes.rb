@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       get :prepare_team
       get :prepare
       post :join_plan
+      post :accept_join
     end
   end
 

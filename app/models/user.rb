@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :wishes
   has_many :notifications
 
+  # user applay plan
   has_many :plan_member_applies
   has_many :plan_members
 
