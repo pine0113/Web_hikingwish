@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     member do
       get :prepare_team
       get :prepare
+      post :join_plan
     end
   end
 
