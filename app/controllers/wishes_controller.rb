@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :set_wish, :only => [:edit, :update, :destroy, :search]
+  before_action :set_wish, :only => [:edit, :update, :destroy, :search, :make_plan]
 
   def index
     @wishes = current_user.wishes.order(created_at: :desc)
@@ -53,6 +53,13 @@ class WishesController < ApplicationController
   end
 
   def make_plan
+    @plan = Plan.new(name: @wish.name, hiking: @wish.hiking, day: @wish.day, intro: @wish.description, owner_id: current_user.id)
+    if @plan.save
+      flash[:notice] = "計畫已成功建立"
+    else
+      flash.now[:alert] = "計畫建立失敗"
+    end
+    redirect_to edit_plan_path(@plan)
   end
 
   def plan
