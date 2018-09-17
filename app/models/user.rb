@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :wishes
   has_many :notifications
 
+  has_many :plan_member_applies
+  has_many :plan_members
+
   def admin?
     self.role == "admin"
   end
