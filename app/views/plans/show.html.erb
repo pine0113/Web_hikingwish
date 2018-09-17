@@ -1,6 +1,18 @@
 
-<%= @plan.name %> <br>
+<div class="row">
+  <div class="col-md-8">
+    <%= @plan.name %> <br>
+    <% if @plan.image %>
+      <%= image_tag @plan.image, width: "300px" %>
+    <% end%>
+    <img src="https://api.fnkr.net/testimg/350x200/00CED1/FFF/?text=img+placeholder">
+  </div>
+</div>
+<hr>
+<br>
 
-<% if @plan.image %>
-    <%= image_tag @plan.image, width: "300px" %>
-<% end%>
+<div class="col-md-4">
+  <% @users.each do |user| %>
+    <%= link_to user.name, user_path(user) %> 
+  <% end %>
+</div>
