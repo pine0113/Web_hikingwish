@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @owner_invite_plan = @user.owner_invite_plan
+    @respond_plan = @user.respond_plan
   end
 
   def edit

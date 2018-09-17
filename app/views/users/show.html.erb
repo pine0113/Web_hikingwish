@@ -3,3 +3,10 @@
   <%= link_to plan.name, plan_path(plan) %>
   <br>
 <% end %>
+
+<hr>
+
+<h3>respond_plan</h3>
+<% @respond_plan.each do |plan| %>
+  <%= link_to plan.name, plan_path(plan) %>
+<% end %>

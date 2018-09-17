@@ -20,6 +20,9 @@ class User < ApplicationRecord
   # got owner_plan for user
   has_many :plan_owner_invite, -> { where accept: false }
   has_many :owner_invite_plan, through: :plan_owner_invite, source: :plan
+  # repsond plan
+  has_many :respond_invite, -> { where accept: true }, class_name: "PlanOwnerInvite"
+  has_many :respond_plan, through: :respond_invite, source: :plan
 
   def admin?
     self.role == "admin"
