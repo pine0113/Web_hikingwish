@@ -25,3 +25,4 @@
 public/uploads
 
 /config/facebook.yml
+/config/email.yml

@@ -35,4 +35,8 @@ class PagesController < ApplicationController
 
   def plan_edit
   end
+
+  def privacy
+  end
+  
 end
