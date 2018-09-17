@@ -14,7 +14,9 @@ class PlanOwnerInvitesController < ApplicationController
       join = plan.joins.build
       join.user = @invite.user
 
-      join.save
+      if join.save
+        notify_plan_member_success_apply(@invite.user,plan)
+      end
 
     else
       flash[:alert] = "invite was failed"

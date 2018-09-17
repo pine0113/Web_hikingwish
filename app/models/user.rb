@@ -24,6 +24,10 @@ class User < ApplicationRecord
   has_many :sent_applies, class_name: 'PlanMemberApply', foreign_key: 'user_id'
   has_many :applied_plans, through: :sent_applies, source: :plan
 
+  after_create :send_admin_mail
+  def send_admin_mail
+    UserMailer.notify_new_member(self).deliver_now!
+  end
 
   def admin?
     self.role == "admin"
