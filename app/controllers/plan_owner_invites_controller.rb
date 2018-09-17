@@ -15,7 +15,7 @@ class PlanOwnerInvitesController < ApplicationController
       join.user = @invite.user
 
       if join.save
-        notify_plan_member_success_apply(@invite.user,plan)
+        UserMailer.notify_plan_member_success_apply(@invite.user,plan)
       end
 
     else

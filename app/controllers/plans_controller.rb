@@ -84,7 +84,7 @@ class PlansController < ApplicationController
     @invite.user = @user
     if @invite.save
       flash[:notice] = "invite was successfully created"
-      notify_plan_member_new_invites(invite).deliver_now!
+      UserMailer.notify_plan_member_new_invites(@invite).deliver_now!
       
     else
       flash[:alert] = "invite was failed to create"
@@ -99,7 +99,7 @@ class PlansController < ApplicationController
     @apply.plan = @plan
     if @apply.save
       flash[:notice] = "apply was successfully created"
-      notify_plan_owner_new_apply(invite).deliver_now!
+      UserMailer.notify_plan_owner_new_apply(invite).deliver_now!
     else
       flash[:alert] = "apply was failed to create"
     end

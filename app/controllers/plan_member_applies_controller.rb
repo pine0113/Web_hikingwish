@@ -14,7 +14,7 @@ class PlanMemberAppliesController < ApplicationController
       join = plan.joins.build
       join.user = @apply.user
       if join.save
-        notify_plan_member_success_apply(@apply.user,plan)
+        UserMailer.notify_plan_member_success_apply(@apply.user,plan)
       end
     else
       flash[:alert] = "apply was failed"
