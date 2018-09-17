@@ -60,6 +60,7 @@ class PlansController < ApplicationController
 
   def prepare_team
     @respond_join = @plan.respond_join
+    @confirm_users = @plan.confirm_users
   end
 
   def search
@@ -85,6 +86,7 @@ class PlansController < ApplicationController
     accept_join = PlanMemberApply.where(plan_id: @plan, user_id: @user)
 
     if accept_join.update(accept: true)
+      PlanMember.create(plan_id: @plan, user_id: @user)
       flash[:notice] = "允許參加"
       redirect_back(fallback_location: plans_path)
     else

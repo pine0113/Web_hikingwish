@@ -32,6 +32,12 @@
                   <%= link_to '同意', accept_join_path(plan_id: @plan,user_id: user), method: :post, class: 'btn btn-info btn-sm' %>
                   <br>
                 <% end %>
+
+                <hr>
+                <h4> 隊伍成員 confirm users </h4>
+                <%  @confirm_users.each do |user| %>
+                  <%= link_to user.name, user_path(user) %>
+                <% end %>
                 
         </div>
 
