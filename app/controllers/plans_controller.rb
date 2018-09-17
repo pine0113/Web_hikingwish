@@ -23,7 +23,7 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-    @plan.user = current_user
+    @plan.owner = current_user
     if @plan.save
       flash[:notice] = "計畫建立完成"
       redirect_to plans_path
