@@ -24,6 +24,13 @@
                     公裝準備 <span class="badge badge-success"> 已完成 </span><br>
 
                 </div>
+
+                <hr>
+                <h4>Respond join</h4>
+                <% @respond_join.each do |user| %>
+                  <%= link_to user.name, user_path(user) %>
+                  <br>
+                <% end %>
                 
         </div>
 

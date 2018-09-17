@@ -59,6 +59,7 @@ class PlansController < ApplicationController
   end
 
   def prepare_team
+    @respond_join = @plan.respond_join
   end
 
   def search
