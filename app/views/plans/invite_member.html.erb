@@ -1,0 +1,41 @@
+<div class="container">
+
+    <%= render partial: 'status', locals: { plan: @plan } %>
+
+    <div class="row">
+        
+        <div class="col-md-8">
+    
+                <h4 id="member">User 列表</h4>
+                
+                <% @users.each do |user| %>
+                    <%= user.email %>
+                    <%
+                        case @plan.user_status(user)
+                          when "owner" %> 
+                            計畫主持人
+                         <% when "member" %>
+                            計畫成員
+                         <% when "invited" %>
+                            等待回覆
+                         <% when "applied" %>
+                            <% apply = Apply.where("user_id =#{user.id} and plan_id = #{plan.id}").order('id DESC').first %>
+                            <%= link_to "核准", approval_plan_member_apply_path(apply),method: "post", class: "btn btn-info"%><%= link_to "聊聊", plan_member_apply_path(apply), class: "btn btn-light" %> <br>
+
+                         <% else %>
+                            <%= form_tag send_invite_plan_path(@plan) %>
+                            <%= hidden_field_tag :user_id, user.id %>
+                            <%= submit_tag '寄送邀請',class: "btn btn-info", name: nil %> 
+                         <% end %>
+                   <br>
+                <% end %>
+                
+        </div>
+
+        <div class="col-md-4">
+           <div class="fb-comments" data-href="<%= plan_url(@plan) %>" data-numposts="5"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+  
+</div>

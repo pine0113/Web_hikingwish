@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show, :edit, :update, :destroy, :prepare, :prepare_team]
+  before_action :set_plan, only: [:show, :edit, :update, :destroy, :prepare, :prepare_team, :invite_member]
 
   def index
     if user_signed_in?
@@ -67,14 +67,32 @@ class PlansController < ApplicationController
   end
 
   def prepare_team
+    @sent_applies = @plan.sent_applies.where()
   end
 
   def search
   end
 
+  def invite_member
+    @users = User.all
+  end
+
+  def send_invite
+    set_plan
+    @user = User.find(params[:user_id])
+    @invite = @plan.receive_invites.build
+    @invite.user = @user
+    if @invite.save
+      flash[:notice] = "invite was successfully created"
+    else
+      flash[:alert] = "invite was failed to create"
+    end
+    session[:return_to] ||= request.referer
+    redirect_to session[:return_to]
+  end
+
   def apply
     set_plan
-    
     @apply = current_user.sent_applies.build
     @apply.plan = @plan
     if @apply.save

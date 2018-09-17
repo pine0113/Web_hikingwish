@@ -20,13 +20,13 @@ class PlanOwnerInvitesController < ApplicationController
       flash[:alert] = "invite was failed"
     end
     
-    redirect_to plan_path(invite.plan)
+    redirect_to plan_path(@invite.plan)
   end
 
   private
   
   def set_invite
-    @invite = PlanOwnerInvites.find(params[:id])
+    @invite = PlanOwnerInvite.find(params[:id])
   end
 
 end

@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :edit, :update] do
     member do
-      post :invited_member
     end
   end
  
@@ -38,7 +37,9 @@ Rails.application.routes.draw do
     member do
       get :prepare_team
       get :prepare
+      get :invite_member
       post :apply
+      post :send_invite
     end
   end
   get 'search' => 'plans#search'

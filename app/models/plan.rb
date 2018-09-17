@@ -9,7 +9,7 @@ class Plan < ApplicationRecord
   has_many :joins, class_name: 'PlanMember', foreign_key: 'plan_id'
   has_many :members, through: :joins, source: :user
 
-  has_many :receive_invites, class_name: 'PlanOwnerInvite' ,foreign_key: 'plan_id'
+  has_many :receive_invites, -> { where(:accept => false )}, class_name: 'PlanOwnerInvite' ,foreign_key: 'plan_id'
   has_many :invited_members, through: :receive_invites, source: :user
 
   has_many :sent_applies, -> { where(:accept => false )}, class_name: 'PlanMemberApply', foreign_key: 'plan_id'
@@ -25,6 +25,10 @@ class Plan < ApplicationRecord
 
   def is_applied?(user)
     applied_members.include?(user)
+  end
+
+  def get_invite(user)
+    (receive_invites.select { |invite| invite.user_id ==  user.id}).first
   end
 
 
