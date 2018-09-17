@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     member do
       get :make_plan
       get :plan
+      get :search
     end
   end
 

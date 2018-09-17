@@ -7,7 +7,7 @@
             <div> <span class="badge badge-info">自組團</span></div>
             <div> <%=wish.name %> </div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
-            <div> <span class="badge badge-light"><%= wish.hiking %></span>   </div>
+            <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
             <div> <i class="fas fa-dollar-sign"></i> <span class="badge badge-light">預算區間</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  </div>
             <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 </span> </div>
             <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
@@ -25,8 +25,7 @@
         <div class="button-group"> 
             <%= link_to edit_wish_path(wish) do %><button class="btn btn-light"> <i class="fas fa-edit"></i> 修改 </button><% end %>
             <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 收到邀請 (3) </button>
-            <button class="do-wish btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 展開行動 </button>
-            
+            <%= link_to search_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 展開行動 </button><% end %>
         </div>
         <div class="clearfix"></div>
     </div>

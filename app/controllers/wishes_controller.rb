@@ -1,10 +1,10 @@
 class WishesController < ApplicationController
-  before_action :set_wish, :only => [:edit, :update, :destroy]
+  before_action :set_wish, :only => [:edit, :update, :destroy, :search]
 
   def index
     @wishes = current_user.wishes.order(created_at: :desc)
     @user = current_user
-    @plans = Plan.all
+    @plans = Plan.first(3)
   end
 
   def new
@@ -26,6 +26,12 @@ class WishesController < ApplicationController
   def destroy
     @wish.destroy
     redirect_to wishes_path
+  end
+
+  def search
+    hiking = @wish.hiking
+    @plans = hiking.plans
+    
   end
 
   def show
