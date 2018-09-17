@@ -5,4 +5,12 @@ class Plan < ApplicationRecord
 
   validates :name, :presence => true
   validates :owner_id, :presence => true # 一定要有user id
+
+  has_many :plan_member_applies, -> {where accept: false}
+  has_many :respond_join, through: :plan_member_applies, source: :user
+
+  # 以合格的plan user
+  has_many :plan_members
+  # got confirm user for plan page
+  has_many :confirm_users, through: :plan_members, source: :user
 end

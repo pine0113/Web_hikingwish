@@ -32,8 +32,11 @@ Rails.application.routes.draw do
     member do
       get :prepare_team
       get :prepare
+      post :join_plan
     end
   end
+  
+  post "/plans/:plan_id/users/:user_id", to: "plans#accept_join", :as => :accept_join
 
   resources :notifications, only: [:index]
   resources :tags, only: [:show]

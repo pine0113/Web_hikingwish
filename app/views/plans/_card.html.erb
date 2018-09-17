@@ -65,7 +65,9 @@
 
           <%= link_to prepare_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   <% end %>
 
-          <button class="btn btn-outline-info"> 申請加入 </button>
+          <%= link_to join_plan_plan_path(plan), method: :post do %>
+            <button class="btn btn-outline-info"> 申請加入 </button>
+          <% end %>
 
         </div>
         <div class="clearfix"></div>
