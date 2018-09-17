@@ -29,7 +29,7 @@
                 <h4>Respond join</h4>
                 <% @respond_join.each do |user| %>
                   <%= link_to user.name, user_path(user) %>
-                  <%= link_to '同意', accept_join_plan_path(user), class: 'btn btn-info btn-sm' %>
+                  <%= link_to '同意', accept_join_path(plan_id: @plan,user_id: user), method: :post, class: 'btn btn-info btn-sm' %>
                   <br>
                 <% end %>
                 

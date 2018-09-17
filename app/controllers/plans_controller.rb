@@ -79,6 +79,20 @@ class PlansController < ApplicationController
     end
   end
 
+  def accept_join
+    @plan = Plan.find(params[:plan_id])
+    @user = User.find(params[:user_id])
+    accept_join = PlanMemberApply.where(plan_id: @plan, user_id: @user)
+
+    if accept_join.update(accept: true)
+      flash[:notice] = "允許參加"
+      redirect_back(fallback_location: plans_path)
+    else
+      flash[:alert] = accept_join.errors.full_messages.to_sentence
+      redirect_back(fallback_location: plans_path)
+    end
+  end
+
   private
 
   def set_plan
