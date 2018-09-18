@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917100515) do
+ActiveRecord::Schema.define(version: 20180915054816) do
 
   create_table "hikings", force: :cascade do |t|
     t.string "name"
@@ -149,7 +149,6 @@ ActiveRecord::Schema.define(version: 20180917100515) do
     t.integer "level"
     t.text "description"
     t.integer "day"
-    t.string "routename"
     t.integer "hiking_id"
   end
 

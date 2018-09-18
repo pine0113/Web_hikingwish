@@ -41,17 +41,14 @@
         
       <hr>
       
-      
+      <label>參考路線</label>
       <div>
-        <div class="form-group">
-          <label>參考路線</label>
-          <%= f.select :hiking_id, ["請選擇路線", 1, 2, 3, 4, 5], class: "form-control" %>
-        </div>
+        <%= @wish.hiking.name %> 兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
        
         <span class="badge badge-light"> 中等難度 </span>
-        <% #(1..@wish.level).each do |i| %>
+        <% (1..@wish.level).each do |i| %>
           <i class="fas fa-star"></i>
-        <% #end %>
+        <% end %>
       </div>
 
 
@@ -72,10 +69,21 @@
         </div>
       </div>
 
-      <br>
+      <hr>
+      <label>交通方式</label>
+      <div>
+      </div>
+      <hr>
+      <label>食</label>
+      <div>
+        <p>之後再加</p>
+      </div>
+    </div>
 
-      <%= f.submit class: "btn btn-info form-group", value: "存檔" %> 
-          <% end %>
+      <br>
+      <%= link_to wish_path(@wish), method: :update do %><button class="btn btn-info"> 存檔 </button><% end %>
+      <%= link_to wish_path(@wish), method: :delete, data:{ confirm: "Are you sure?" } do %><button class="btn btn-info"> 刪除 </button><% end %>
+      <% end %>
       <br>
 
   </div>

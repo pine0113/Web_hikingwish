@@ -43,7 +43,7 @@
       
       <label>參考路線</label>
       <div>
-        <%= @wish.hiking %> 兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
+        <%= @wish.hiking.name %> 兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
        
         <span class="badge badge-light"> 中等難度 </span>
         <% (1..@wish.level).each do |i| %>
@@ -67,29 +67,11 @@
         <div class="col-sm-4 form-group">
           <%= f.number_field :budget_top, class: "form-control" %>
         </div>
-      </div>
+      </div>  
+        <%= f.submit class: "btn btn-info form-group", value: "存檔" %> 
 
-      <hr>
-      <label>交通方式</label>
-      <div>
-        <div><%= f.text_field :car_list, value: @wish.car_list.to_s %></div>
-        <div><%= f.text_field :car_list, input_html: {value: @wish.car_list.to_s} %></div>
-        <div><%= @wish.car_list %></div>
-        <% @wish.car_list do |car| %>
-        <%= puts car %>
-        <% end %>
-      </div>
-      <hr>
-      <label>食</label>
-      <div>
-        <p>之後再加</p>
-      </div>
-    </div>
-
-      <br>
-      <button class="btn btn-info"><%= link_to '存檔', wish_path(@wish), method: :update %></button>
-      <button id="delete-wish" class="btn btn-info"><%= link_to 'Delete', wish_path(@wish), method: :delete, data:{ confirm: "Are you sure?" } %></button>
       <% end %>
+      <%= link_to wish_path(@wish), method: :delete do %><button class="btn btn-info form-group"> 刪除 </button><% end %>  
       <br>
 
   </div>

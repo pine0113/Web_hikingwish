@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :wishes, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
+  resources :wishes do
     member do
       get :make_plan
       get :plan
