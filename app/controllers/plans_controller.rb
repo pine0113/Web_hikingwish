@@ -11,7 +11,6 @@ class PlansController < ApplicationController
       else
         @plans = (current_user.plans + current_user.joined_plans).uniq
       end
-
     else
       @plans = Plan.all.limit(10)
     end
@@ -25,7 +24,7 @@ class PlansController < ApplicationController
     @plan = Plan.new(plan_params)
     @plan.owner = current_user
     if @plan.save
-      flash[:notice] = "計畫建立完成"
+      flash[:notice] = '計畫建立完成'
       redirect_to plans_path
     else
       flash[:alert] = @plan.errors.full_messages.to_sentence
@@ -33,23 +32,17 @@ class PlansController < ApplicationController
     end
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def all
-     if user_signed_in? 
-      @plans = Plan.where('owner_id != :user_id', {user_id: current_user.id})
-     else
+    if user_signed_in?
+      @plans = Plan.where('owner_id != :user_id', user_id: current_user.id)
+    else
       @plans = Plan.all
-     end
+    end
   end
 
   def update
     if @plan.update(plan_params)
-      flash[:notice] = "計畫已更新"
+      flash[:notice] = '計畫已更新'
       redirect_to @plan
     else
       flash[:alert] = @plan.errors.full_messages.to_sentence
@@ -59,11 +52,8 @@ class PlansController < ApplicationController
 
   def destroy
     @plan.destroy
-    flash[:alert] = "路線已刪除"
+    flash[:alert] = '路線已刪除'
     redirect_to plans_path
-  end
-
-  def prepare
   end
 
   def prepare_team
@@ -79,7 +69,15 @@ class PlansController < ApplicationController
   end
 
   def invite_member
-    @users = User.all
+    unless @plan.hiking.nil?
+      hiking = @plan.hiking
+      @wishes = hiking.wishes
+      @users = []
+      @wishes.each do |wish|
+        @users << wish.user
+      end
+      @users = @users.uniq
+    end
   end
 
   def send_invite
@@ -88,11 +86,10 @@ class PlansController < ApplicationController
     @invite = @plan.receive_invites.build
     @invite.user = @user
     if @invite.save
-      flash[:notice] = "invite was successfully created"
+      flash[:notice] = 'invite was successfully created'
       UserMailer.notify_plan_member_new_invites(@invite).deliver_now!
-      
     else
-      flash[:alert] = "invite was failed to create"
+      flash[:alert] = 'invite was failed to create'
     end
     session[:return_to] ||= request.referer
     redirect_to session[:return_to]
@@ -103,10 +100,10 @@ class PlansController < ApplicationController
     @apply = current_user.sent_applies.build
     @apply.plan = @plan
     if @apply.save
-      flash[:notice] = "apply was successfully created"
+      flash[:notice] = 'apply was successfully created'
       UserMailer.notify_plan_owner_new_apply(@apply).deliver_now!
     else
-      flash[:alert] = "apply was failed to create"
+      flash[:alert] = 'apply was failed to create'
     end
     session[:return_to] ||= request.referer
     redirect_to session[:return_to]
@@ -117,5 +114,4 @@ class PlansController < ApplicationController
   def set_plan
     @plan = Plan.find(params[:id])
   end
-
 end

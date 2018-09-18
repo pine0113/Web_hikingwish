@@ -1,28 +1,17 @@
-<h1>plans/search</h1>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h3 class="display-5">登山計畫</h3>
-    <p class="lead">你所參與的登山計畫，就快要可以出發摟！</p>
-    還是要... <%= link_to '開新的計劃', new_plan_path, class: "btn btn-outline-info" %> <%= link_to ' 看看別人的登山計畫', all_plans_path, class: "btn btn-outline-info" %>
-  </div>
-</div>
+<div class="container">
 
-<div class="btn-group" role="group" aria-label="Plan_type">
-  <%= link_to "已參加", plans_path, class: "btn btn-outline-info" %> 
-  <%= link_to "申請中", plans_path+"?type=applied", class: "btn btn-outline-info" %> 
-  <%= link_to "收到的邀請", plans_path+"?type=invited", class: "btn btn-outline-info" %> 
-</div>
+    <%= render partial: 'plan_status', locals: { plan: @plan } %>
 
 <hr>
+<div class="row">
 
-  <%= render :partial => "shared/plan_card", :locals => { :plan => @plan } %>
-
-<hr>
   <% unless @wishes.nil?
     @wishes.each do |wish| %>
       <% if wish.user != @plan.owner %> 
-        <%= render :partial => "/wishes/wish", :locals => { :wish => wish } %>
+        <%= render :partial => "shared/wish_info", :locals => { :wish => wish } %>
       <% end %>
-   <% end %>
-<% end %>
+    <% end %>
+  <% end %>
+
+</div>
   

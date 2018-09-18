@@ -61,7 +61,6 @@
 
           <% if plan.user_status(current_user) == "owner" %> 
             <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <% end %> 
-            <%= link_to search_plan_path(plan), class: "btn btn-outline-info" do %> <i class="fas fa-search"></i> 搜尋夥伴 <% end %> 
             <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> <% end %> 
           <% end %>
 

@@ -1,0 +1,51 @@
+ <div class="row">
+            <div class="col-md-3">            
+                <img src="https://fakeimg.pl/200x150/">
+            </div>
+            <div class="col-md-3">      
+                        
+                <div><%= @wish.name %> ></div>
+                <div>  <%= @wish.start_date %> ~ <%= @wish.end_date %> </div>
+                <% unless @wish.hiking.nil?%>
+                    <div> <span class="badge badge-light"> <%= @wish.hiking.name %> </span> </div>
+                <%end%>
+                
+                <hr>
+            
+                
+            </div>
+            <div class="col-md-3">   
+                <div> 
+                    <i class="far fa-calendar-alt"></i>
+                    <span class="badge badge-light"> 兩天兩夜 <%= @wish.day %></span> 
+                </div>
+
+                <div> 
+                    <i class="fas fa-bolt"></i> <span class="badge badge-light"> 難度 </span>
+                     <%= @wish.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div>
+                    <i class="fas fa-dollar"></i> <span class="badge badge-light"> 預算 </span>
+                        <% unless (@wish.budget_bottom.nil? && @wish.budget_top.nil?) %>
+                            <%= @wish.budget_bottom %> ~ <%= @wish.budget_top %> 
+                        <% end %>      
+                </div>
+            </div>
+            <div class="col-md-3">   
+
+                <div class="button-group"> 
+                    <!-- User 是 wish member -->
+                    <% if @wish.user = current_user %>
+                        <%= link_to edit_wish_path(@wish), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <%end %>
+                    <% end %> 
+
+                    <!-- User  不是 wish member -->
+                     <!-- 加入心願 -->
+                     <!-- 申請加入 -->
+
+
+                </div>
+
+            </div>
+        
+</div>

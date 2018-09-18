@@ -17,7 +17,7 @@ class WishesController < ApplicationController
     @wish = current_user.wishes.build(wish_params)
 
     if @wish.save
-      flash[:notice] = "wish was successfully created"
+      flash[:notice] = '願望已成功建立'
     else
       flash[:alert] = @wish.errors.full_messages.to_sentence
     end
@@ -31,22 +31,26 @@ class WishesController < ApplicationController
 
   def search
     hiking = @wish.hiking
-    @plans = hiking.plans
-    
+    case params[:type]
+    when 'owned'
+      @plans = current_user.plans.where("hiking_id = #{hiking.id}")
+    when 'applied'
+      @plans = current_user.applied_plans.where("hiking_id = #{hiking.id}")
+    when 'invited'
+      @plans = current_user.invited_plans.where("hiking_id = #{hiking.id}")
+    else
+      @plans = Plan.all.where("hiking_id = #{hiking.id}") - current_user.applied_plans - current_user.invited_plans
+    end
   end
 
   def show
     @wish = wish.find(params[:id])
   end
 
-  def edit
-
-  end
-
   def update
     if @wish.update(wish_params)
-      flash[:notice] = "資料已更新！"
-      redirect_to wishes_path      
+      flash[:notice] = '資料已更新！'
+      redirect_to wishes_path
     else
       render :edit
       flash[:alert] = @wish.errors.full_messages.to_sentence
@@ -54,22 +58,21 @@ class WishesController < ApplicationController
   end
 
   def make_plan
-    @plan = Plan.new(name: @wish.name, hiking: @wish.hiking, day: @wish.day, intro: @wish.description, owner_id: current_user.id)
+    @plan = Plan.new(name: @wish.name,
+                     hiking: @wish.hiking,
+                     day: @wish.day,
+                     intro: @wish.description,
+                     owner_id: current_user.id)
     if @plan.save
-      flash[:notice] = "計畫已成功建立"
+      flash[:notice] = '計畫已成功建立'
     else
       flash.now[:alert] = @plan.errors.full_messages.to_sentence
     end
     redirect_to edit_plan_path(@plan)
   end
-
-  def plan
-  end
-
   private
-  
-    def set_wish
-      @wish = Wish.find(params[:id])
-    end
-   
+
+  def set_wish
+    @wish = Wish.find(params[:id])
+  end
 end

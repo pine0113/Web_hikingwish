@@ -29,9 +29,8 @@
             <div class="button-group"> 
                 <% if wish.user == current_user %>
                     <%= link_to edit_wish_path(wish) do %><button class="btn btn-light"> <i class="fas fa-edit"></i> 修改 </button><% end %>
-                    <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 收到邀請 (3) </button>
-                    <%= link_to search_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 展開行動 </button><% end %>
-                    <%= link_to make_plan_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 轉換計畫 </button><% end %>
+                    <%= link_to search_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-clipboard-list"></i> 相關計畫 </button><% end %>
+                    <%= link_to make_plan_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 新計畫 </button><% end %>
                 <% else %>
                     <%= link_to plan_member_apply_path(@plan) do %><button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 發送邀請</button><% end %>
                 <% end %>

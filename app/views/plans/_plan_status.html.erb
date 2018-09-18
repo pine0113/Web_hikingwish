@@ -50,16 +50,16 @@
                     <!-- User 是 plan member -->
                     <% if @plan.owner = current_user %>
                         <%= link_to edit_plan_path(@plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <%end %>
-                    <% end %>
-
-                    <%= link_to prepare_team_plan_path(@plan), class: "btn btn-outline-info" do %> 
+                        <%= link_to prepare_team_plan_path(@plan), class: "btn btn-outline-info" do %> 
                          <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> 
+                        <% end %>
                     <% end %>
 
-                    <%= link_to prepare_plan_path(@plan), class: "btn btn-outline-info" do %>  
-                        <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   
+                    <% if @plan.members.include?(current_user) || @plan.owner = current_user %>
+                        <%= link_to prepare_plan_path(@plan), class: "btn btn-outline-info" do %>  
+                            <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   
+                        <% end %>
                     <% end %>
-
                     <!-- User  不是 plan member -->
                      <!-- 加入心願 -->
                      <!-- 申請加入 -->

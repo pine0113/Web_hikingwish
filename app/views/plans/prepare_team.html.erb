@@ -19,7 +19,9 @@
                                 <%= apply.user.email %> <%= link_to "核准", approval_plan_member_apply_path(apply),method: "post", class: "btn btn-info"%><%= link_to "聊聊", plan_member_apply_path(apply), class: "btn btn-light" %> <br>
                             <% end %>
 
-                      <h5>等待回覆邀請 <%= link_to "邀請成員", invite_member_plan_path(@plan), class: "btn btn-info" %></h5>
+                      <h5>等待回覆邀請 
+                            <%= link_to invite_member_plan_path(@plan), class: "btn btn-outline-info" do %> <i class="fas fa-search"></i> 搜尋夥伴 <% end %> 
+                      </h5>
                             <% @plan.receive_invites.each do |invite| %>
                                   <%= invite.user.email %> <%= link_to "聊聊", plan_owner_invite_path(invite), class: "btn btn-light" %> <br>
                             <% end %>

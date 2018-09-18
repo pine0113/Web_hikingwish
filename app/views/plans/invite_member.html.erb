@@ -6,7 +6,7 @@
         
         <div class="col-md-8">
     
-                <h4 id="member">User 列表</h4>
+                <h4 id="member">有想爬路線的使用者</h4>
                 
                 <% @users.each do |user| %>
                     <%= user.email %>
@@ -23,9 +23,15 @@
                             <%= link_to "核准", approval_plan_member_apply_path(apply),method: "post", class: "btn btn-info"%><%= link_to "聊聊", plan_member_apply_path(apply), class: "btn btn-light" %> <br>
 
                          <% else %>
-                            <%= form_tag send_invite_plan_path(@plan) %>
+                            <%= form_tag send_invite_plan_path(@plan) do %>
                             <%= hidden_field_tag :user_id, user.id %>
                             <%= submit_tag '寄送邀請',class: "btn btn-info", name: nil %> 
+                            <%  
+                                user_wishes = user.wishes.where("hiking_id=#{@plan.hiking_id}")
+                                user_wishes.each do |wish|%>
+                                      <%= render :partial => "shared/wish_info", :locals => { :wish => wish } %>
+                                <% end %>
+                            <% end %>
                          <% end %>
                    <br>
                 <% end %>

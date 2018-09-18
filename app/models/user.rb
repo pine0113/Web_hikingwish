@@ -10,8 +10,7 @@ class User < ApplicationRecord
   # email 跟 password欄位 deivse 已強制要求
   validates_presence_of :name
 
-  has_many :plans, :class_name => "Plan", :foreign_key => "owner_id"
-
+  has_many :plans, :class_name => 'Plan', :foreign_key => 'owner_id'
   has_many :joins, class_name: 'PlanMember', foreign_key: 'user_id'
   has_many :joined_plans, through: :joins, source: :plan
 
