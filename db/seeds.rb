@@ -18,7 +18,8 @@ puts "Default users created!"
 
 Plan.destroy_all
 
-  #Plan.create(name: "嘉明湖", image: "1", start_date: Date.today, end_date: Date.today, budget_final:0,  budget_bottom: 7000, budget_top: 10000,level:3,day: 72,miles: 20,intro: "",join_count: 0,owner_id: 1)
+  Plan.create(name: "嘉明湖新手上路團", image: "1", start_date: "2018-11-10", end_date: "2018-11-12", budget_final:7200, level:3, day: 72, miles: 20,intro: "",join_count: 0,owner_id: User.first.id)
+  Plan.create(name: "玉山新手團", image: "2", start_date: "2018-11-06", end_date: "2018-11-07", budget_final:7200, level:3, day: 48, miles: 20,intro: "",join_count: 0,owner_id: User.first.id)
 
 puts "Default Plan created!"
 
@@ -31,3 +32,8 @@ Hiking.destroy_all
   Hiking.create( name:"武稜五秀", level: 3, day: 72, miles: 10,  intro:"this is really wierld")
 
 puts "Default Hiking created!"
+
+
+PlanMemberApply.destroy_all
+PlanOwnerInvite.destroy_all
+PlanMember.destroy_all

@@ -8,8 +8,8 @@
                 <div>  <%= @plan.start_date %> ~ <%= @plan.end_date %> </div>
                 <div> <span class="badge badge-light"> 武陵二秀 - 桃山 喀拉葉 </span> </div>
                 <div>
-                        由 <b> <%= @plan.user.name %> </b> 主辦 
-                        <% if @plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> 
+                        由 <b> <%= @plan.owner.name %> </b> 主辦 
+                        <% if @plan.owner == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> 
                 </div>
                 
                 <hr>
@@ -48,7 +48,7 @@
 
                 <div class="button-group"> 
                     <!-- User 是 plan member -->
-                    <% if @plan.user = current_user %>
+                    <% if @plan.owner = current_user %>
                         <%= link_to edit_plan_path(@plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <%end %>
                     <% end %>
 

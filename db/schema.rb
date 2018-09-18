@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917100515) do
+
+ActiveRecord::Schema.define(version: 20180917163036) do
 
   create_table "hikings", force: :cascade do |t|
     t.string "name"
@@ -35,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180917100515) do
   create_table "plan_member_applies", force: :cascade do |t|
     t.integer "plan_id"
     t.integer "user_id"
-    t.boolean "accept"
+    t.boolean "accept", default: false
     t.boolean "notified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 20180917100515) do
   create_table "plan_owner_invites", force: :cascade do |t|
     t.integer "plan_id"
     t.integer "user_id"
-    t.boolean "accept"
+    t.boolean "accept", default: false
     t.boolean "notified"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -10,14 +10,31 @@ class User < ApplicationRecord
   # email 跟 password欄位 deivse 已強制要求
   validates_presence_of :name
 
-  has_many :plans
+  has_many :plans, :class_name => "Plan", :foreign_key => "owner_id"
+
+  has_many :joins, class_name: 'PlanMember', foreign_key: 'user_id'
+  has_many :joined_plans, through: :joins, source: :plan
+
   has_many :wishes
   has_many :notifications
+  
+  has_many :receive_invites, class_name: 'PlanOwnerInvite', foreign_key: 'user_id'
+  has_many :invited_plans, through: :receive_invites, source: :plan
+
+  has_many :sent_applies, class_name: 'PlanMemberApply', foreign_key: 'user_id'
+  has_many :applied_plans, through: :sent_applies, source: :plan
+
+  after_create :send_admin_mail
+  def send_admin_mail
+    UserMailer.notify_new_member(self).deliver_now!
+  end
 
   def admin?
     self.role == "admin"
   end
 
+
+  # 以下為facebook 驗證區
   def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid
     user = User.find_by_fb_uid( auth.uid )

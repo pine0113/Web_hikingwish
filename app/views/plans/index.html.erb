@@ -6,21 +6,36 @@
   </div>
 </div>
 
-
-<h5>排序方式</h5>
-
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-light">日期</button>
-  <button type="button" class="btn btn-light">主辦人</button>
-  <button type="button" class="btn btn-light">完成度</button>
+<div class="btn-group" role="group" aria-label="Plan_type">
+  <%= link_to "已參加", plans_path, class: "btn btn-outline-info" %> 
+  <%= link_to "申請中", plans_path+"?type=applied", class: "btn btn-outline-info" %> 
+  <%= link_to "收到的邀請", plans_path+"?type=invited", class: "btn btn-outline-info" %> 
 </div>
 
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-light">正序</button>
-  <button type="button" class="btn btn-light">逆序</button>
-</div>
+<hr>
+
+<% if @plans.count < 1 %>
+
+  目前沒有任何計劃...
+
+<% else %>
+
+  <h5>排序方式
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-light">日期</button>
+      <button type="button" class="btn btn-light">主辦人</button>
+      <button type="button" class="btn btn-light">完成度</button>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-light">正序</button>
+      <button type="button" class="btn btn-light">逆序</button>
+    </div>
+  </h5>
 
 
- <% @plans.each do |plan| %>
-  <%= render :partial => "card", :locals => { :plan => plan } %>
- <% end %>
+  <% @plans.each do |plan| %>
+    <%= render :partial => "card", :locals => { :plan => plan } %>
+  <% end %>
+
+<% end %>
