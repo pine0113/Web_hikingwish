@@ -6,14 +6,15 @@
             
             <div> <span class="badge badge-info">自組團</span></div>
             <div> <%=wish.name %> </div>
+            <div><% if wish.user != current_user %><span class="badge badge-info"><a> <b> <%= wish.user.name %> </b></a></span>  的願望 <%end%></div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
             <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
             <div> <i class="fas fa-dollar-sign"></i> <span class="badge badge-light">預算區間</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  </div>
             <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 </span> </div>
             <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
-                <% # (1..wish.level).each do |i| %>
+                <%  (0..wish.level-1).each do |i| %>
                     <i class="fas fa-star"></i>
-                <% #end %>
+                <% end %>
             </div>
         </div>
         <div class="plan_descript">
@@ -22,12 +23,20 @@
             </div>
 
         </div>
-        <div class="button-group"> 
-            <%= link_to edit_wish_path(wish) do %><button class="btn btn-light"> <i class="fas fa-edit"></i> 修改 </button><% end %>
-            <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 收到邀請 (3) </button>
-            <%= link_to search_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 展開行動 </button><% end %>
-            <%= link_to make_plan_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 轉換計畫 </button><% end %>
-        </div>
+        
+            <div class="button-group"> 
+                <% if wish.user == current_user %>
+                    <%= link_to edit_wish_path(wish) do %><button class="btn btn-light"> <i class="fas fa-edit"></i> 修改 </button><% end %>
+                    <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 收到邀請 (3) </button>
+                    <%= link_to search_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 展開行動 </button><% end %>
+                    <%= link_to make_plan_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-edit"></i> 轉換計畫 </button><% end %>
+                <% else %>
+                    <button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 發送邀請 (3) </button>
+                <% end %>
+            </div>
+        
+            
+        
         <div class="clearfix"></div>
     </div>
 

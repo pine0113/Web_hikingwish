@@ -6,7 +6,7 @@ namespace :dev do
   task fake_wishes: :environment do
     Wish.destroy_all
     hiking_sample = ["武陵二秀", "嘉明湖", "合歡東峰"]
-    12.times do
+    40.times do
       endday = Faker::Date.forward(100)
       Wish.create!(
         name:  FFaker::Name.first_name,
@@ -21,7 +21,7 @@ namespace :dev do
       )
     end
 
-    40.times do
+    4.times do
       wish=Wish.all.sample
       wish.car_list.add("car")
       wish.food_list.add("food1")
@@ -33,7 +33,7 @@ namespace :dev do
 
   task fake_plans: :environment do
     Plan.destroy_all
-    12.times do
+    20.times do
       endday = Faker::Date.forward(100)
       Plan.create!(
         name:  FFaker::Name.first_name,

@@ -39,11 +39,12 @@ Rails.application.routes.draw do
       get :prepare_team
       get :prepare
       get :invite_member
+      get :search
       post :apply
       post :send_invite
     end
   end
-  get 'search' => 'plans#search'
+  #get 'search' => 'plans#search'
   get 'all_plans' => 'plans#all'
 
   resources :plan_owner_invites, only: [:show] do
