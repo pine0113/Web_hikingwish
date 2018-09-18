@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   after_create :send_admin_mail
   def send_admin_mail
-    UserMailer.notify_new_member(self).deliver_now!
+    #UserMailer.notify_new_member(self).deliver_now!
   end
 
   def admin?
