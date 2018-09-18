@@ -6,7 +6,7 @@
                         
                 <div><%= @plan.name %> <span class="badge badge-info"><%= @plan.group_type %></span></div>
                 <div>  <%= @plan.start_date %> ~ <%= @plan.end_date %> </div>
-                <div> <span class="badge badge-light"> 武陵二秀 - 桃山 喀拉葉 </span> </div>
+                <div> <span class="badge badge-light"> <%= @plan.hiking.name %> </span> </div>
                 <div>
                         由 <b> <%= @plan.owner.name %> </b> 主辦 
                         <% if @plan.owner == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> 

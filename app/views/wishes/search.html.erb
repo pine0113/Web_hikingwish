@@ -1,0 +1,111 @@
+<div class="wish_container">
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h3 class="display-5">願望清單</h3>
+      <p class="lead">這裡是你的口袋清單，要自己出隊還是參加既有的隊伍呢？</p>
+      或者... <button class="btn btn-outline-info"> 我想了解有哪些路線 </button>
+      <%= link_to new_wish_path do %><button class ="btn btn-outline-info"> <i class="fas fa-edit"></i> 還想許更多的願望 </button><% end %>
+    </div>
+  </div>
+
+  <h5 id="seq">排序方式 
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-light">日期</button>
+    <button type="button" class="btn btn-light">狀態</button>
+   
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-light">正序</button>
+    <button type="button" class="btn btn-light">逆序</button>
+  </div>
+
+  </h5>
+
+  <div class="panel panel-info">
+
+    <!-- Wish List -->
+    <div class="my-table table table-hover">
+      <div id="wishlist">       
+          <div id="<%= @wish.id %>">
+            <%= render :partial => "wish", :locals => { :wish => @wish } %>
+          </div> 
+      </div>
+    </div>
+  </div>
+  <h4 id="end" class="text-center"></h4>
+    <hr>
+    <div class="plan_list">
+      <% @plans.each do |plan| %>
+          <div class="plan">
+              <div class="plan_iamge">
+                  <img src="https://fakeimg.pl/200x150/">
+              </div>
+              <div class="plan_info">
+                  <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
+                  
+                  <div><%= plan.name %></div>
+                  <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
+                  <div> <span class="badge badge-light"> <%= plan.hiking.name %> </span> </div>
+                  <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> X天X夜 <%= plan.day %></span> </div>
+                  <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> X等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                 
+                 
+              </div>
+              <div class="plan_descript">
+                  <div>由 <a> <b> <%= plan.user.name %> </b></a> 主辦 <% if plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
+                  <div>
+                        <% if plan.budget_final.nil? %>
+                            <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用 尚未決定</span> 
+                            
+                            <% unless (plan.budget_bottom.nil? && plan.budget_top.nil?) %> 預算範圍目前為 <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <% end %>
+
+                        <% else %>
+
+                          <span class="badge badge-light"> <i class="fas fa-dollar-sign"></i>  費用</span> 每人 <%= plan.budget_final %> 元 <br>
+                          <span class="badge badge-secondary"> 含交通、保險、食宿 </span> 
+
+                        <% end %>
+
+                        <span class="badge badge-secondary">  <%= plan.money_type %> </span> 
+                        
+                  </div>
+                  <hr>
+                  
+                  <div> 
+                    <span class="badge badge-secondary"><%= plan.car_type %></span>  
+                    <span class="badge badge-secondary"><%= plan.food_type %></span>
+                  </div>
+
+                  <hr>
+                  <% if plan.user == current_user %>
+                  <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                  </div>
+                  <% else %>
+
+                    <%= plan.intro %>
+                      
+                  <% end %>
+
+              </div>
+              <div class="button-group"> 
+                <% if plan.user == current_user %> <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <% end %> <% end %>
+                <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
+                <% if plan.user == current_user %> <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> <% end %> <% end %>
+                <%= link_to prepare_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   <% end %>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+       <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,201 @@
+<style>
+  .toggler { width: 500px; height: 200px; }
+  #button { padding: .5em 1em; text-decoration: none; }
+  #effect { width: 240px; height: 170px; padding: 0.4em; position: relative; }
+  #effect h3 { margin: 0; padding: 0.4em; text-align: center; }
+</style>
+
+<div class="wish_container">
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h3 class="display-5">願望清單</h3>
+      <p class="lead">這裡是你的口袋清單，要自己出隊還是參加既有的隊伍呢？</p>
+      或者... <button class="btn btn-outline-info"> 我想了解有哪些路線 </button>  <button class="btn btn-outline-info"> 還想許更多的願望 </button>
+    </div>
+  </div>
+
+  <h5 id="seq">排序方式 
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-light">日期</button>
+    <button type="button" class="btn btn-light">狀態</button>
+   
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Basic example">
+    <button type="button" class="btn btn-light">正序</button>
+    <button type="button" class="btn btn-light">逆序</button>
+  </div>
+
+  </h5>
+
+  <div class="panel panel-info">
+
+    <!-- Wish List -->
+    <div class="my-table table table-hover">
+      <div id="wishlist">
+        <% @wishes.each do |wish| %>          
+          <div id="<%= wish.id %>">
+            <%= render :partial => "wish", :locals => { :wish => wish } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <h4 id="end" class="text-center"></h4>
+  <!-- Add new wish -->
+  <button id="create-wish" class="my-btn my-btn-transparent"><%= link_to 'Create Wish', new_wish_path %></button>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
+  <div class="toggler hider" style="display: none; width: 100%;">
+    <hr>
+      <% @plans.each do |plan| %>
+          <div class="plan">
+              <div class="plan_iamge">
+                  <img src="https://fakeimg.pl/200x150/">
+              </div>
+              <div class="plan_info">
+                  <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
+                  
+                  <div><%= plan.name %></div>
+                  <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
+                  <div> <span class="badge badge-light"> plan.hiking.name </span> </div>
+                  <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> X天X夜 <%= plan.day %></span> </div>
+                  <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> X等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                 
+                 
+              </div>
+              <div class="plan_descript">
+                  <div>由 <a> <b> <%= plan.user.name %> </b></a> 主辦 <% if plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
+                  <div>
+                        <% if plan.budget_final.nil? %>
+                            <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用 尚未決定</span> 
+                            
+                            <% unless (plan.budget_bottom.nil? && plan.budget_top.nil?) %> 預算範圍目前為 <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <% end %>
+
+                        <% else %>
+
+                          <span class="badge badge-light"> <i class="fas fa-dollar-sign"></i>  費用</span> 每人 <%= plan.budget_final %> 元 <br>
+                          <span class="badge badge-secondary"> 含交通、保險、食宿 </span> 
+
+                        <% end %>
+
+                        <span class="badge badge-secondary">  <%= plan.money_type %> </span> 
+                        
+                  </div>
+                  <hr>
+                  
+                  <div> 
+                    <span class="badge badge-secondary"><%= plan.car_type %></span>  
+                    <span class="badge badge-secondary"><%= plan.food_type %></span>
+                  </div>
+
+                  <hr>
+                  <% if plan.user == current_user %>
+                  <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                          <img src="https://fakeimg.pl/50x50/">
+                  </div>
+                  <% else %>
+
+                    <%= plan.intro %>
+                      
+                  <% end %>
+
+              </div>
+              <div class="button-group"> 
+                <% if plan.user == current_user %> <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <% end %> <% end %>
+                <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
+                <% if plan.user == current_user %> <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> <% end %> <% end %>
+                <%= link_to prepare_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   <% end %>
+              </div>
+              <div class="clearfix"></div>
+          </div>
+
+       <% end %>
+  </div>
+
+</div>
+
+<script>
+  $( function() {
+    // run the currently selected effect
+    function runEffect() {
+      // get effect type from
+      //var selectedEffect = $( "#effectTypes" ).val();
+      var selectedEffect = "slide"
+ 
+      // Most effect types need no options passed by default
+      var options = {};
+      // some effects have required parameters
+      if ( selectedEffect === "scale" ) {
+        options = { percent: 50 };
+      } else if ( selectedEffect === "size" ) {
+        options = { to: { width: 280, height: 185 } };
+      }
+ 
+      // Run the effect
+      $( "#effect" ).show( selectedEffect, options, 500, callback );
+    };
+ 
+    //callback function to bring a hidden box back
+    function callback() {
+      setTimeout(function() {
+        $( "#effect:visible" ).removeAttr( "style" );
+      }, 1000 );
+    };
+ 
+    // Set effect from select menu value
+    $( "#button" ).on( "click", function() {
+      runEffect();
+    });
+ 
+    $( "#effect" ).hide();
+  
+$(".plan").click( ".do-wish", function() {
+    var id = event.target.parentNode.parentNode.parentNode.id;
+    var wish = document.getElementById( id )
+    $(".jumbotron-fluid").remove();
+    $("h5").remove();
+    $("#wishlist").empty();
+    $("#wishlist").append(wish);
+    $("#create-wish").remove();
+    $.ajax({
+      url: "wishes/" + id + "/search",
+      method: "GET",
+      dataType: "json",
+      success: function(data) {
+        $(".toggler").slideToggle("slow", function(even) {
+  //$(".plan").on("click", ".do-wish", function(event) {
+
+    //runEffect();
+        });
+
+      }
+    });
+  
+});
+
+} );
+
+</script>
+
+<script type="text/template" id="plan-template">
+  <td class="my-pointer">
+    <span class="my-font glyphicon glyphicon-unchecked"></span>
+  </td>
+  <td>
+    <p class="title my-font"></p>
+  </td>
+  <td class="my-operation">
+    <span class="my-btn my-btn-transparent text-info glyphicon glyphicon-pencil"></span>
+    <span class="delete-todo my-btn my-btn-transparent text-danger glyphicon glyphicon-trash"></span>
+  </td>
+</script>
