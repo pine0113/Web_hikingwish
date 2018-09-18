@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 20180915054816) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "level"
+    t.integer "level", default: 0
     t.text "description"
     t.integer "day"
     t.integer "hiking_id"
