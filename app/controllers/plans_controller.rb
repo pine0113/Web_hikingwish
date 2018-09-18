@@ -71,8 +71,11 @@ class PlansController < ApplicationController
   end
 
   def search
-    hiking = @plan.hiking
-    @wishes = hiking.wishes
+    if @plan.hiking.nil?
+    else
+      hiking = @plan.hiking
+      @wishes = hiking.wishes
+    end
   end
 
   def invite_member
@@ -101,7 +104,7 @@ class PlansController < ApplicationController
     @apply.plan = @plan
     if @apply.save
       flash[:notice] = "apply was successfully created"
-      UserMailer.notify_plan_owner_new_apply(invite).deliver_now!
+      UserMailer.notify_plan_owner_new_apply(@apply).deliver_now!
     else
       flash[:alert] = "apply was failed to create"
     end

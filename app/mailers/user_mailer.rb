@@ -23,7 +23,7 @@ class UserMailer < ApplicationMailer
   def notify_plan_owner_new_apply(apply)
     @user = apply.plan.owner
     mail(to: @user.email,
-         subject: "[登山許願池] 你的計畫 #{invite.plan.name} 收到了一個新的申請")
+         subject: "[登山許願池] 你的計畫 #{apply.plan.name} 收到了一個新的申請")
   end
 
   def notify_plan_member_success_apply(user, plan)

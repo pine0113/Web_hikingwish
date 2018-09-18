@@ -26,8 +26,8 @@ class HikingsController < ApplicationController
     else
       flash[:alert] = "wish was failed to create"
     end
-    session[:return_to] ||= request.referer
-    redirect_to session[:return_to]
+    
+    redirect_to wishes_path
   end
 
   private

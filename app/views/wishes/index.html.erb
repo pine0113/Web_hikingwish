@@ -3,9 +3,12 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <h3 class="display-5">願望清單</h3>
-      <p class="lead">這裡是你的口袋清單，要自己出隊還是參加既有的隊伍呢？</p>
-      或者... <button class="btn btn-outline-info"> 我想了解有哪些路線 </button> 
-      <%= link_to new_wish_path do %><button class ="btn btn-outline-info"> <i class="fas fa-edit"></i> 還想許更多的願望 </button><% end %>
+      <p class="lead">這裡是你的口袋清單，要自己出隊還是參加既有的隊伍呢？  <%= link_to new_wish_path, id: "create-wish", class: "my-btn my-btn-transparent" do %><button class ="btn btn-outline-info">  立刻許願 </button><% end %></p>
+        
+      <hr>
+    
+      或者... <button class="btn btn-outline-info"> 想了解有哪些路線 </button> 
+   
     </div>
   </div>
 
@@ -39,4 +42,3 @@
   </div>
   <h4 id="end" class="text-center"></h4>
   <!-- Add new wish -->
-  <button id="create-wish" class="my-btn my-btn-transparent"><%= link_to 'Create Wish', new_wish_path %></button>

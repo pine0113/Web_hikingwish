@@ -18,8 +18,11 @@
   <%= render :partial => "card", :locals => { :plan => @plan } %>
 
 <hr>
-  <% @wishes.each do |wish| %>
-    <% if wish.user != @plan.owner %> 
-    <%= render :partial => "/wishes/wish", :locals => { :wish => wish } %>
-    <% end %>
-  <% end %>
+  <% unless @wishes.nil?
+    @wishes.each do |wish| %>
+      <% if wish.user != @plan.owner %> 
+        <%= render :partial => "/wishes/wish", :locals => { :wish => wish } %>
+      <% end %>
+   <% end %>
+<% end %>
+  

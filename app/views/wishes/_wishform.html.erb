@@ -3,8 +3,7 @@
     <div class="col-sm-8 col-md-8">
       <%= form_for  [@wish] do |f| %>
       <div class="form-group">
-        <br>
-        <h3> 編輯願望 </h3>
+        
         <%= f.text_field :name , class: "form-control" %>
       </div>
       
@@ -49,9 +48,9 @@
          兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
        
         <span class="badge badge-light"> 中等難度 </span>
-        <% (0..@wish.level-1).each do |i| %>
+        <% #(0..@wish.level-1).each do |i| %>
           <i class="fas fa-star"></i>
-        <% end %>
+        <% #end %>
       </div>
 
 

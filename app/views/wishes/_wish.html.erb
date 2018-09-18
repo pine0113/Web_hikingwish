@@ -8,13 +8,15 @@
             <div> <%=wish.name %> </div>
             <div><% if wish.user != current_user %><span class="badge badge-info"><a> <b> <%= wish.user.name %> </b></a></span>  的願望 <%end%></div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
+             <% unless wish.hiking.nil? %>
             <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
+            <% end %>
             <div> <i class="fas fa-dollar-sign"></i> <span class="badge badge-light">預算區間</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  </div>
             <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 </span> </div>
             <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
-                <%  (0..wish.level-1).each do |i| %>
+                <%  #(0..wish.level-1).each do |i| %>
                     <i class="fas fa-star"></i>
-                <% end %>
+                <% #end %>
             </div>
         </div>
         <div class="plan_descript">

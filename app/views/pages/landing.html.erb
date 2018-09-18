@@ -81,7 +81,7 @@
             
             </div>
             <div class="plan_descript">
-                <div>由 <a> <b> <%= plan.user.name %> </b></a> 主辦 <% if plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
+                <div>由 <a> <b> <%= plan.owner.name %> </b></a> 主辦 <% if plan.owner == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
                 <div> <span class="badge badge-light">費用尚未決定</span> <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <span class="badge badge-secondary"> 結算後均攤 </span> 
                     <%= plan.budget_final %>
                 </div>
