@@ -9,6 +9,7 @@ class WishesController < ApplicationController
 
   def new
     @wish = Wish.new
+    @hiking = Hiking.all
   end
 
   def create
@@ -18,7 +19,7 @@ class WishesController < ApplicationController
     if @wish.save
       flash[:notice] = "wish was successfully created"
     else
-      flash[:alert] = "wish was failed to create"
+      flash[:alert] = @wish.errors.full_messages.to_sentence
     end
     redirect_to wishes_path
   end
@@ -48,7 +49,7 @@ class WishesController < ApplicationController
       redirect_to wishes_path      
     else
       render :edit
-      flash[:alert] = "資料更新失敗！"
+      flash[:alert] = @wish.errors.full_messages.to_sentence
     end
   end
 
@@ -57,7 +58,7 @@ class WishesController < ApplicationController
     if @plan.save
       flash[:notice] = "計畫已成功建立"
     else
-      flash.now[:alert] = "計畫建立失敗"
+      flash.now[:alert] = @plan.errors.full_messages.to_sentence
     end
     redirect_to edit_plan_path(@plan)
   end
