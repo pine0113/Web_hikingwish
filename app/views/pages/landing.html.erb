@@ -64,52 +64,11 @@
     <h3>週末就出發的短天數行程</h3>
 
     <% @short_plans.each do |plan| %>
-
-        <div class="plan">
-            <div class="plan_iamge">
-                <img src="https://fakeimg.pl/200x150/">
-            </div>
-            <div class="plan_info">
-                <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
-                
-                <div> <%= plan.name %></div>
-                <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
-                <div> <span class="badge badge-light"> 武陵二秀 - 桃山 喀拉葉 </span> </div>
-                <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 <%= plan.day %></span> </div>
-                <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            
-            
-            </div>
-            <div class="plan_descript">
-                <div>由 <a> <b> <%= plan.owner.name %> </b></a> 主辦 <% if plan.owner == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
-                <div> <span class="badge badge-light">費用尚未決定</span> <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <span class="badge badge-secondary"> 結算後均攤 </span> 
-                    <%= plan.budget_final %>
-                </div>
-                <hr>
-                <div> <span class="badge badge-secondary">自駕 油錢分擔</span>  <span class="badge badge-secondary">私糧自炊</span></div>
-                <hr>
-                <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                </div>
-            </div>
-            <div class="button-group"> 
-            <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
-            <button class="btn btn-outline-info"> 申請加入 </button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-
-        
-
+        <%= render :partial => "shared/plan_card", :locals => { :plan => plan } %>
     <% end %>
-
+    </div>
     <hr>
-
+   
  <% end %>
 
 <% if @easy_plans.count > 0 %>
@@ -117,52 +76,11 @@
     <h3>新手也可以加入的低難度行程</h3>
 
     <% @easy_plans.each do |plan| %>
-
-        <div class="plan">
-            <div class="plan_iamge">
-                <img src="https://fakeimg.pl/200x150/">
-            </div>
-            <div class="plan_info">
-                <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
-                
-                <div> <%= plan.name %></div>
-                <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
-                <div> <span class="badge badge-light"> 武陵二秀 - 桃山 喀拉葉 </span> </div>
-                <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 <%= plan.day %></span> </div>
-                <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            
-            
-            </div>
-            <div class="plan_descript">
-                <div>由 <a> <b> <%= plan.user.name %> </b></a> 主辦 <% if plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
-                <div> <span class="badge badge-light">費用尚未決定</span> <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <span class="badge badge-secondary"> 結算後均攤 </span> 
-                    <%= plan.budget_final %>
-                </div>
-                <hr>
-                <div> <span class="badge badge-secondary">自駕 油錢分擔</span>  <span class="badge badge-secondary">私糧自炊</span></div>
-                <hr>
-                <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                </div>
-            </div>
-            <div class="button-group"> 
-            <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
-            <button class="btn btn-outline-info"> 申請加入 </button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-
-        
-
+         <%= render :partial => "shared/plan_card", :locals => { :plan => plan } %>
     <% end %>
 
+    </div>
     <hr>
-
  <% end %>
 
 
@@ -173,50 +91,9 @@
     <h3>就差你一個，快加入吧！<span class="second-title">即將滿團的計畫</span></h3>
 
     <% @easy_plans.each do |plan| %>
-
-        <div class="plan">
-            <div class="plan_iamge">
-                <img src="https://fakeimg.pl/200x150/">
-            </div>
-            <div class="plan_info">
-                <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
-                
-                <div> <%= plan.name %></div>
-                <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
-                <div> <span class="badge badge-light"> 武陵二秀 - 桃山 喀拉葉 </span> </div>
-                <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 <%= plan.day %></span> </div>
-                <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            
-            
-            </div>
-            <div class="plan_descript">
-                <div>由 <a> <b> <%= plan.user.name %> </b></a> 主辦 <% if plan.user == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
-                <div> <span class="badge badge-light">費用尚未決定</span> <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <span class="badge badge-secondary"> 結算後均攤 </span> 
-                    <%= plan.budget_final %>
-                </div>
-                <hr>
-                <div> <span class="badge badge-secondary">自駕 油錢分擔</span>  <span class="badge badge-secondary">私糧自炊</span></div>
-                <hr>
-                <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                        <img src="https://fakeimg.pl/50x50/">
-                </div>
-            </div>
-            <div class="button-group"> 
-            <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
-            <button class="btn btn-outline-info"> 申請加入 </button>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-
-        
-
+        <%= render :partial => "shared/plan_card", :locals => { :plan => plan } %>
     <% end %>
 
+    </div>
     <hr>
-
  <% end %>
