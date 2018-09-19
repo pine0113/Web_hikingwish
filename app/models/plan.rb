@@ -32,6 +32,9 @@ class Plan < ApplicationRecord
     (receive_invites.select { |invite| invite.user_id ==  user.id}).first
   end
 
+  def get_apply(user)
+    (sent_applies.select { |apply| apply.user_id ==  user.id}).first
+  end
 
   def user_status(user)
     if owner == user
