@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180917163036) do
+ActiveRecord::Schema.define(version: 20180919070204) do
 
   create_table "hikings", force: :cascade do |t|
     t.string "name"
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 20180917163036) do
     t.text "description"
     t.integer "day"
     t.integer "hiking_id"
+    t.string "image"
   end
 
 end
