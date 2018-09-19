@@ -17,6 +17,8 @@ class PagesController < ApplicationController
     page = Page.new(page_params)
     #page.save
     @wish = Wish.new( name: page.name,
+                      start_date: page.start_date,
+                      end_date: page.end_date,
                       user_id: current_user.id )
 
     if @wish.save
