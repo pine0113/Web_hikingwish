@@ -1,4 +1,14 @@
 <% @notifications.each do |notify| %>
-
-    <%= notify.content %> <br>
+    <%= notify.notifiable_type %>
+    <% case notify.notifiable_type
+        when "PlanOwnerInvite" %>
+                <%= link_to plan_owner_invite_path(notify.notifiable_id) do %> <%=notify.content %>  <% end %>
+                
+    <%  when "PlanMemberApply" %>
+               <%= link_to plan_member_apply_path(notify.notifiable_id) do %> <%=notify.content %> <% end %>
+               
+    <%  when "PlanMember" %>
+               <%= link_to plan_path(PlanMember.find(notify.notifiable_id).plan) do %> <%=notify.content %> <% end %>
+    <% end %>
+    <br>
 <% end %>

@@ -88,6 +88,10 @@ class PlansController < ApplicationController
     if @invite.save
       flash[:notice] = 'invite was successfully created'
       UserMailer.notify_plan_member_new_invites(@invite).deliver_now!
+      member_notification =  @invite.notification.create(user_id: @invite.user.id , content: "你收到了來自 #{@invite.plan.name} 的邀請，快跟主辦人聊聊吧" )
+      owner_notification =  @invite.notification.create(user_id: @invite.plan.owner.id , content: "你已對#{@invite.user.name} 送出了想 #{@invite.plan.name} 計畫的邀請，快跟他聊聊吧" )
+      member_notification.save
+      owner_notification.save
     else
       flash[:alert] = 'invite was failed to create'
     end
@@ -101,6 +105,10 @@ class PlansController < ApplicationController
     @apply.plan = @plan
     if @apply.save
       flash[:notice] = 'apply was successfully created'
+      member_notification = @apply.notification.create(user_id: @apply.user.id , content: "你已申請加入 #{@apply.plan.name}，快跟主辦人聊聊吧" )
+      owner_notification = @apply.notification.create(user_id: @apply.plan.owner.id , content: "#{@apply.user.name} 對你送出了想加入 #{@apply.plan.name} 計畫的申請，快跟他聊聊吧" )
+      member_notification.save
+      owner_notification.save
       UserMailer.notify_plan_owner_new_apply(@apply).deliver_now!
     else
       flash[:alert] = 'apply was failed to create'

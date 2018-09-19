@@ -16,7 +16,7 @@ class PlanMemberAppliesController < ApplicationController
       if join.save
 
         member_notification = join.notification.create(user_id: join.user.id , content: "你已成功加入 #{plan.name}" )
-        owner_notification = join.notification.create(user_id: plan.owner.id , content: "你已核准 #{join.user.name} 加入 #{plan.name}" )
+        owner_notification = join.notification.create(user_id: plan.owner.id , content: "#{join.user.name} 已加入 #{plan.name}" )
         member_notification.save
         owner_notification.save
         
