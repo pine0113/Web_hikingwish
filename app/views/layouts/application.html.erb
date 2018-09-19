@@ -3,7 +3,7 @@
   <head>
     <title>登山許願池</title>
     <%= csrf_meta_tags %>
-
+    <%= favicon_link_tag asset_path('lake.png'), :rel => 'icon', :type =>  'image/png' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -15,7 +15,7 @@
   <div id="wrapper">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
          <%= link_to  root_path, class: "navbar-brand" do %>
-               <span> 登山許願池</span>
+          <span><%= image_tag ( "lake.png"), class: "logo" %> 登山許願池</span>
                <% end %>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -79,6 +79,9 @@
       <%= yield %>
    </div>
 
+   <div id="footer">
+   Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>
+   </div>
    <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
