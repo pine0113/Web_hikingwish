@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   private
 
   def wish_params
-    params.require(:wish).permit(:name, :hiking_id, :level, :start_date, :end_date, :user_id, :budget_bottom, :budget_top, :description, :car_list, :food_list)
+    params.require(:wish).permit(:name, :hiking_id, :level, :start_date, :end_date, :user_id, :budget_bottom, :budget_top, :description, :car_list, :food_list, :image)
   end  
 
   def plan_params
