@@ -1,8 +1,13 @@
 <div class="container">
 
     <div id="registration_form">
-    <h2> 登山許願池 </h2> <em> log in </em>
-    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>   
+    <h2> 登山許願池 </h2>
+    <%= link_to "用 Facebook 帳號登入", user_facebook_omniauth_authorize_path , class: "btn btn-info"%> 
+    * 會綁定 facebook 使用的信箱喔 
+
+    <hr>
+
+    <h4> 或是用 email 帳號登入 </h4>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email %><br />
@@ -22,10 +27,10 @@
       <% end -%>
 
       <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
+        <%= f.submit "登入", class: "btn btn-info" %>
       </div>
     <% end %>
-
+    <hr>
     <%= render "devise/shared/links" %>
     </div>
 </div>
