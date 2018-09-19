@@ -5,6 +5,19 @@ class CatesController < ApplicationController
     @hikings = @cate.hikings
   end
 
+  def newbie
+    @plans = Plan.where(level: 1)
+    #@plans = @plansall.find_by_level(1) 只會找一個物件出來
+  end
+
+  def short
+    @plans = Plan.where(day: 1 ) + Plan.where(day: 2 )
+  end
+
+  def long
+    @plans = Plan.where(day: 3 ) + Plan.where(day: 4 ) + Plan.where(day: 5 ) 
+  end
+
   private
   
     def set_cate

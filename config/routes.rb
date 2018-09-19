@@ -53,6 +53,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'cates/newbie' => 'cates#newbie'
+  get 'cates/short' => 'cates#short'
+  get 'cates/long' => 'cates#long'
+
   resources :plan_owner_invites, only: [:show] do
     member do
         post :approval
