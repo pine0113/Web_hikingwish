@@ -11,7 +11,7 @@
              <% unless wish.hiking.nil? %>
             <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
             <% end %>
-            <div> <i class="fas fa-dollar-sign"></i> <span class="badge badge-light">預算區間</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  </div>
+            
             <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 </span> </div>
             <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
                 <%  #(0..wish.level-1).each do |i| %>
@@ -21,7 +21,7 @@
         </div>
         <div class="plan_descript">
             <div> 
-                  
+                  <span class="badge badge-light"><i class="fas fa-dollar-sign"></i> 預算</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  <br>
                   <span class="badge badge-light">收費模式</span>  <span class="badge badge-success">皆可</span> <span class="badge badge-secondary">預先收費，不退不補</span>  <span class="badge badge-secondary">預先收費，多退少補</span>   <span class="badge badge-secondary">結算後均攤</span><br>
                   <hr>
                   <span class="badge badge-light">車行模式</span> <span class="badge badge-success">皆可</span>  <span class="badge badge-secondary">共乘 油錢分擔</span>  <span class="badge badge-secondary">包車</span>  <span class="badge badge-secondary">大眾運輸</span><br>
