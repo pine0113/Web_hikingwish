@@ -47,6 +47,16 @@ Rails.application.routes.draw do
   #get 'search' => 'plans#search'
   get 'all_plans' => 'plans#all'
 
+  resources :cates, only: [] do
+    member do
+      get :list
+    end
+  end
+
+  get 'cates/newbie' => 'cates#newbie'
+  get 'cates/short' => 'cates#short'
+  get 'cates/long' => 'cates#long'
+
   resources :plan_owner_invites, only: [:show] do
     member do
         post :approval
@@ -71,5 +81,7 @@ Rails.application.routes.draw do
   #get 'pages/wishes' => 'pages#wishes'
   #get 'pages/wishes_empty' => 'pages#wishes_empty'
   #get 'pages/plans_empty' => 'pages#plans_empty'
+
+  get 'categories/index' => 'pages#index'
 
 end

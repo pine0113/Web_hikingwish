@@ -5,4 +5,5 @@ class Hiking < ApplicationRecord
   
   has_many :plans
   has_many :wishes
+  belongs_to :cate
 end
