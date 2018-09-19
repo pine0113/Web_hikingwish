@@ -13,11 +13,11 @@
   <div id="fb-root"></div>
 
   <div id="wrapper">
-
+   
     <div id="quick_wish"> 
+       <div class="overlay">
 
-
-        <nav class="navbar navbar-expand-lg navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-custom">
          <%= link_to  root_path, class: "navbar-brand" do %>
                <span> 登山許願池</span>
                <% end %>
@@ -74,13 +74,12 @@
             
             </div>
             <div class="form-row">
-            <%= f.submit "許願", class: "btn btn-info" %> 
+            <%= f.submit "許願", class: "btn btn-info submit" %> 
             </div>
           <% end %>
         </div>
-
     </div>
-
+    </div>
 
       <% if flash[:notice] %>
             <div class="container">

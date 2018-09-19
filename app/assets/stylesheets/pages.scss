@@ -2,33 +2,44 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 #quick_wish 
 {
     color: #ffffff;
     height:700px;
-    padding-left:40px;
-    background-image: image-url("landing_pool.jpg");
+    background-image: image-url("landing_pool2.png");
     background-attachment: fixed;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat; 
+    padding:0;
 }
 
-#quikck_wish nav
-{
-    color: #ffffff;
-    background-color: "transparent";
-}
-
-#quikck_wish a
-{
-    color: #ffffff;
-    background-color: "transparent";
-}
 
 #quick_form
 {
-
-    margin-top:40px;
-    margin-left:40px;
-
+    margin-top:60px;
+    margin-left:150px;
 }
+
+#quick_form .submit
+{
+    float:right;
+}
+.overlay {
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 700px;
+  }
+
+  .navbar a{
+    color: #FFFFFF;
+}
+
+.navbar .dropdown-menu a{
+    color: #000;
+}
+
