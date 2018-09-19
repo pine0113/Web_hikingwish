@@ -35,12 +35,12 @@
                 <li class="nav-item"> <%= link_to notifications_path, class:"nav-link" do %> 通知 <span class="badge badge-danger">5</span>  <% end %> </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Profile
+                    
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <%= link_to '編輯個人資料', edit_user_path(current_user), class:" nav-link" %>                     
+                    <%= link_to  edit_user_path(current_user), class:" nav-link" do%>  <i class="far fa-user-circle"></i> 編輯個人資料 <% end %>
                     <hr>
-                    <%= link_to '設定', root_path, class:" nav-link" %> 
+                    <%= link_to root_path, class:" nav-link" do %><i class="fas fa-cog"></i> 修改設定 <% end %>
                     <% if current_user.role == "admin " %>
                       <%= link_to '管理後台', admin_root_path , class:" nav-link"%> 
                     <% end %>

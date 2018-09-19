@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
   has_many :wishes
   has_many :notifications
-  
+
   has_many :receive_invites, class_name: 'PlanOwnerInvite', foreign_key: 'user_id'
   has_many :invited_plans, through: :receive_invites, source: :plan
 

@@ -6,10 +6,10 @@
   <h4>符合此願望條件的計畫</h4>
 
   <div class="btn-group" role="group" aria-label="Plan_type">
-    <%= link_to "計畫列表", search_wish_path(@wish), class: "btn btn-outline-info" %> 
-    <%= link_to "已舉辦", search_wish_path(@wish)+"?type=owned", class: "btn btn-outline-info" %> 
-    <%= link_to "申請中", search_wish_path(@wish)+"?type=applied", class: "btn btn-outline-info" %> 
-    <%= link_to "已收到邀請", search_wish_path(@wish)+"?type=invited", class: "btn btn-outline-info" %> 
+    <%= link_to search_wish_path(@wish), class: "btn btn-outline-info" do%> 計畫列表 <% end %> 
+    <%= link_to search_wish_path(@wish)+"?type=owned", class: "btn btn-outline-info" do %> 主辦  <% end %> 
+    <%= link_to search_wish_path(@wish)+"?type=applied", class: "btn btn-outline-info" do %> 申請中 <% end %> 
+    <%= link_to search_wish_path(@wish)+"?type=invited", class: "btn btn-outline-info" do%>  收到邀請 <% end %> 
 
 </div>
 
