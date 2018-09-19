@@ -72,7 +72,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
   resources :tags, only: [:show]
 
-
+  post 'pages' => 'pages#create'
   get 'pages/privacy' => 'pages#privacy'
   get 'pages/about', :to => 'pages#about'
 

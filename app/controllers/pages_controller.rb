@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
   layout "landing", only: :landing
+  before_action :page_params, :only => [:create]
+
   def landing
-    @wish = Wish.new
+    @page = Page.new
     @short_plans = Plan.where('day < 2').limit(5)
 
     @easy_plans = Plan.where('level < 1').limit(5)
@@ -10,10 +12,26 @@ class PagesController < ApplicationController
 
   end
 
+  def create
+    @user = current_user
+    page = Page.new(page_params)
+    #page.save
+    @wish = Wish.new( name: page.name,
+                      user_id: current_user.id )
+
+    if @wish.save
+      flash[:notice] = '願望已成功建立'
+    else
+      flash[:alert] = @wish.errors.full_messages.to_sentence
+    end
+    redirect_to edit_wish_path(@wish)
+  end
+
   def about
   end
 
   def privacy
+
   end
 
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180919070204) do
+ActiveRecord::Schema.define(version: 20180919155903) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -36,6 +35,14 @@ ActiveRecord::Schema.define(version: 20180919070204) do
     t.text "content"
     t.integer "notifiable_id"
     t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pages", force: :cascade do |t|
+    t.string "name"
+    t.date "start_date"
+    t.date "end_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -157,7 +164,7 @@ ActiveRecord::Schema.define(version: 20180919070204) do
     t.integer "level", default: 0
     t.text "description"
     t.integer "day"
-    t.integer "hiking_id"
+    t.integer "hiking_id", default: 1
     t.string "image"
   end
 

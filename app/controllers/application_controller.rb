@@ -20,5 +20,9 @@ class ApplicationController < ActionController::Base
     params.require(:plan).permit(:name, :image, :start_date, :end_date, :budget_top, :budget_bottom, :budget_final, :level, :day, :miles, :intro, :group_type, :money_type, :food_type, :food_info, :car_type, :car_info, :publish_status, :lock_status, :schedule, :owner_id)
   end
 
+  def page_params
+    params.require(:page).permit(:name, :start_date, :end_date)
+  end  
+
 
 end
