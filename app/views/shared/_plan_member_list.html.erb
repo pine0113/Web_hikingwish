@@ -1,0 +1,6 @@
+<div class="member_list"> <span class="badge badge-light"> 隊員  <%= plan.members.count %>/7</span>  
+    <% plan.members.each do |user| %>
+        <img src="https://fakeimg.pl/50x50/">
+        <%= user.email %> 
+    <% end %>
+ </div>

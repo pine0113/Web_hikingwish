@@ -4,7 +4,7 @@
         </div>
         <div class="wish_info">
             
-            <div> <span class="badge badge-info">自組團</span></div>
+            <div> <span class="badge badge-info">自組隊伍</span> <span class="badge badge-info">商業隊伍</span></div>
             <div> <%=wish.name %> </div>
             <div><% if wish.user != current_user %><span class="badge badge-info"><a> <b> <%= wish.user.name %> </b></a></span>  的願望 <%end%></div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
@@ -20,8 +20,12 @@
             </div>
         </div>
         <div class="plan_descript">
-            <div> <span class="badge badge-secondary">自駕 油錢分擔</span> or <span class="badge badge-secondary">共乘 油錢分擔</span> or <span class="badge badge-secondary">包車</span> or <span class="badge badge-secondary">大眾運輸</span> <hr>
-                  <span class="badge badge-secondary">私糧自炊</span> or  <span class="badge badge-secondary">公糧公炊 費用分擔</span> or  <span class="badge badge-secondary">包餐</span> <hr>
+            <div> 
+                  
+                  <span class="badge badge-light">收費模式</span>  <span class="badge badge-success">皆可</span> <span class="badge badge-secondary">預先收費，不退不補</span>  <span class="badge badge-secondary">預先收費，多退少補</span>   <span class="badge badge-secondary">結算後均攤</span><br>
+                  <hr>
+                  <span class="badge badge-light">車行模式</span> <span class="badge badge-success">皆可</span>  <span class="badge badge-secondary">共乘 油錢分擔</span>  <span class="badge badge-secondary">包車</span>  <span class="badge badge-secondary">大眾運輸</span><br>
+                  <span class="badge badge-light">餐飲模式</span> <span class="badge badge-success">皆可</span>   <span class="badge badge-secondary">公糧公炊 費用分擔</span>   <span class="badge badge-secondary">包餐</span> <hr>
             </div>
 
         </div>

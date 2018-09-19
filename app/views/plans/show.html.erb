@@ -7,14 +7,7 @@
         <div class="col-md-6">
     
                 <h4 id="member">隊伍成員</h4>
-                <div class="member_list"> <span class="badge badge-light"> 隊員 6/7</span>  
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                            <img src="https://fakeimg.pl/50x50/">
-                </div> 
+                <%= render partial: 'shared/plan_member_list', locals: { plan: @plan } %>
 
                 <h4 id="status">準備狀況</h4>
                 <div>

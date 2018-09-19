@@ -18,37 +18,35 @@
         <div class="plan_descript">
             <div>由 <a> <b> <%= plan.owner.name %> </b></a> 主辦 <% if plan.owner == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
             <div>
+                 <span class="badge badge-light"> 收費模式 </span> <span class="badge badge-secondary">  <%= plan.money_type || "未定" %> </span> 
                   <% if plan.budget_final.nil? %>
-                      <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用 尚未決定</span> 
+                      <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用</span>  尚未決定 
                       
-                      <% unless (plan.budget_bottom.nil? && plan.budget_top.nil?) %> 預算範圍目前為 <%= plan.budget_bottom %> ~ <%= plan.budget_top %> <% end %>
+                      <% unless (plan.budget_bottom.nil? && plan.budget_top.nil?) %>
+                      | <span class="badge badge-light">預算</span> <%= plan.budget_bottom %> ~ <%= plan.budget_top %> 
+                      <% end %>
 
                   <% else %>
 
-                    <span class="badge badge-light"> <i class="fas fa-dollar-sign"></i>  費用</span> 每人 <%= plan.budget_final %> 元 <br>
+                    <span class="badge badge-light"> <i class="fas fa-dollar-sign"></i> 費用 </span> 每人 <%= plan.budget_final %> 元 <br>
                     <span class="badge badge-secondary"> 含交通、保險、食宿 </span> 
 
                   <% end %>
-
-                  <span class="badge badge-secondary">  <%= plan.money_type %> </span> 
-                  
             </div>
-            <hr>
             
             <div> 
-              <span class="badge badge-secondary"><%= plan.car_type %></span>  
-              <span class="badge badge-secondary"><%= plan.food_type %></span>
+              <span class="badge badge-light"> 車行模式 </span> 
+                  <span class="badge badge-secondary"><%=  plan.car_type||"未定" %></span>  | 
+
+              <span class="badge badge-light"> 餐飲模式 </span>
+                  <span class="badge badge-secondary"><%=  plan.food_type||"未定" %></span>
             </div>
 
             <hr>
             <% if plan.owner == current_user %>
-            <div class="member_list"> <span class="badge badge-light"> 隊員  <%= plan.members.count %>/7</span>  
-              <% plan.members.each do |user| %>
-                                <%= user.email %> <br>
-                            <% end %>
-                    <img src="https://fakeimg.pl/50x50/">
- 
-            </div>
+            
+                <%= render partial: 'shared/plan_member_list', locals: { plan: plan } %>
+           
             <% else %>
 
               <%= plan.intro %>
