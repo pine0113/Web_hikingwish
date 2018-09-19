@@ -13,7 +13,11 @@
   <div id="fb-root"></div>
 
   <div id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <div id="quick_wish"> 
+
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
          <%= link_to  root_path, class: "navbar-brand" do %>
                <span> 登山許願池</span>
                <% end %>
@@ -53,6 +57,30 @@
             </div><!-- /.navbar-collapse -->
 
         </nav>
+
+        <div id="quick_form">
+          <h3> 來許個願吧! 你想去哪條路線？ </h3>
+
+          <%= form_for @wish do |f| %>
+            <div class="form-row">
+            <div class="form-group col-md-4">
+            <%= f.text_field :name, class: "form-control" , placeholder: "你想爬的路線" %> 
+            </div>
+            </div>
+            <div class="form-row">
+              
+              <div class="form-group col-md-2"> <%= f.date_field :start_date, class: "form-control" %> </div>
+              到  <div class="form-group col-md-2"> <%= f.date_field :end_date, class: "form-control" %> </div>
+            
+            </div>
+            <div class="form-row">
+            <%= f.submit "許願", class: "btn btn-info" %> 
+            </div>
+          <% end %>
+        </div>
+
+    </div>
+
 
       <% if flash[:notice] %>
             <div class="container">
