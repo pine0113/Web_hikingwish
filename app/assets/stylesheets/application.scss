@@ -60,8 +60,30 @@ body {
     float: left;
 }
 
+
+
+
 .category img{
     border-radius:10px 0 0 10px;
+}
+
+#category_link a:link
+{
+    color: black;
+}
+/* visited link */
+#category_link a:visited {
+    color: black;
+}
+
+/* mouse over link */
+#category_link  a:hover {
+    color: gray;
+}
+
+/* selected link */
+#category_link a:active {
+    color: #17a2b8;
 }
 
 

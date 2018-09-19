@@ -14,8 +14,12 @@ class CatesController < ApplicationController
     @plans = Plan.where(day: 1 ) + Plan.where(day: 2 )
   end
 
-  def long
+  def overnight
     @plans = Plan.where(day: 3 ) + Plan.where(day: 4 ) + Plan.where(day: 5 ) 
+  end
+
+  def long
+    @plans = Plan.where("day >= 6" ) 
   end
 
   private

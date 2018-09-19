@@ -1,26 +1,27 @@
 
-<hr>
 
+<!--
+<hr>
 
 <div>
 <h3> </h3>
 <img src="https://fakeimg.pl/1068x300/">
 
 </div>
-
+-->
 
 
 <hr>
 <div id="category_link">
 <h3> 你在找特定路線嗎？ </h3>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"><%= link_to cates_newbie_path do %> 新手路線<% end %></a></div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"><%= link_to cates_short_path do %> 單日健行<% end %></a> </div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"><%= link_to cates_long_path do %> 過夜行程<% end %></a> </div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"> 長程縱走    </a> </div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"><%= link_to list_cate_path(Cate.find(1)) do %> 郊山 <% end %></a></div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"><%= link_to list_cate_path(Cate.find(2)) do %> 中級山<% end %></a></div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"><%= link_to list_cate_path(Cate.find(3)) do %> 百岳路線<% end %></a></div>
-<div class="category"><a><img src="https://fakeimg.pl/100x50/"> 高山湖泊   </a></div>
+<%= link_to cates_newbie_path do %><div class="category"><%= image_tag ( "cate-newbie.png")%> 新手路線</div><% end %>
+<%= link_to cates_short_path do %><div class="category"><%= image_tag ( "cate-single.png")%> 單日健行</div><% end %>
+<%= link_to cates_overnight_path do %> <div class="category"><%= image_tag ( "cate-overnight.png")%>  過夜行程 </div><% end %>
+<%= link_to cates_long_path do %> <div class="category"><%= image_tag ( "cate-long.png")%> 長程縱走 </div> <%end%>
+<%= link_to list_cate_path(Cate.find(1)) do %><div class="category"><%= image_tag ( "cate-suburban.png")%> 郊山</div><% end %>
+<%= link_to list_cate_path(Cate.find(2)) do %><div class="category"><%= image_tag ( "cate-midmount.png")%> 中級山</div><% end %>
+<%= link_to list_cate_path(Cate.find(3)) do %><div class="category"><%= image_tag ( "cate-moutain.png")%> 百岳路線</div><% end %>
+<%= link_to list_cate_path(Cate.find(4)) do %><div class="category"><%= image_tag ( "cate-lake.png")%> 高山湖泊</div><% end %>  
 
 <div class="clearfix"></div>
 </div>

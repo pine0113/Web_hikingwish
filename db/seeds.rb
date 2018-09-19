@@ -27,6 +27,7 @@ Cate.destroy_all
   Cate.create( id: 1, name: "郊山" )
   Cate.create( id: 2, name: "中級山")
   Cate.create( id: 3, name: "百岳路線" )
+  Cate.create( id: 4, name: "高山湖泊" )
 
 puts "Default Cates created!"
 

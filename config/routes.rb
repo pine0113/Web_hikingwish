@@ -55,6 +55,7 @@ Rails.application.routes.draw do
 
   get 'cates/newbie' => 'cates#newbie'
   get 'cates/short' => 'cates#short'
+  get 'cates/overnight' => 'cates#overnight'
   get 'cates/long' => 'cates#long'
 
   resources :plan_owner_invites, only: [:show] do

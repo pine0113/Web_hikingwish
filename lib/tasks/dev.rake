@@ -1,6 +1,6 @@
 namespace :dev do
 
-  task all: [:fake_wishes]
+  task all: [:fake_wishes,:fake_plans,]
 
 
   task fake_wishes: :environment do
