@@ -23,6 +23,12 @@ Plan.destroy_all
 
 puts "Default Plan created!"
 
+Cate.destroy_all
+  Cate.create( id: 1, name: "郊山" )
+  Cate.create( id: 2, name: "中級山")
+  Cate.create( id: 3, name: "百岳路線" )
+
+puts "Default Cates created!"
 
 Hiking.destroy_all
   Hiking.create( name:"武稜一秀", level: 1, day: 72, miles: 1,  intro:"this is really wierld")
