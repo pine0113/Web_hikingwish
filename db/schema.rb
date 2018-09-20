@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920220131) do
+ActiveRecord::Schema.define(version: 20180920220657) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -84,29 +84,28 @@ ActiveRecord::Schema.define(version: 20180920220131) do
     t.string "image"
     t.date "start_date"
     t.date "end_date"
-    t.integer "budget_bottom"
-    t.integer "budget_top"
-    t.integer "budget_final"
-    t.integer "level"
-    t.integer "day"
-    t.integer "miles"
+    t.integer "budget_bottom", default: 0
+    t.integer "budget_top", default: 0
+    t.integer "budget_final", default: 0
+    t.integer "level", default: 0
+    t.integer "numberofday_id", default: 1
+    t.integer "miles", default: 0
     t.text "intro"
     t.integer "join_count"
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "hiking_id"
+    t.integer "hiking_id", default: 1
     t.string "type"
-    t.string "food_type"
+    t.string "food_type", default: "未定"
     t.text "food_info"
-    t.string "car_type"
+    t.string "car_type", default: "未定"
     t.text "car_info"
-    t.text "money_type"
-    t.string "publish_status"
+    t.string "money_type", default: "未定"
+    t.string "publish_status", default: "公開"
     t.string "lock_status"
     t.text "schedule"
-    t.string "group_type"
-    t.integer "numberofday_id"
+    t.string "group_type", default: "未定"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -171,8 +170,8 @@ ActiveRecord::Schema.define(version: 20180920220131) do
     t.datetime "updated_at", null: false
     t.integer "level", default: 0
     t.text "description"
-    t.integer "day"
-    t.integer "hiking_id"
+    t.integer "numberofday_id", default: 10
+    t.integer "hiking_id", default: 1
     t.string "image"
   end
 
