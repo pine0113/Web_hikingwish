@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def landing
     @page = Page.new
-    @short_plans = Plan.where('day < 2').limit(5)
+    @short_plans = Plan.where('numberofday_id < 4').limit(5)
 
     @easy_plans = Plan.where('level < 1').limit(5)
 

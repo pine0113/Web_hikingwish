@@ -18,10 +18,25 @@ puts "Default users created!"
 
 Plan.destroy_all
 
-  Plan.create(name: "嘉明湖新手上路團", image: "1", start_date: "2018-11-10", end_date: "2018-11-12", budget_final:7200, level:3, day: 72, miles: 20,intro: "",join_count: 0,owner_id: User.first.id)
-  Plan.create(name: "玉山新手團", image: "2", start_date: "2018-11-06", end_date: "2018-11-07", budget_final:7200, level:3, day: 48, miles: 20,intro: "",join_count: 0,owner_id: User.first.id)
+  Plan.create(name: "嘉明湖新手上路團", image: "1", start_date: "2018-11-10", end_date: "2018-11-12", budget_final:7200, level:3, numberofday_id: 4, miles: 20,intro: "",join_count: 0,owner_id: User.first.id)
+  Plan.create(name: "玉山新手團", image: "2", start_date: "2018-11-06", end_date: "2018-11-07", budget_final:7200, level:3, numberofday_id: 5, miles: 20,intro: "",join_count: 0,owner_id: User.first.id)
 
 puts "Default Plan created!"
+
+Numberofday.destroy_all
+  Numberofday.create( id: 1, name: "一天一夜" )
+  Numberofday.create( id: 2, name: "兩天一夜" )
+  Numberofday.create( id: 3, name: "兩天兩夜" )
+  Numberofday.create( id: 4, name: "三天兩夜" )
+  Numberofday.create( id: 5, name: "三天三夜" )
+  Numberofday.create( id: 6, name: "四天三夜" )
+  Numberofday.create( id: 7, name: "四天四夜" )
+  Numberofday.create( id: 8, name: "五天四夜" )
+  Numberofday.create( id: 9, name: "五天五夜" )
+  Numberofday.create( id: 10, name: "不限" )
+
+puts "Default Numberofday created!"
+
 
 Cate.destroy_all
   Cate.create( id: 1, name: "郊山" )

@@ -120,6 +120,9 @@
 
 <hr>
 <label>參考路線 <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %>  <button class="btn btn-light"> 重設為範本預設值 </button></label>
+
+  <label>天數：</label>
+  <%= f.collection_select( :numberofday_id, Numberofday.all, :id, :name, {:prompt => true}) %>
 <div>
     <span class="badge badge-light"> 難度 </span> 
     <%  (0..plan.level-1).each do |i| %>

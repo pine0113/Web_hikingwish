@@ -1,6 +1,7 @@
 class Plan < ApplicationRecord
   mount_uploader :image, ImageUploader
   belongs_to :hiking
+  belongs_to :numberofday 
   belongs_to :owner, :class_name => "User", :foreign_key => "owner_id"
   has_many :notification, :as => :notifiable
 

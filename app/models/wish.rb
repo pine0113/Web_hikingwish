@@ -5,6 +5,8 @@ class Wish < ApplicationRecord
   has_many :notification, :as => :notifiable
   belongs_to :user
   belongs_to :hiking
+  belongs_to :numberofday
+  #belongs_to :paid_user, :class_name => "User", :foreign_key => "paid_user_id"
 
   acts_as_taggable_on :car
   acts_as_taggable_on :food

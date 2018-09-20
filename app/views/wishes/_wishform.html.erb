@@ -41,12 +41,15 @@
       <div>
         
         <div class="form-group">
-          <label>參考路線</label>
+          <label>參考路線：</label>
           <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %>
         </div>
-
-         兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
-       
+        
+        <div class="form-group">
+          <label>天數：</label>
+          <%= f.collection_select( :numberofday_id, Numberofday.all, :id, :name, {:prompt => true}) %>
+        </div>
+         
          <div class="form-group">
           <span class="badge badge-light"> 難度 </span>
           <% (0..@wish.level-1).each do |i| %>
@@ -54,6 +57,7 @@
           <% end %>
           <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
         </div>
+        <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
       </div>
 
 

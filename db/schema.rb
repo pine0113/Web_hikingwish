@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180919155903) do
+ActiveRecord::Schema.define(version: 20180920090906) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,12 @@ ActiveRecord::Schema.define(version: 20180919155903) do
     t.text "content"
     t.integer "notifiable_id"
     t.string "notifiable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "numberofdays", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,14 +87,14 @@ ActiveRecord::Schema.define(version: 20180919155903) do
     t.integer "budget_top"
     t.integer "budget_final"
     t.integer "level"
-    t.integer "day"
+    t.integer "numberofday_id", default: 10
     t.integer "miles"
     t.text "intro"
     t.integer "join_count"
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "hiking_id"
+    t.integer "hiking_id", default: 1
     t.string "type"
     t.string "food_type"
     t.text "food_info"
@@ -163,7 +169,7 @@ ActiveRecord::Schema.define(version: 20180919155903) do
     t.datetime "updated_at", null: false
     t.integer "level", default: 0
     t.text "description"
-    t.integer "day"
+    t.integer "numberofday_id", default: 10
     t.integer "hiking_id", default: 1
     t.string "image"
   end
