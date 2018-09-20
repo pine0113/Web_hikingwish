@@ -1,14 +1,11 @@
 <% @notifications.each do |notify| %>
-    <%= notify.notifiable_type %>
-    <% case notify.notifiable_type
-        when "PlanOwnerInvite" %>
-                <%= link_to plan_owner_invite_path(notify.notifiable_id) do %> <%=notify.content %>  <% end %>
-                
-    <%  when "PlanMemberApply" %>
-               <%= link_to plan_member_apply_path(notify.notifiable_id) do %> <%=notify.content %> <% end %>
-               
-    <%  when "PlanMember" %>
-               <%= link_to plan_path(PlanMember.find(notify.notifiable_id).plan) do %> <%=notify.content %> <% end %>
-    <% end %>
-    <br>
+    
+    <ul id="notifications" class="list-group">
+        <%= link_to notification_path(notify), class: "list-group-item list-group-item-action" do %> 
+            <% if !notify.is_readed %>
+                <span class="badge badge-danger"> new </span>
+            <% end %>
+            <%=notify.content %> 
+        <% end %>
+    </ul>
 <% end %>

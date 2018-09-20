@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920220657) do
+ActiveRecord::Schema.define(version: 20180920230054) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180920220657) do
     t.string "notifiable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_readed", default: false
   end
 
   create_table "numberofdays", force: :cascade do |t|

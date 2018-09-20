@@ -5,7 +5,7 @@
             <div class="col-md-3">      
                         
                 <div><%= @plan.name %> <span class="badge badge-info"><%= @plan.group_type %></span></div>
-                <div>  <%= @plan.start_date %> ~ <%= @plan.end_date %> </div>
+                <div>  <%= @plan.start_date %> ~ <%= @plan.end_date %> <%= link_to "加入google 日曆" , @google_link, target: "_blank", class: "btn btn-info"%></div>
                 <div> <span class="badge badge-light"> <%= @plan.hiking.name %> </span> </div>
                 <div>
                         由 <b> <%= @plan.owner.name %> </b> 主辦 

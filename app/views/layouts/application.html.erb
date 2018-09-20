@@ -33,7 +33,7 @@
                 <% else %>
                  <li class="nav-item"> <%= link_to wishes_path, class:"nav-link" do%> 願望 <% end %></li>
                 <li class="nav-item"> <%= link_to plans_path, class:"nav-link" do%>  計畫 <% end %></li>
-                <li class="nav-item"> <%= link_to notifications_path, class:"nav-link" do %> 通知 <% if current_user.notifications.count > 0 %> <span class="badge badge-danger"> <%= current_user.notifications.count %></span>  <% end %> <% end %> </li>
+                <li class="nav-item"> <%= link_to notifications_path, class:"nav-link" do %> 通知 <% if current_user.unread_notify_nums > 0 %> <span class="badge badge-danger"> <%= current_user.unread_notify_nums %></span>  <% end %> <% end %> </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     

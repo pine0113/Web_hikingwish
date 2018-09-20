@@ -70,7 +70,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index, :show]
   resources :tags, only: [:show]
 
   post 'pages' => 'pages#create'

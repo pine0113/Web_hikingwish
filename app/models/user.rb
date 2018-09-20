@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   has_many :plans, :class_name => 'Plan', :foreign_key => 'owner_id'
+
   has_many :joins, class_name: 'PlanMember', foreign_key: 'user_id'
   has_many :joined_plans, through: :joins, source: :plan
 
@@ -25,6 +26,10 @@ class User < ApplicationRecord
 
   def admin?
     self.role == "admin"
+  end
+
+  def unread_notify_nums
+     self.notifications.where(is_readed: false).count
   end
 
 
