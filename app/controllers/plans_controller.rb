@@ -20,6 +20,16 @@ class PlansController < ApplicationController
     @plan = Plan.new
   end
 
+  def show
+
+    event_name = plan.name.gsub(' ', '+')
+    start_date = plan.start_date.rfc3339.delete('-').delete(":")[0..13]+"Z"
+    end_date = plan.end_date.rfc3339.delete('-').delete(":")[0..13]+"Z"
+    descript = plan.intro.gsub(' ', '+')
+
+    @google_link = "https://www.google.com/calendar/render?action=TEMPLATE&text=#{event_name}&dates=#{start_date}/#{end_date}&details=#{descript}&sf=true&output=xml"
+  end
+
   def create
     @plan = Plan.new(plan_params)
     @plan.owner = current_user
