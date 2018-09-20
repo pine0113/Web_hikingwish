@@ -60,8 +60,9 @@ class WishesController < ApplicationController
   def make_plan
     @plan = Plan.new(name: @wish.name,
                      hiking: @wish.hiking,
-                     day: @wish.day,
+                     numberofday_id: @wish.numberofday_id,
                      intro: @wish.description,
+                     level: @wish.level,
                      owner_id: current_user.id)
     if @plan.save
       flash[:notice] = '計畫已成功建立'
