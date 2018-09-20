@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920090906) do
+ActiveRecord::Schema.define(version: 20180920220131) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -88,14 +88,14 @@ ActiveRecord::Schema.define(version: 20180920090906) do
     t.integer "budget_top"
     t.integer "budget_final"
     t.integer "level"
-    t.integer "numberofday_id", default: 10
+    t.integer "day"
     t.integer "miles"
     t.text "intro"
     t.integer "join_count"
     t.integer "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "hiking_id", default: 1
+    t.integer "hiking_id"
     t.string "type"
     t.string "food_type"
     t.text "food_info"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20180920090906) do
     t.string "lock_status"
     t.text "schedule"
     t.string "group_type"
+    t.integer "numberofday_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -170,8 +171,8 @@ ActiveRecord::Schema.define(version: 20180920090906) do
     t.datetime "updated_at", null: false
     t.integer "level", default: 0
     t.text "description"
-    t.integer "numberofday_id", default: 10
-    t.integer "hiking_id", default: 1
+    t.integer "day"
+    t.integer "hiking_id"
     t.string "image"
   end
 
