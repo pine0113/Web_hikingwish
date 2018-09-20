@@ -6,6 +6,7 @@
                 <span class="badge badge-danger"> new </span>
             <% end %>
             <%=notify.content %> 
+            <small class="time-tag"><%=time_ago_in_words(notify.created_at) %> </small>
         <% end %>
     </ul>
 <% end %>
