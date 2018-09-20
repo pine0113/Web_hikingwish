@@ -13,5 +13,7 @@ class AddPlanDefaultValue < ActiveRecord::Migration[5.1]
     change_column :plans, :group_type, :string, :default => "未定"
     change_column :plans, :publish_status, :string, :default => "公開"
     change_column :plans, :numberofday_id, :integer, :default => 1
+    change_column :plans, :start_date, :date, default: Time.now
+    change_column :plans, :end_date, :date, default: Time.now
   end
 end
