@@ -25,7 +25,7 @@
   <% @hikings.each do |hiking| %>
     <div class="plan">
         <div class="plan_iamge">
-            <img src="https://fakeimg.pl/200x150/">
+            <%= image_tag hiking.image, width: "200px", hight: "150px" %>
         </div>
         <div class="plan_info">
             <div> <%= hiking.name %> </div>
