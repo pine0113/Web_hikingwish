@@ -9,7 +9,7 @@ class CreatePlans < ActiveRecord::Migration[5.1]
       t.integer :budget_top
       t.integer :budget_final
       t.integer :level
-      t.integer :day
+      t.integer :numberofday_id, default: 10
       t.integer :miles
       t.text    :intro
       t.integer :join_count

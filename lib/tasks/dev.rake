@@ -1,6 +1,7 @@
 namespace :dev do
 
-  task all: [:fake_wishes,:fake_plans,]
+
+  task all: [:fake_wishes, :fake_plans]
 
 
   task fake_wishes: :environment do
@@ -14,7 +15,7 @@ namespace :dev do
         end_date: endday,
         user_id: User.all.sample.id,
         level: rand(1...5),
-        day: rand(5),
+        numberofday_id: rand(1...10),
         budget_bottom: rand(5000),
         budget_top: rand(5000...10000),
         hiking_id: Hiking.all.sample.id,
@@ -41,7 +42,7 @@ namespace :dev do
         end_date: endday,
         owner_id: User.all.sample.id,
         level: rand(1...5),
-        day: rand(1...5),
+        numberofday_id: rand(1...10),
         hiking_id: Hiking.all.sample.id,
         budget_bottom: rand(5000),
         budget_top: rand(5000...10000)
