@@ -119,10 +119,8 @@
 </div>
 
 <hr>
-<label>參考路線 <button class="btn btn-light"> 重設為範本預設值 </button></label>
+<label>參考路線 <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %>  <button class="btn btn-light"> 重設為範本預設值 </button></label>
 <div>
-  武陵二秀 - 桃山喀拉業 兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
- 
    <span class="badge badge-light"> 中等難度 </span>  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
 
 <br>
