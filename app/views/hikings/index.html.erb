@@ -31,8 +31,12 @@
             <div> <%= hiking.name %> </div>
             <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> <%= hiking.day %> 兩天兩夜 </span> </div>
             <div> <i class="fas fa-bolt"></i>  <%= hiking.level %><span class="badge badge-light"> 中等難度 </span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <div> <span class="badge badge-light">百岳路線</span> <span class="badge badge-light">過夜行程</span>   </div>
-            <div> <span class="badge badge-light">雪山山系</span> </div>
+            <div> <%= link_to list_cate_path(hiking.cate) do %> <span class="badge badge-light"><%= hiking.cate.name %> </span> <% end %>
+                   <% if hiking.day <= 2 %> <%= link_to cates_single_path do %> <span class="badge badge-light">單日行程</span>  <% end %> <% end %> 
+                   <% if hiking.day >3 && hiking.day <5 %><%= link_to cates_overnight_path do %>  <span class="badge badge-light">過夜行程</span> <% end %>  <% end %>   
+                   <% if hiking.day > 5 %> <%= link_to cates_long_path do %>  <span class="badge badge-light">長程縱走</span>  <% end %> <% end %>   
+            </div>
+            
         </div>
         <div class="plan_descript">
             <div> 

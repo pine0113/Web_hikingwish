@@ -1,6 +1,3 @@
 <% @plans.each do |plan| %>
-      <%= plan.name %>
-      <%= plan.hiking.cate.name %>
-      <%= plan.day %>
-      <br>
-    <% end %>
+  <%= render :partial => "shared/plan_card", :locals => { :plan => plan } %>
+<% end %>
