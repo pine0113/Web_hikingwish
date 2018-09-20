@@ -121,9 +121,14 @@
 <hr>
 <label>參考路線 <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %>  <button class="btn btn-light"> 重設為範本預設值 </button></label>
 <div>
-   <span class="badge badge-light"> 難度 </span>  <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-
+    <span class="badge badge-light"> 難度 </span> 
+    <%  (0..plan.level-1).each do |i| %>
+        <i class="fas fa-star"></i>
+    <% end %>
+    <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
+</div>
 <br>
+<div>
 <label>日程表</label>
 <%= f.text_area :schedule, class: "form-control bg-light" %>
 </div>

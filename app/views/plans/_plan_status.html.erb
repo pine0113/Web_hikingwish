@@ -23,8 +23,10 @@
                 </div>
 
                 <div> 
-                    <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
-                     <%= @plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-bolt"></i> <span class="badge badge-light"> 難度 </span>
+                    <%  (0..plan.level-1).each do |i| %>
+                        <i class="fas fa-star"></i>
+                    <% end %>
                 </div>
                 <div>
                     <% if @plan.budget_final.nil? %><span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用 尚未決定</span> 
