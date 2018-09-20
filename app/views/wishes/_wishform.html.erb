@@ -3,22 +3,15 @@
     <div class="col-sm-8 col-md-8">
       <%= form_for  [@wish] do |f| %>
       <div class="form-group">
-        
         <%= f.text_field :name , class: "form-control" %>
       </div>
-
       <div class="form-group row">
         <div class="col-sm-5">
           <%= image_tag @wish.image, width: "150px"  if @wish.image %>
           <%= f.file_field :image, class: "form-control" %>
         </div>
       </div>
-      
-      <div class="form-group">
-        <label>難度</label>
-        <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
-      </div>
-      
+       
       <label>時間區間</label>
       <div class="form-group row"> 
         <div class="col-sm-4 form-group">
@@ -54,10 +47,13 @@
 
          兩天兩夜 <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
        
-        <span class="badge badge-light"> 中等難度 </span>
-        <% #(0..@wish.level-1).each do |i| %>
-          <i class="fas fa-star"></i>
-        <% #end %>
+         <div class="form-group">
+          <span class="badge badge-light"> 難度 </span>
+          <% (0..@wish.level-1).each do |i| %>
+            <i class="fas fa-star"></i>
+          <% end %>
+          <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
+        </div>
       </div>
 
 

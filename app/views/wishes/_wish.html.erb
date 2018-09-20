@@ -13,10 +13,10 @@
             <% end %>
             
             <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> 兩天兩夜 </span> </div>
-            <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span>
-                <%  #(0..wish.level-1).each do |i| %>
+            <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 難度 </span>
+                <%  (0..wish.level-1).each do |i| %>
                     <i class="fas fa-star"></i>
-                <% #end %>
+                <% end %>
             </div>
         </div>
         <div class="plan_descript">
