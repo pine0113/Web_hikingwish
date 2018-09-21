@@ -1,0 +1,63 @@
+<div class="hiking">
+        <div class="hiking_iamge">
+            <%= image_tag hiking.image, width: "200px", hight: "150px" %>
+        </div>
+        <div class="hiking_info">
+            <h4> <%= hiking.name %> </h4>
+            <div> 
+                <i class="far fa-calendar-alt"></i>
+                <span class="badge badge-light"> 
+                    <% case hiking.day
+                        when 0 %> 單日行程
+                    <%  when 1 %> 一天一夜
+                    <%  when 2 %> 兩天一夜
+                    <%  when 3 %> 兩天兩夜
+                    <%  when 4 %> 三天兩夜
+                    <%  when 5 %> 三天三夜
+                    <%  when 6 %> 四天三夜
+                    <%  when 7 %> 四天四夜
+                    <%  when 8 %> 五天四夜
+                    <%  when 9 %> 五天五夜
+                    <%  else %> 未定
+                    <% end %> 
+                </span> 
+            </div>
+            <div> 
+                <i class="fas fa-bolt"></i>  
+                     <span class="badge badge-light">
+                        <% case hiking.level
+                            when 0 %> 超低難度
+                        <%  when 1 %> 低難度
+                        <%  when 2 %> 中低難度
+                        <%  when 3 %> 中等難度
+                        <%  when 4 %> 中高難度
+                        <%  when 5 %> 高難度
+                            <% end %>
+                     </span> 
+
+                    <% 0..hiking.level do %>
+                    <i class="fas fa-star"></i>
+                    <% end %>
+                </div>
+            <div> <%= link_to list_cate_path(hiking.cate) do %> <span class="badge badge-light"><%= hiking.cate.name %> </span> <% end %>
+                   <% if hiking.day <= 2 %> <%= link_to cates_single_path do %> <span class="badge badge-light">單日行程</span>  <% end %> <% end %> 
+                   <% if hiking.day >3 && hiking.day <5 %><%= link_to cates_overnight_path do %>  <span class="badge badge-light">過夜行程</span> <% end %>  <% end %>   
+                   <% if hiking.day > 5 %> <%= link_to cates_long_path do %>  <span class="badge badge-light">長程縱走</span>  <% end %> <% end %>   
+            </div>
+            
+        </div>
+        <div class="hiking_descript">
+            <div> 
+              <%= hiking.intro %>      
+            <hr>
+            </div>
+
+
+        </div>
+        <div class="button-group"> 
+            <%= link_to hiking_path(hiking), class: "btn btn-light" do %><i class="far fa-eye"></i> 詳情  <% end %>
+            <%= link_to add_to_wish_hiking_path(hiking), class: "btn btn-outline-danger", method: "post" do %> <i class="fas fa-heart"></i> 加入願望 <% end %>
+            <%= link_to plans_hiking_path(hiking), class: "btn btn-outline-info" do %> <i class="fas fa-location-arrow"></i>   相關計畫 <span class="badge badge-info"> <%= hiking.plans.count %></span> <% end %>          
+        </div>
+        <div class="clearfix"></div>
+</div>

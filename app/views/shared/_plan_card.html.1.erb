@@ -3,20 +3,21 @@
             <%= image_tag plan.image, width: "200px", hight: "150px" %>
         </div>
         <div class="plan_info">
-          
+            <div> <span class="badge badge-info"><%= plan.group_type %></span></div>
             
-            <h4><%= plan.name %>  <span class="badge badge-light"><%= plan.hiking.name %> <%= plan.numberofday.name %></span> </h4>
-            <div>    <i class="far fa-calendar-alt"></i> <%= plan.start_date %> ~ <%= plan.end_date %> </div>
+            <div><%= plan.name %></div>
+            <div>  <%= plan.start_date %> ~ <%= plan.end_date %> </div>
             <% unless plan.hiking.nil? %>
-            <div> 
-             
-              
+            <div>  <span class="badge badge-light"><%= plan.hiking.name %></span> </div>
+            <% end %>
+            <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> <%= plan.numberofday.name %></span> </div>
+            <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 中等難度 </span> <%= plan.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
            
-            </div>
-            <hr>
+           
+        </div>
+        <div class="plan_descript">
+            <div>由 <a> <b> <%= plan.owner.name %> </b></a> 主辦 <% if plan.owner == current_user %>  <span class="badge badge-info">你是主辦人</span> <%end%> </div>
             <div>
-              
-                
                  <span class="badge badge-light"> 收費模式 </span> <span class="badge badge-secondary">  <%= plan.money_type || "未定" %> </span> 
                   <% if plan.budget_final.nil? %>
                       <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用</span>  尚未決定 
@@ -28,30 +29,34 @@
                   <% else %>
 
                     <span class="badge badge-light"> <i class="fas fa-dollar-sign"></i> 費用 </span> 每人 <%= plan.budget_final %> 元 <br>
+                    <span class="badge badge-secondary"> 含交通、保險、食宿 </span> 
+
                   <% end %>
             </div>
+            
+            <div> 
+              <span class="badge badge-light"> 車行模式 </span> 
+                  <span class="badge badge-secondary"><%=  plan.car_type||"未定" %></span>  | 
 
+              <span class="badge badge-light"> 餐飲模式 </span>
+                  <span class="badge badge-secondary"><%=  plan.food_type||"未定" %></span>
+            </div>
 
-            <% end %>
-        
             <hr>
-             <div>
-               <span class="badge badge-light"> 隊伍型態 </span>
-               <span class="badge badge-info"><%= plan.group_type %></span>
-                ｜
-                <% unless plan.owner == current_user %>  
-                  由 <b> <%= plan.owner.name %> </b> 主辦 
-                <% else %>
-                   <b> 你是主辦人 </b>
-                <%end%>
+            <% if plan.owner == current_user %>
+            
+                <%= render partial: 'shared/plan_member_list', locals: { plan: plan } %>
+           
+            <% else %>
+
+              <%= plan.intro %>
                 
-             </div>
+            <% end %>
 
         </div>
-
         <div class="button-group"> 
-          
           <%= link_to plan_path(plan), class: "btn btn-light" do %>  <i class="far fa-eye"></i> 詳情 <%end %>
+
           <% if plan.user_status(current_user) == "owner" %> 
             <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <% end %> 
             <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> <% end %> 

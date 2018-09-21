@@ -104,8 +104,45 @@ font-size:20px;
 }
 
 
-/* */
+/* hiking */
 
+
+.hiking{
+    padding:10px;
+    border: 1px #ccc solid;
+    border-radius:10px;
+    margin: 10px;
+}
+
+
+.hiking_iamge
+{
+    float:left;
+    width: 200px;
+    height: 150px;
+
+}
+
+
+
+.hiking_descript
+{
+    float:left;
+    width: 450px;
+    font-size: 10px;
+}
+
+
+.hiking_info
+{
+    float:left;
+    width: 200px;
+    padding-left:10px;
+    font-size: 14px;
+
+
+}
+/* plan */
 
 
 
@@ -120,33 +157,35 @@ font-size:20px;
     height:172 px;
 }
 
-.plan_iamge, .plan_info, .plan_descript
+.plan_iamge
 {
+    width: 200px;
+    height: 150px;
     float:left;
 }
 
-.plan_info
-{
-    width: 200px;
-    padding-left:10px;
-    font-size: 14px;
 
-}
 
 .plan_descript
 {
+    float:left;
     width: 450px;
     font-size: 10px;
-
 }
 
-.plan_action
+
+.plan_info
 {
-
+    width: 600px;
+    padding-left:10px;
+    font-size: 14px;
+    float:left;
 
 }
 
 
+
+/* wish */
 
 .wish{
 
@@ -230,3 +269,4 @@ font-size:20px;
 {
     color: gray;
 }
+

@@ -3,21 +3,13 @@
             <%= image_tag wish.image, width: "200px", hight: "150px" %>
         </div>
         <div class="wish_info">
-            
-            <div> <span class="badge badge-info">自組隊伍</span> <span class="badge badge-info">商業隊伍</span></div>
-            <div> <%=wish.name %> </div>
+            <h4> <%=wish.name %> </h4>
+            <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
             <div><% if wish.user != current_user %><span class="badge badge-info"><a> <b> <%= wish.user.name %> </b></a></span>  的願望 <%end%></div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
              <% unless wish.hiking.nil? %>
-            <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
+
             <% end %>
-            
-            <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> <%= wish.numberofday.name %> </span> </div>
-            <div> <i class="fas fa-bolt"></i> <span class="badge badge-light"> 難度 </span>
-                <%  (0..wish.level-1).each do |i| %>
-                    <i class="fas fa-star"></i>
-                <% end %>
-            </div>
         </div>
         <div class="plan_descript">
             <div> 
@@ -25,7 +17,7 @@
                   <span class="badge badge-light">收費模式</span>  <span class="badge badge-success">皆可</span> <span class="badge badge-secondary">預先收費，不退不補</span>  <span class="badge badge-secondary">預先收費，多退少補</span>   <span class="badge badge-secondary">結算後均攤</span><br>
                   <hr>
                   <span class="badge badge-light">車行模式</span> <span class="badge badge-success">皆可</span>  <span class="badge badge-secondary">共乘 油錢分擔</span>  <span class="badge badge-secondary">包車</span>  <span class="badge badge-secondary">大眾運輸</span><br>
-                  <span class="badge badge-light">餐飲模式</span> <span class="badge badge-success">皆可</span>   <span class="badge badge-secondary">公糧公炊 費用分擔</span>   <span class="badge badge-secondary">包餐</span> <hr>
+                  <span class="badge badge-light">餐飲模式</span> <span class="badge badge-success">皆可</span>   <span class="badge badge-secondary">公糧公炊 費用分擔</span>   <span class="badge badge-secondary">包餐</span> 
             </div>
 
         </div>
@@ -34,7 +26,7 @@
                 <% if wish.user == current_user %>
                     <%= link_to edit_wish_path(wish) do %><button class="btn btn-light"> <i class="fas fa-edit"></i> 修改 </button><% end %>
                     <%= link_to search_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-clipboard-list"></i> 相關計畫 </button><% end %>
-                    <%= link_to make_plan_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 新計畫 </button><% end %>
+                    <%= link_to make_plan_wish_path(wish) do %><button class="btn btn-outline-info"> <i class="fas fa-location-arrow"></i> 建立計畫 </button><% end %>
                 <% else %>
                     <%= link_to plan_member_apply_path(@plan) do %><button class="btn btn-outline-info"> <i class="fas fa-envelope-open-text"></i> 發送邀請</button><% end %>
                 <% end %>

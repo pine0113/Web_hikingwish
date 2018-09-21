@@ -23,38 +23,6 @@
 </h5>
 
   <% @hikings.each do |hiking| %>
-    <div class="plan">
-        <div class="plan_iamge">
-            <%= image_tag hiking.image, width: "200px", hight: "150px" %>
-        </div>
-        <div class="plan_info">
-            <div> <%= hiking.name %> </div>
-            <div> <i class="far fa-calendar-alt"></i><span class="badge badge-light"> <%= hiking.day %> 兩天兩夜 </span> </div>
-            <div> <i class="fas fa-bolt"></i>  <%= hiking.level %><span class="badge badge-light"> 中等難度 </span> <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <div> <%= link_to list_cate_path(hiking.cate) do %> <span class="badge badge-light"><%= hiking.cate.name %> </span> <% end %>
-                   <% if hiking.day <= 2 %> <%= link_to cates_single_path do %> <span class="badge badge-light">單日行程</span>  <% end %> <% end %> 
-                   <% if hiking.day >3 && hiking.day <5 %><%= link_to cates_overnight_path do %>  <span class="badge badge-light">過夜行程</span> <% end %>  <% end %>   
-                   <% if hiking.day > 5 %> <%= link_to cates_long_path do %>  <span class="badge badge-light">長程縱走</span>  <% end %> <% end %>   
-            </div>
-            
-        </div>
-        <div class="plan_descript">
-            <div> 
-              <%= hiking.intro %>      
-            <hr>
-            </div>
-            <div>
-            <h6>相關路線<span class="badge badge-light">武陵四秀</span><span class="badge badge-light">武陵二秀 - 品田池有 </span></h6>
-                
-            </div>
-
-        </div>
-        <div class="button-group"> 
-            <%= link_to hiking_path(hiking), class: "btn btn-light" do %><i class="far fa-eye"></i> 詳情  <% end %>
-            <%= link_to add_to_wish_hiking_path(hiking), class: "btn btn-outline-danger", method: "post" do %> <i class="fas fa-heart"></i> 加入願望 <% end %>
-            <%= link_to plans_hiking_path(hiking), class: "btn btn-outline-info" do %> <i class="fas fa-location-arrow"></i>   相關計畫 <span class="badge badge-info"> <%= hiking.plans.count %></span> <% end %>          
-        </div>
-        <div class="clearfix"></div>
-    </div>
-
+    
+  <%= render :partial => "hiking_card", :locals => { :hiking => hiking } %>
  <% end %>

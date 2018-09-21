@@ -1,0 +1,7 @@
+<% unless @messenge.nil? %>
+    <% @messenge.each do |m| %>
+
+        <%= m.user.name %> : <% m.content%>
+
+    <% end %> 
+<% end %>

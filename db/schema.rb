@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180920230054) do
+ActiveRecord::Schema.define(version: 20180921103229) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "chat_messenges", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "content"
+    t.integer "chatable_id"
+    t.string "chatable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,6 +38,11 @@ ActiveRecord::Schema.define(version: 20180920230054) do
     t.datetime "updated_at", null: false
     t.integer "cate_id"
     t.text "schedule"
+  end
+
+  create_table "messenges", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "notifications", force: :cascade do |t|

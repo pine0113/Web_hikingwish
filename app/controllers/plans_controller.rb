@@ -25,8 +25,11 @@ class PlansController < ApplicationController
     event_name = @plan.name.gsub(' ', '+')
     start_date = @plan.start_date.rfc3339.delete('-').delete(":")[0..14]+"Z"
     end_date = @plan.end_date.rfc3339.delete('-').delete(":")[0..14]+"Z"
-    descript = @plan.intro.gsub(' ', '+')
-
+    
+    unless @plan.intro.nil?
+      descript = @plan.intro.gsub(' ', '+')
+    end
+    
     @google_link = "https://www.google.com/calendar/render?action=TEMPLATE&text=#{event_name}&dates=#{start_date}/#{end_date}"
     if descript.nil? 
       @google_link += "&details=#{descript}&sf=true&output=xml"
