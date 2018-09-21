@@ -35,9 +35,9 @@
                             <% end %>
                      </span> 
 
-                    <% 0..hiking.level do %>
-                    <i class="fas fa-star"></i>
-                    <% end %>
+                    <% unless hiking.level.nil? %>
+                        <% hiking.level.times {%><i class="fas fa-star"></i> <% }%>
+                     <% end %>
                 </div>
             <div> <%= link_to list_cate_path(hiking.cate) do %> <span class="badge badge-light"><%= hiking.cate.name %> </span> <% end %>
                    <% if hiking.day <= 2 %> <%= link_to cates_single_path do %> <span class="badge badge-light">單日行程</span>  <% end %> <% end %> 

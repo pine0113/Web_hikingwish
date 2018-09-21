@@ -4,7 +4,7 @@
             </div>
             <div class="col-md-3">      
                         
-                <div><%= @wish.name %> ></div>
+                <div><%= @wish.name %></div>
                 <div>  <%= @wish.start_date %> ~ <%= @wish.end_date %> </div>
                 <% unless @wish.hiking.nil?%>
                     <div> <span class="badge badge-light"> <%= @wish.hiking.name %> </span> </div>
@@ -21,8 +21,10 @@
                 </div>
 
                 <div> 
-                    <i class="fas fa-bolt"></i> <span class="badge badge-light"> 難度 </span>
-                     <%= @wish.level %><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                     <i class="fas fa-bolt"></i> <span class="badge badge-light"> 難度 </span>
+                    <% unless @wish.level.nil? %>
+                        <% @wish.level.times {%><i class="fas fa-star"></i> <% }%>
+                     <% end %>
                 </div>
                 <div>
                     <i class="fas fa-dollar"></i> <span class="badge badge-light"> 預算 </span>
