@@ -4,6 +4,8 @@
         </div>
         <div class="wish_info">
             <h4> <%=wish.name %> </h4>
+            <h4> <%= wish.numberofday_id %> </h4>
+            <h4> <%= howmanydays(wish.numberofday_id) %> </h4>
             <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
             <div><% if wish.user != current_user %><span class="badge badge-info"><a> <b> <%= wish.user.name %> </b></a></span>  的願望 <%end%></div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
