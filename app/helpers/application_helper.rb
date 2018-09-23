@@ -5,26 +5,33 @@ module ApplicationHelper
 
   def howmanydays(numberofday_id)
     if numberofday_id == 1
-        "1helper"
+        "一天一夜"
       elsif numberofday_id == 2
-        "2helper"
+        "兩天一夜"
       elsif numberofday_id == 3
-        "3helper"
+        "兩天兩夜"
       elsif numberofday_id == 4
-        "4helper"
+        "三天兩夜"
       elsif numberofday_id == 5
-        "5helper"
+        "三天三夜"
       elsif numberofday_id == 6
-        "6helper"
+        "四天三夜"
       elsif numberofday_id == 7
-        "7helper"
+        "四天四夜"
       elsif numberofday_id == 8
-        "8helper"
+        "五天四夜"
       elsif numberofday_id == 9
-        "9helper"
+        "五天四夜"
       else
-        "10helper"
+        "不限"
     end
   end
+
+  def howmanydays_select
+    [["一天一夜", "1"],["兩天一夜", "2"],["兩天兩夜", "3"],["三天兩夜", "4"],
+      ["三天三夜", "5"],["四天三夜", "6"],["四天四夜", "7"],["五天四夜", "8"],["五天四夜", "9"],
+      ["不限", "10"]]
+  end
+
 end
 

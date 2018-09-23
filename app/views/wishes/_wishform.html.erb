@@ -1,7 +1,8 @@
   <div class="form container">
 
     <div class="col-sm-8 col-md-8">
-      <%= form_for  [@wish] do |f| %>
+      
+      <%= form_for @wish, :builder => HikingWishFormBuilder do |f| %>
       <div class="form-group">
         <%= f.text_field :name , class: "form-control" %>
       </div>
@@ -47,7 +48,8 @@
         
         <div class="form-group">
           <label>天數：</label>
-          <%= f.collection_select( :numberofday_id, Numberofday.all, :id, :name, {:prompt => true}) %>
+          
+          <%= f.select :numberofday_id, howmanydays_select, {}, prompt: 'Select One' %>
         </div>
          
          <div class="form-group">
