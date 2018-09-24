@@ -1,5 +1,4 @@
 <div class="container"> 
  <h3> 編輯願望 </h3>
   <%= render :partial => "wishform", :locals => { :wish => @wish } %>
-  <%= link_to wish_path(@wish), method: :delete do %><button class="btn btn-info form-group"> 刪除 </button><% end %>  
 </div>
