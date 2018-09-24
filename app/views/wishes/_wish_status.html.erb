@@ -11,13 +11,19 @@
                 <%end%>
                 
                 <hr>
-            
+                <div class="plan_descript">
+                    <div> 
+                          <span class="badge badge-light">收費模式</span>  <span class="badge badge-info"><%= fee_mode_show(wish.fee_mode) %></span>
+                          <span class="badge badge-light">車行模式</span> <span class="badge badge-info"><%= transport_mode_show(wish.transport_mode) %></span> 
+                          <span class="badge badge-light">餐飲模式</span> <span class="badge badge-info"><%= food_mode_show(wish.food_mode) %></span>             
+                    </div>
+                </div>            
                 
             </div>
             <div class="col-md-3">   
                 <div> 
                     <i class="far fa-calendar-alt"></i>
-                    <span class="badge badge-light"> 兩天兩夜 <%= @wish.numberofday.name %></span> 
+                    <span class="badge badge-light"> <%= @wish.numberofday.name %></span> 
                 </div>
 
                 <div> 
