@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:show, :edit, :update, :destroy, :prepare, :prepare_team, :invite_member, :search]
+  before_action :set_plan, :authenticate_user!, :only =>  [:show, :edit, :update, :destroy, :prepare, :prepare_team, :invite_member, :search, :apply]
 
   def index
     if user_signed_in?

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   layout "landing", only: :landing
-  before_action :page_params, :only => [:create]
+  before_action :page_params, :authenticate_user!, :only => [:create]
 
   def landing
     @page = Page.new

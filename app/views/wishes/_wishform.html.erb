@@ -1,6 +1,6 @@
   <div class="form container">
 
-    <div class="col-sm-8 col-md-8">
+    <div class="col-sm-10 col-md-10">
       
       <%= form_for @wish, :builder => HikingWishFormBuilder do |f| %>
       <div class="form-group">
@@ -40,34 +40,30 @@
         
       <hr>
       <div>
-        
+        <h4><span class="badge badge-pill badge-primary">主要選項</span></h4><br>
         <div class="form-group">
           <label>參考路線：</label>
-          <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %>
-        </div>
-        
-        <div class="form-group">
-          <label>天數：</label>
-          
-          <%= f.select :numberofday_id, howmanydays_select, {}, prompt: 'Select One' %>
-        </div>
-         
-         <div class="form-group">
-          <span class="badge badge-light"> 難度 </span>
+          <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %> &nbsp 
+          <label>天數：</label>          
+          <%= f.select :numberofday_id, howmanydays_select, {}, prompt: '選擇天數' %> &nbsp 
+          <label>難度：</label>    
           <% (0..@wish.level-1).each do |i| %>
             <i class="fas fa-star"></i>
           <% end %>
-          <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>
-        </div>
-        <button class="btn btn-info"> 更換 </button> <button class="btn btn-light"> 清除 </button>  <br>
+          <%= f.select :level, ["請選擇難度", 1, 2, 3, 4, 5], class: "form-control" %>       
+        </div>    
       </div>
-
-
       <hr>
-      <label>組團方式</label>
       <div>
-        <p>之後再加</p>
-      </div>
+        <h4><span class="badge badge-pill badge-secondary">次要選項</span></h4><br>
+        <div class="form-group">
+          <label>收費模式：</label>
+          <%= f.select :fee_mode, fee_mode_select, {}, prompt: '選擇收費' %> &nbsp 
+          <label>車行模式：</label>          
+          <%= f.select :transport_mode, transport_mode_select, {}, prompt: '選擇交通' %>&nbsp 
+          <label>餐飲模式：</label>          
+          <%= f.select :food_mode, food_mode_select, {}, prompt: '選擇餐飲' %> &nbsp 
+        </div>
       <hr>
       <label>預算區間</label>
       <div class="form-group row"> 
@@ -80,7 +76,8 @@
         </div>
       </div>  
         <%= f.submit class: "btn btn-info form-group", value: "存檔" %> 
-
+        <%= link_to wish_path(@wish), method: :delete do %><button class="btn btn-info form-group"> 刪除 </button><% end %>  
+        
       <% end %>
       <br>
 

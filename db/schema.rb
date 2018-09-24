@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180921103229) do
+ActiveRecord::Schema.define(version: 20180924133310) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -116,6 +116,9 @@ ActiveRecord::Schema.define(version: 20180921103229) do
     t.string "lock_status"
     t.text "schedule"
     t.string "group_type", default: "未定"
+    t.integer "transport_mode", default: 1
+    t.integer "fee_mode", default: 1
+    t.integer "food_mode", default: 1
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -183,6 +186,9 @@ ActiveRecord::Schema.define(version: 20180921103229) do
     t.integer "numberofday_id", default: 10
     t.integer "hiking_id", default: 1
     t.string "image"
+    t.integer "transport_mode", default: 1
+    t.integer "fee_mode", default: 1
+    t.integer "food_mode", default: 1
   end
 
 end

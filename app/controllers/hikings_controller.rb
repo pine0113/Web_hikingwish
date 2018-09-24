@@ -1,4 +1,5 @@
 class HikingsController < ApplicationController
+  before_action :authenticate_user!, :only => [:add_to_wish, ]
 
   def index
     @hikings = Hiking.all

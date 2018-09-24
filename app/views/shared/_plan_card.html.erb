@@ -16,8 +16,7 @@
             <hr>
             <div>
               
-                
-                 <span class="badge badge-light"> 收費模式 </span> <span class="badge badge-secondary">  <%= plan.money_type || "未定" %> </span> 
+                  <span class="badge badge-light">收費模式</span>  <span class="badge badge-success"><%= fee_mode_show(plan.fee_mode) %></span>                                    
                   <% if plan.budget_final.nil? %>
                       <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用</span>  尚未決定 
                       
@@ -31,7 +30,6 @@
                   <% end %>
             </div>
 
-
             <% end %>
 
              <div>
@@ -42,10 +40,8 @@
                   由 <b> <%= plan.owner.name %> </b> 主辦 
                 <% else %>
                    <b> 你是主辦人 </b>
-                <%end%>
-                
-             </div>
-
+                <%end%>                
+              </div>
         </div>
 
         <div class="button-group"> 
