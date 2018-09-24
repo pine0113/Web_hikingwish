@@ -19,6 +19,9 @@ namespace :dev do
         budget_bottom: rand(5000),
         budget_top: rand(5000...10000),
         hiking_id: Hiking.all.sample.id,
+        transport_mode: rand(1...4),
+        fee_mode: rand(1...4),
+        food_mode: rand(1...3)
       )
     end
 
@@ -45,7 +48,10 @@ namespace :dev do
         numberofday_id: rand(1...10),
         hiking_id: Hiking.all.sample.id,
         budget_bottom: rand(5000),
-        budget_top: rand(5000...10000)
+        budget_top: rand(5000...10000),
+        transport_mode: rand(1...3),
+        fee_mode: rand(1...3),
+        food_mode: rand(1...3)
       )
     end
 

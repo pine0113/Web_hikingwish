@@ -4,8 +4,8 @@
         </div>
         <div class="wish_info">
             <h4> <%=wish.name %> </h4>
-            <div> <span class="badge badge-light"><%= howmanydays(wish.numberofday_id) %></span>   </div>
-            <div> <span class="badge badge-light"><%= wish.hiking.name %></span>   </div>
+            <div> <h5><span class="badge badge-success"><%= wish.hiking.name %></span></h5>   </div>
+            <div> <span class="badge badge-secondary"><%= howmanydays(wish.numberofday_id) %></span>   </div>
             <div><% if wish.user != current_user %><span class="badge badge-info"><a> <b> <%= wish.user.name %> </b></a></span>  的願望 <%end%></div>
             <div> <%= wish.start_date %> ~ <%= wish.end_date %> </div>
              <% unless wish.hiking.nil? %>
@@ -15,12 +15,11 @@
         <div class="plan_descript">
             <div> 
                   <span class="badge badge-light"><i class="fas fa-dollar-sign"></i> 預算</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  <br>
-                  <span class="badge badge-light">收費模式</span>  <span class="badge badge-success">皆可</span> <span class="badge badge-secondary">預先收費，不退不補</span>  <span class="badge badge-secondary">預先收費，多退少補</span>   <span class="badge badge-secondary">結算後均攤</span><br>
+                  <span class="badge badge-light">收費模式</span>  <span class="badge badge-info"><%= fee_mode_show(wish.fee_mode) %></span><br>
                   <hr>
-                  <span class="badge badge-light">車行模式</span> <span class="badge badge-success">皆可</span>  <span class="badge badge-secondary">共乘 油錢分擔</span>  <span class="badge badge-secondary">包車</span>  <span class="badge badge-secondary">大眾運輸</span><br>
-                  <span class="badge badge-light">餐飲模式</span> <span class="badge badge-success">皆可</span>   <span class="badge badge-secondary">公糧公炊 費用分擔</span>   <span class="badge badge-secondary">包餐</span> 
+                  <span class="badge badge-light">車行模式</span> <span class="badge badge-info"><%= transport_mode_show(wish.transport_mode) %></span> 
+                  <span class="badge badge-light">餐飲模式</span> <span class="badge badge-info"><%= food_mode_show(wish.food_mode) %></span>             
             </div>
-
         </div>
         
             <div class="button-group"> 
