@@ -72,6 +72,8 @@ Rails.application.routes.draw do
 
   resources :notifications, only: [:index, :show]
   resources :tags, only: [:show]
+  resources :messenges, only: [:create]
+
 
   post 'pages' => 'pages#create'
   get 'pages/privacy' => 'pages#privacy'

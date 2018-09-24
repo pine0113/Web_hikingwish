@@ -2,6 +2,8 @@ class PlanOwnerInvitesController < ApplicationController
 
   def show
     set_invite
+    @messenge = @invite.messenges.build
+    @messenges = @invite.messenges.order("created_at DESC")
   end
 
   def approval

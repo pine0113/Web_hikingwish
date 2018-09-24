@@ -1,20 +1,8 @@
 class PlanMemberAppliesController < ApplicationController
 
-  def add_messenge
-    set_apply
-    messenge = @apply.messenge.build
-    messenge.user = current_user
-    if messenge.save
-    else
-      flash[:alert] = "add messenge was failed"
-    end
-    session[:return_to] ||= request.referer
-    redirect_to session[:return_to]
-
-  end
-
   def show
     set_apply
+    @messenge = @apply.messenges.build
     @messenges = @apply.messenges.order("created_at DESC")
   end
 

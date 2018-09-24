@@ -49,23 +49,50 @@
             <div class="col-md-3">   
 
                 <div class="button-group"> 
-                    <!-- User 是 plan member -->
-                    <% if @plan.owner = current_user %>
-                        <%= link_to edit_plan_path(@plan), class: "btn btn-light" do %> <i class="fas fa-edit"></i> 修改  <%end %>
-                        <%= link_to prepare_team_plan_path(@plan), class: "btn btn-outline-info" do %> 
-                         <i class="fas fa-toolbox"></i> 團隊準備 <span class="badge badge-danger">!</span> 
-                        <% end %>
-                    <% end %>
+                   
+                  <% if plan.user_status(current_user) == "owner" %> 
+                    
+                    <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> 
+                      <i class="fas fa-edit"></i> 修改  
+                    <% end %> 
 
-                    <% if @plan.members.include?(current_user) || @plan.owner = current_user %>
-                        <%= link_to prepare_plan_path(@plan), class: "btn btn-outline-info" do %>  
-                            <i class="fas fa-tshirt"></i> 個人準備 <span class="badge badge-info">ok</span>   
-                        <% end %>
-                    <% end %>
-                    <!-- User  不是 plan member -->
-                     <!-- 加入心願 -->
-                     <!-- 申請加入 -->
+                    <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  
+                      <i class="fas fa-toolbox"></i>  
+                      團隊準備 
+                      <!-- <span class="badge badge-danger">!</span>  若尚有未完成項目 -->
+                        <!-- <span class="badge badge-info">ok</span>  若皆完成 -->
+                      <% end %> 
+                  <% end %>
+                  
+                    <% if plan.is_member?(current_user) %>
+                      <%= link_to prepare_plan_path(plan), class: "btn btn-outline-info" do %>  
+                        <i class="fas fa-tshirt"></i> 個人準備 
+                          <!-- <span class="badge badge-danger">!</span>  若尚有未完成項目 -->
+                          <!-- <span class="badge badge-info">ok</span>  若皆完成 -->
+                      <% end %>
+                    <% else %>
+                      <% case plan.user_status(current_user)  
+                          when "owner" %> 
+                        
+                        <% when "applied" %>              
+                          <button class="btn btn-outline-info"> 申請中，等待審核 </button> <br>
+                          <%= link_to "與主辦人聊聊", plan_member_apply_path(plan.get_apply(current_user)), class: "btn btn-info" %> 
 
+                        <% when "invited" %> 
+                          <%= link_to approval_plan_owner_invite_path(plan.get_invite(current_user)), 
+                                      class: "btn btn-outline-info",
+                                      method: "post" do %> 
+                                                            接受邀請 
+                          <% end %>
+                        <% else %>  
+                          <%= link_to apply_plan_path(plan), 
+                                      class: "btn btn-outline-info",
+                                      method: "post" do %> 
+                                                            <i class="fas fa-location-arrow"></i> 申請加入 
+
+                        <% end  # when%> 
+                      <% end # plan.user_status end%> 
+                  <% end #if is_user end %>
 
                 </div>
 
