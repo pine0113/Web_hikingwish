@@ -33,5 +33,13 @@ class UserMailer < ApplicationMailer
          subject: "[登山許願池] 成功加入登山計畫！ #{plan.name} ")
   end
 
+  def notify_plan_lock(plan,user)
+    @plan = plan
+    @user = user
+    mail(to: @user.email,
+         subject: "[登山許願池] #{plan.name} 計畫已鎖定 ")
+  
+  end
+
 
 end

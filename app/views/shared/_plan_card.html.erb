@@ -45,16 +45,22 @@
         </div>
 
         <div class="button-group"> 
-          
+           
+
           <%= link_to plan_path(plan), class: "btn btn-light" do %>  
             <i class="far fa-eye"></i> 詳情 
           <%end %>
 
+          <% case  plan.lock_status
+          
+          when "開放報名" %>
           <% if plan.user_status(current_user) == "owner" %> 
             
-            <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> 
-              <i class="fas fa-edit"></i> 修改  
-            <% end %> 
+           
+              <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> 
+                <i class="fas fa-edit"></i> 修改  
+                <% end %> 
+          
 
             <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  
               <i class="fas fa-toolbox"></i>  
@@ -94,7 +100,11 @@
             <% end # plan.user_status end%> 
         <% end #if is_user end %>
 
-         
+           <% when "鎖定" %>
+                 <button class="btn btn-light"> 計畫已鎖定 </button>
+           <% when "已完成" %>
+                 <button class="btn btn-light"> 計畫已完成 </button>
+            <% end %>
 
         </div>
         <div class="clearfix"></div>

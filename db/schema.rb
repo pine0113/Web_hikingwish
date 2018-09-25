@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180924133310) do
+ActiveRecord::Schema.define(version: 20180925070440) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -92,13 +92,13 @@ ActiveRecord::Schema.define(version: 20180924133310) do
   create_table "plans", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.date "start_date", default: "2018-09-23"
-    t.date "end_date", default: "2018-09-23"
+    t.date "start_date", default: "2018-09-22"
+    t.date "end_date", default: "2018-09-22"
     t.integer "budget_bottom", default: 0
     t.integer "budget_top", default: 0
     t.integer "budget_final", default: 0
     t.integer "level", default: 0
-    t.integer "numberofday_id", default: 10
+    t.integer "numberofday_id", default: 1
     t.integer "miles", default: 0
     t.text "intro"
     t.integer "join_count"
@@ -113,12 +113,13 @@ ActiveRecord::Schema.define(version: 20180924133310) do
     t.text "car_info"
     t.string "money_type", default: "未定"
     t.string "publish_status", default: "公開"
-    t.string "lock_status"
+    t.string "lock_status", default: "開放報名"
     t.text "schedule"
     t.string "group_type", default: "未定"
     t.integer "transport_mode", default: 1
     t.integer "fee_mode", default: 1
     t.integer "food_mode", default: 1
+    t.integer "member_max", default: 4
   end
 
   create_table "taggings", force: :cascade do |t|

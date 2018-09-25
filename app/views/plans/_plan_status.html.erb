@@ -49,12 +49,21 @@
             <div class="col-md-3">   
 
                 <div class="button-group"> 
-                   
+                    <%= link_to plan_path(plan), class: "btn btn-light" do %>
+                      <i class="far fa-eye"></i> 詳情                
+                    <% end %>
+
                   <% if plan.user_status(current_user) == "owner" %> 
                     
-                    <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> 
-                      <i class="fas fa-edit"></i> 修改  
-                    <% end %> 
+                    <% case  plan.lock_status 
+                    
+                    when "開放報名"%>
+                      <%= link_to edit_plan_path(plan), class: "btn btn-light" do %> 
+                        <i class="fas fa-edit"></i> 修改  
+                      <% end %> 
+                    <% else %>
+                      <button class="btn btn-light"> 計畫<%= plan.lock_status%> </button>
+                    <% end %>
 
                     <%= link_to prepare_team_plan_path(plan), class: "btn btn-outline-info" do %>  
                       <i class="fas fa-toolbox"></i>  

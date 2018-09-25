@@ -1,5 +1,7 @@
 class PlansController < ApplicationController
-  before_action :set_plan, :authenticate_user!, :only =>  [:show, :edit, :update, :destroy, :prepare, :prepare_team, :invite_member, :search, :apply]
+  before_action :set_plan, :authenticate_user!, :only =>  [:show, :edit, :update, :destroy,
+                                                           :prepare, :prepare_team, 
+                                                          :invite_member, :search, :apply, :lock, :compelete]
 
   def index
     if user_signed_in?
@@ -18,6 +20,26 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+  end
+
+  def lock
+    @plan.lock_status = '鎖定'
+    if @plan.save
+      flash[:notice] = '計畫已鎖定'
+      @plan.members.each do |user|
+        UserMailer.plan_lock(@plan, user)
+      end
+
+      redirect_to plans_path
+    end
+  end
+
+  def compelete
+    @plan.lock_status = '已完成'
+    if @plan.save
+      flash[:notice] = '計畫已標註為完成'
+      redirect_to plans_path
+    end
   end
 
   def show

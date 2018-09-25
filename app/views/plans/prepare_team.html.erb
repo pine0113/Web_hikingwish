@@ -37,7 +37,16 @@
                     路況情報查詢 <span class="badge badge-success"> 已完成 </span><br>
                     氣象情報查詢 <span class="badge badge-success"> 已完成 </span><br>
                     公裝準備 <span class="badge badge-success"> 已完成 </span><br>
+                </div>
+                <div>
+                    <% case  @plan.lock_status 
+                        when "開放報名" %>
+                            <%= link_to "鎖定計畫", lock_plan_path(@plan), method: "post", class: "btn btn-danger" %>
+                    <%  when "鎖定" %>
+                            <%= link_to "計畫完成", compelete_plan_path(@plan), method: "post", class: "btn btn-danger" %>
+                    <%  when "完成" %>
 
+                    <% end %>
                 </div>
                 
         </div>
