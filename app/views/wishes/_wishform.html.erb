@@ -76,7 +76,10 @@
         </div>
       </div>  
         <%= f.submit class: "btn btn-info form-group", value: "存檔" %> 
+        
+        <% unless @wish.id.nil? %>
         <%= link_to wish_path(@wish), method: :delete do %><button class="btn btn-info form-group"> 刪除 </button><% end %>  
+        <% end %>
         
       <% end %>
       <br>
