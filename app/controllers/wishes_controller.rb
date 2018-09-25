@@ -1,5 +1,5 @@
 class WishesController < ApplicationController
-  before_action :set_wish, :only => [:create, :edit, :update, :destroy, :search, :make_plan]
+  before_action :set_wish, :only => [:edit, :update, :destroy, :search, :make_plan]
   before_action :authenticate_user!, :only => [:index, :create, :edit, :update, :destroy, :search, :make_plan]
 
 
