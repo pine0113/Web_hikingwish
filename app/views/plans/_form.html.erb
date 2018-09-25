@@ -73,28 +73,6 @@
       <%= label :money_type, '結算後均攤', class: "form-check-label" %>
   </div>
 
-<br><br>
-收費包含<br>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">D0住宿</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">交通</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">晚餐</label>
-  </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">保險</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-    <label class="form-check-label" for="inlineCheckbox1">未定</label>
-  </div>
 
 <br>
 預算範圍 <br>
@@ -119,7 +97,7 @@
 </div>
 
 <hr>
-<label>參考路線 <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %>  <button class="btn btn-light"> 重設為範本預設值 </button></label>
+<label>參考路線 <%= f.collection_select( :hiking_id, Hiking.all, :id, :name, {:prompt => true}) %></label>
 
   <label>天數：</label>
   <%= f.collection_select( :numberofday_id, Numberofday.all, :id, :name, {:prompt => true}) %>
