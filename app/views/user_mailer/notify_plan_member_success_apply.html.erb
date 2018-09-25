@@ -1,8 +1,9 @@
 <h1>[登山許願池] 成功加入登山計畫</h1>
 
 <p>
-   hi <% @user.name %>
-   
+   hi <%= @user.name %> <br>
+   你已經 成功加入了 <%= @plan.name %>
 
+   <%= link_to "快來看看計劃詳情吧", plan_path(@plan), class: "btn btn-info"%>
    
 </p>

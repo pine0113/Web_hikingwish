@@ -1,7 +1,10 @@
-<h1>[登山許願池] 你收到了來自計畫主的邀請</h1>
+<h1>[登山許願池] 你收到了來自 <%= @plan.owner.name %>的<%= @plan.name %>邀請</h1>
 
 <p>
-   hi <% @user.name %>
+   hi <%= @user.name %> <br>
+   <%= @plan.owner.name %> 想邀請你參加 <%= @plan.name %>
+
+   你想要先跟他聊聊 還是 先看一下計畫詳情呢？
    
 
    
