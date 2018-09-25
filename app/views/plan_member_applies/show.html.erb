@@ -6,13 +6,13 @@
     <%= f.hidden_field :chatable_type, value: @apply.class.name %>
     <%= f.hidden_field :chatable_id, value: @apply.id %>
     <%= f.text_field :content , class: "form-control", placeholder: "What do you want to say?" %>
-    <%= f.submit '發送',class: "btn btn-primary", name: nil %>
+    <%= f.submit '發送',class: "btn btn-info", name: nil %>
 <% end %>
 
 <% unless @messenges.nil? %>
     <% @messenges.each do |m| %>
 
-        <%= m.user.name %> : <%= m.content%> <%=time_ago_in_words(m.created_at)%> <br>
+        <%= m.user.name %> : <%= m.content%> <small> <%=time_ago_in_words(m.created_at)%> </small><br>
 
     <% end %> 
 <% end %>

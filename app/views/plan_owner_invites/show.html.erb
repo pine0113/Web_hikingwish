@@ -12,7 +12,7 @@
 <% unless @messenges.nil? %>
     <% @messenges.each do |m| %>
 
-        <%= m.user.name %> : <%= m.content%> <%=time_ago_in_words(m.created_at)%> <br>
+        <%= m.user.name %> : <%= m.content%>  <small><%=time_ago_in_words(m.created_at)%></small> <br>
 
     <% end %> 
 <% end %>
