@@ -1,8 +1,8 @@
-<h1>[<%= @apply.plan.name %> ]收到了新的申請</h1>
+<h1>收到了新的申請</h1>
 
 <p>
    hi <%= @user.name %> <br>
-   <%= @apply.user.name %> 想申請你的計畫 <%= @apply.plan.name %> 
+   <%= @apply.user.name %> 想申請你的計畫 
 
    <%= link_to "快來跟他聊聊吧", plan_member_apply_path(@apply), class: "btn btn-info" %>
    
