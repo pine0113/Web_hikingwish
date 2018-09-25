@@ -27,10 +27,10 @@ class PlansController < ApplicationController
     if @plan.save
       flash[:notice] = '計畫已鎖定'
       @plan.members.each do |user|
-        UserMailer.plan_lock(@plan, user)
+        UserMailer.notify_plan_lock(@plan, user)
       end
 
-      redirect_to plans_path
+      redirect_to plan_path(@plan)
     end
   end
 

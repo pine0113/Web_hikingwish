@@ -36,6 +36,7 @@ class WishesController < ApplicationController
     @wish.food_mode == 1 ? plans1 = Plan.all : plans1 = Plan.all.where("food_mode = #{@wish.food_mode}") + Plan.all.where("food_mode = 1")
     @wish.transport_mode == 1 ? plans2 = Plan.all : plans2 = Plan.all.where("transport_mode = #{@wish.transport_mode}") + Plan.all.where("transport_mode = 1")
     @wish.fee_mode == 1 ? plans3 = Plan.all : plans3 = Plan.all.where("fee_mode = #{@wish.fee_mode}") + Plan.all.where("fee_mode = 1")
+    #plan4 = Plan.where("budget_final <= #{@wish.budget_top} and budget_final >= #{@wish.budget_top} ")
 
       case params[:type]
         when 'owned'
