@@ -9,6 +9,11 @@
                 <h4 id="member">隊伍成員</h4>
                 <%= render partial: 'shared/plan_member_list', locals: { plan: @plan } %>
 
+                <h4>計畫介紹</h4>
+                <div>
+                <%= simple_format(@plan.intro) %>
+                </div>
+
                 <h4 id="status">準備狀況</h4>
                 <div>
                     入山、入園申請 <span class="badge badge-success"> 已完成 </span><br>
@@ -21,15 +26,12 @@
 
                 <h4 id="schedule">行程</h4>
                 <div>
-                    <%= @plan.schedule %>
+                    <%= simple_format(@plan.schedule) %>
                     
                 </div>
                 <hr>
 
-                <h4 id="stay">宿</h4>
-                <div></div>
-                <hr>
-
+            
 
 
                 <h4 id="car">交通</h4>
@@ -44,10 +46,6 @@
                 <div><%= @plan.food_info %></div>
                 <hr>
 
-
-                <h4 id="gear">裝備</h4>
-                <div></div>      
-        
         
 
         </div>
@@ -56,10 +54,8 @@
                 <li class="list-group-item"><a href="#member">成員</a></li>
                 <li class="list-group-item"><a href="#member">準備狀況</a></li>
                 <li class="list-group-item"><a href="#schedule">行程</a></li>
-                <li class="list-group-item"><a href="#stay">宿</a></li>
                 <li class="list-group-item"><a href="#car">交通</a></li>
                 <li class="list-group-item"><a href="#food">食</a></li>
-                <li class="list-group-item"><a href="#gear">裝備</a></li>
             </ul>
         </div>
         <div class="col-md-4">
