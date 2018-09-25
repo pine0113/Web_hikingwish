@@ -9,8 +9,14 @@ class MessengesController < ApplicationController
       flash.now[:alert] = 'messenge was failed to update'
     end
 
-    session[:return_to] ||= request.referer
-    redirect_to session[:return_to]
+    case @messenge.chatable_type
+    when "PlanMemberApply"
+      redirect_to plan_member_apply_path(@messenge.chatable_id)
+    when "PlanOwnerInvite"
+      redirect_to plan_owner_invite_path(@messenge.chatable_id)
+    end
+   
+    session[:return_to]
 
   end
 
