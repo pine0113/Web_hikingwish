@@ -4,7 +4,28 @@
     <%= @user.name %> <br>
     你所參與的由 <%= @plan.owner.name %> 舉辦的 <%= @plan.name %>
     已經確認最終計畫版本如下，請詳閱各項注意事項，並與主辦人持續保持聯絡：<br>
+    
+          <h4 id="schedule">行程</h4>
+                <div>
+                    <%= simple_format(@plan.schedule) %>
+                    
+                </div>
+                <hr>
 
+            
+
+
+                <h4 id="car">交通</h4>
+                <span class="badge badge-secondary"><%= @plan.car_type %></span>  
+                <div>  <%= @plan.car_info %></div>
+                <hr>
+
+
+
+                <h4 id="food">食</h4>
+                <span class="badge badge-secondary"><%= @plan.food_type %></span>
+                <div><%= @plan.food_info %></div>
+                <hr>
     
     
    
