@@ -6,8 +6,10 @@
   </div>
 </div>
 <h4>使用者願望分佈</h4>
-<%= pie_chart Wish.top(:hiking_id,10), width: "300px", height: "300px", display: "inline-block" %>
-<%= pie_chart Wish.group_by_month(:start_date,  format: "%b %Y").count, width: "400px", height: "400px" %>
+<div id="hiking_chart">
+  <%= pie_chart wish_hiking_chart(:wish_hiking_top_name) %>
+</div>
+<%= pie_chart Wish.group_by_month(:start_date,  format: "%b %Y").count %>
 <div class="btn-group" role="group" aria-label="Plan_type">
   <%= link_to "已參加", plans_path, class: "btn btn-outline-info" %> 
   <%= link_to "申請中", plans_path+"?type=applied", class: "btn btn-outline-info" %> 
@@ -41,3 +43,50 @@
   <% end %>
 
 <% end %>
+
+
+
+<script>
+  $(function() {
+    Highcharts.chart('hiking_chart', {
+      chart: {
+        type: 'pie'
+      },
+
+      title: {
+        text: null
+      },
+
+      legend: {
+        symbolWidth: 20,
+             symbolHeight: 20,
+        squareSymbol: false,
+        symbolRadius: 0
+      },
+
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true
+          ['其他路線', 1],
+          ['武陵一秀', 2],
+          ['武陵二秀', 3],
+          ['武陵三秀', 4],
+          ['武陵四秀', 5],
+          ['武陵五秀', 6],
+          }
+        }
+      },
+
+      series: [{
+        showInLegend: false,
+        data: [
+          <% Wish.top(:hiking_id) %>
+        ]
+      }],
+    });
+  });
+
+</script>
