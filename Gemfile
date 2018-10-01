@@ -33,6 +33,7 @@ gem 'faker'
 gem 'omniauth-facebook'
 gem 'chartkick'
 gem 'hightop'
+gem 'groupdate'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

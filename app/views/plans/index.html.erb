@@ -6,7 +6,8 @@
   </div>
 </div>
 <h4>使用者願望分佈</h4>
-<%= pie_chart Plan.top(:hiking_id,10), width: "300px", height: "300px", display: "inline-block" %>
+<%= pie_chart Wish.top(:hiking_id,10), width: "300px", height: "300px", display: "inline-block" %>
+<%= pie_chart Wish.group_by_month(:start_date,  format: "%b %Y").count, width: "400px", height: "400px" %>
 <div class="btn-group" role="group" aria-label="Plan_type">
   <%= link_to "已參加", plans_path, class: "btn btn-outline-info" %> 
   <%= link_to "申請中", plans_path+"?type=applied", class: "btn btn-outline-info" %> 

@@ -109,6 +109,8 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.1)
+      activesupport (>= 4.2)
     hashie (3.5.7)
     hightop (0.2.0)
       activerecord
@@ -292,6 +294,7 @@ DEPENDENCIES
   faker
   ffaker (~> 2.10)
   font-awesome-rails
+  groupdate
   hightop
   jbuilder (~> 2.5)
   jquery-rails
