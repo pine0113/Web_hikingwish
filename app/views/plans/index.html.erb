@@ -5,7 +5,8 @@
     還是要... <%= link_to '開新的計劃', new_plan_path, class: "btn btn-outline-info" %> <%= link_to ' 看看別人的登山計畫', all_plans_path, class: "btn btn-outline-info" %>
   </div>
 </div>
-
+<h4>使用者願望分佈</h4>
+<%= pie_chart Plan.top(:hiking_id,10), width: "300px", height: "300px", display: "inline-block" %>
 <div class="btn-group" role="group" aria-label="Plan_type">
   <%= link_to "已參加", plans_path, class: "btn btn-outline-info" %> 
   <%= link_to "申請中", plans_path+"?type=applied", class: "btn btn-outline-info" %> 
