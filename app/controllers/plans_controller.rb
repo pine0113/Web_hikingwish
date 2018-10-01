@@ -139,6 +139,15 @@ class PlansController < ApplicationController
     session[:return_to] ||= request.referer
     redirect_to session[:return_to]
   end
+  
+  def update_prepare_team
+    set_plan
+    @plan.save
+    session[:return_to] ||= request.referer
+    redirect_to session[:return_to]
+    
+  end
+
 
   def apply
     set_plan

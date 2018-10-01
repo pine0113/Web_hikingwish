@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       post :send_invite
       post :lock
       post :compelete
+      post :update_prepare_team
     end
   end
   #get 'search' => 'plans#search'

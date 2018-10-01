@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180925075119) do
+ActiveRecord::Schema.define(version: 20181001144625) do
 
   create_table "cates", force: :cascade do |t|
     t.string "name"
@@ -120,6 +120,14 @@ ActiveRecord::Schema.define(version: 20180925075119) do
     t.integer "fee_mode", default: 1
     t.integer "food_mode", default: 1
     t.integer "member_max", default: 4
+    t.string "apply_preparation", default: "未完成"
+    t.text "apply_note"
+    t.string "traffic_preparation", default: "未完成"
+    t.text "traffic_note"
+    t.string "weather_preparation", default: "未完成"
+    t.text "weather_note"
+    t.string "gear_preparation", default: "未完成"
+    t.text "gear_note"
   end
 
   create_table "taggings", force: :cascade do |t|

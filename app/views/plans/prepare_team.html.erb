@@ -33,11 +33,68 @@
 
                 <h4 id="plan_status">準備狀況</h4>
                 <div>
-                    入山、入園申請 <span class="badge badge-success"> 已完成 </span><br>
-                    路況情報查詢 <span class="badge badge-success"> 已完成 </span><br>
-                    氣象情報查詢 <span class="badge badge-success"> 已完成 </span><br>
-                    公裝準備 <span class="badge badge-success"> 已完成 </span><br>
+                    <%= form_for @plan, :url => update_prepare_team_plan_path(@plan), :method => "post" do |f| %>
+                    入山、入園申請 計費方式 <br>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :apply_preparation, '未完成', class: "form-check-input" %>
+                            <%= label :apply_preparation, '未完成', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :apply_preparation, '處理中', class: "form-check-input" %>
+                            <%= label :apply_preparation, '處理中', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :apply_preparation, '已完成', class: "form-check-input" %>
+                            <%= label :apply_preparation, '已完成', class: "form-check-label" %>
+                        </div>
+                    <hr>
+
+                    路況情報查詢 <br>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :traffic_preparation, '未完成', class: "form-check-input" %>
+                            <%= label :traffic_preparation, '未完成', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :traffic_preparation, '處理中', class: "form-check-input" %>
+                            <%= label :traffic_preparation, '處理中', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :traffic_preparation, '已完成', class: "form-check-input" %>
+                            <%= label :traffic_preparation, '已完成', class: "form-check-label" %>
+                        </div>
+                        <hr>
+                    氣象情報查詢 <br>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :weather_preparation, '未完成', class: "form-check-input" %>
+                            <%= label :weather_preparation, '未完成', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :weather_preparation, '處理中', class: "form-check-input" %>
+                            <%= label :weather_preparation, '處理中', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :weather_preparation, '已完成', class: "form-check-input" %>
+                            <%= label :weather_preparation, '已完成', class: "form-check-label" %>
+                        </div>
+                        <hr>
+                    公裝準備 <br>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :gear_preparation, '未完成', class: "form-check-input" %>
+                            <%= label :gear_preparation, '未完成', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :gear_preparation, '處理中', class: "form-check-input" %>
+                            <%= label :gear_preparation, '處理中', class: "form-check-label" %>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <%= f.radio_button :gear_preparation, '已完成', class: "form-check-input" %>
+                            <%= label :gear_preparation, '已完成', class: "form-check-label" %>
+                        </div>
+                        <hr>
+                     <%= f.submit class: "btn btn-info", value: "存檔" %> 
+                    <% end %>
                 </div>
+                <hr>
                 <div>
                     <% case  @plan.lock_status 
                         when "開放報名" %>
