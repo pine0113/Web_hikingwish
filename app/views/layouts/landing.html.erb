@@ -63,9 +63,9 @@
 
           <%= form_for @page do |f| %>
             <div class="form-row">
-            <div class="form-group col-md-4">
-            <%= f.text_field :name, class: "form-control" , placeholder: "你想爬的路線" %> 
-            </div>
+              <div class="form-group col-md-4">
+                <%= f.select :id, hiking_select, {}, prompt: '選一條吧' , class: "form-control" %>
+              </div>
             </div>
             <div class="form-row">
               

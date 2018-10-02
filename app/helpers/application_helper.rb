@@ -3,6 +3,11 @@ module ApplicationHelper
     'I can jiggle'
   end
 
+  def hiking_select
+    [["其他路線", "1"],["武陵一秀", "2"],["武陵二秀", "3"],["武陵三秀", "4"],
+      ["武陵四秀", "5"],["武陵五秀", "6"]]
+  end
+
   def howmanydays(numberofday_id)
     if numberofday_id == 1
         "一天一夜"
