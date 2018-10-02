@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     @user = current_user
     page = Page.new(page_params)
     #page.save
-    @wish = Wish.new( name: "你的新願望",
+    @wish = Wish.new( name: @user.name + "的新願望",
                       start_date: page.start_date,
                       end_date: page.end_date,
                       user_id: current_user.id )
