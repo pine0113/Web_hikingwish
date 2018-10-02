@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   end
 
   def page_params
-    params.require(:page).permit(:name, :start_date, :end_date)
+    params.require(:page).permit(:name, :start_date, :end_date, :hiking_id)
   end  
 
 
