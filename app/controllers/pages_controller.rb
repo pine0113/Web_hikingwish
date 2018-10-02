@@ -26,7 +26,7 @@ class PagesController < ApplicationController
     else
       flash[:alert] = @wish.errors.full_messages.to_sentence
     end
-    redirect_to edit_wish_path(@wish)
+    redirect_to wishes_path()
   end
 
   def about
