@@ -9,19 +9,19 @@
 
             <% end %>
         </div>
-        <div class="plan_descript">
+        <div class="wish_info">
             <div> 
                   <span class="badge badge-light"><i class="fas fa-dollar-sign"></i> 預算</span> <%= wish.budget_bottom %> ~ <%= wish.budget_top %>  <br>
                   <span class="badge badge-light">收費模式</span>  <span class="badge badge-info"><%= fee_mode_show(wish.fee_mode) %></span><br>
                   <hr>
-                  <span class="badge badge-light">車行模式</span> <span class="badge badge-info"><%= transport_mode_show(wish.transport_mode) %></span> 
+                  <span class="badge badge-light">車行模式</span> <span class="badge badge-info"><%= transport_mode_show(wish.transport_mode) %></span> <br>
                   <span class="badge badge-light">餐飲模式</span> <span class="badge badge-info"><%= food_mode_show(wish.food_mode) %></span>             
             </div>
         </div>
-        <div class="wish_info">
+        <div class="plan_descript">
                 <span class="badge badge-light">備註</span>
                 <% if wish.description != nil %>
-                    <p><%= wish.description.truncate(120) %></p>  
+                    <p><%= wish.description.truncate(600) %></p>  
                 <% else %>
                     <p><%= wish.description %></p> 
                 <% end %>        
