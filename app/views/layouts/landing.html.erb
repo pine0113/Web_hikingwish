@@ -71,7 +71,26 @@
               
               <div class="form-group col-md-2"> <%= f.date_field :start_date, class: "form-control" %> </div>
               到  <div class="form-group col-md-2"> <%= f.date_field :end_date, class: "form-control" %> </div>
-            
+              <% if flash[:notice] %>
+                    <div class="container">
+                      <div class="row">
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <%= notice %>
+                        </div>
+                      </div>
+                    </div>
+              <% end %>
+              <% if flash[:alert] %>
+                    <div class="container">
+                      <div class="row">
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <%= alert %>
+                        </div>
+                      </div>
+                    </div>
+              <% end  %> 
             </div>
             <div class="form-row">
             <%= f.submit "許願", class: "btn btn-info submit" %> 
@@ -80,27 +99,6 @@
         </div>
     </div>
     </div>
-
-      <% if flash[:notice] %>
-            <div class="container">
-              <div class="row">
-                <div class="alert alert-success alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <%= notice %>
-                </div>
-              </div>
-            </div>
-      <% end %>
-      <% if flash[:alert] %>
-            <div class="container">
-              <div class="row">
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <%= alert %>
-                </div>
-              </div>
-            </div>
-      <% end  %> 
 
    <div class="container">
       <%= yield %>

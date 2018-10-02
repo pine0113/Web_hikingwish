@@ -23,10 +23,11 @@ class PagesController < ApplicationController
 
     if @wish.save
       flash[:notice] = '願望已成功建立'
+      redirect_to wishes_path
     else
       flash[:alert] = @wish.errors.full_messages.to_sentence
+      redirect_to root_path
     end
-    redirect_to wishes_path()
   end
 
   def about
