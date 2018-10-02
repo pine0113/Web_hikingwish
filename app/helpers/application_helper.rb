@@ -82,7 +82,7 @@ module ApplicationHelper
   def wish_hiking_chart(wish_hiking_top_name)
     wish_hiking_top = Wish.top(:hiking_id, 5)
     wish_hiking_top_name = {"其他路線" => wish_hiking_top[1], "武陵一秀" => wish_hiking_top[2],"武陵二秀" => wish_hiking_top[3],
-      "武陵三秀" => wish_hiking_top[4],"武陵五秀" => wish_hiking_top[5],"武陵六秀" => wish_hiking_top[6]}
+      "武陵三秀" => wish_hiking_top[4],"武陵四秀" => wish_hiking_top[5],"武陵五秀" => wish_hiking_top[6]}
     wish_hiking_top_name = wish_hiking_top_name.compact
   end
 
