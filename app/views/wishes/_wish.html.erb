@@ -19,9 +19,12 @@
             </div>
         </div>
         <div class="wish_info">
-            <div> 
-                <p>備註：<%= wish.description %></p>  <br>          
-            </div>
+                <span class="badge badge-light">備註</span>
+                <% if wish.description != nil %>
+                    <p><%= wish.description.truncate(120) %></p>  
+                <% else %>
+                    <p><%= wish.description %></p> 
+                <% end %>        
         </div>
         
             <div class="button-group"> 
