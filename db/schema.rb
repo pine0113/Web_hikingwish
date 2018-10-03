@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180925075119) do
 
   create_table "hikings", force: :cascade do |t|
     t.string "name"
+    t.string "title"
     t.string "image"
     t.integer "level"
     t.integer "day"

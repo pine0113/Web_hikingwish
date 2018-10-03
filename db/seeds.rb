@@ -47,12 +47,12 @@ Cate.destroy_all
 puts "Default Cates created!"
 
 Hiking.destroy_all
-  Hiking.create( id: 1, name:"其他路線", level: 3, day: 72, miles: 6,  intro:"this is really wierld1", cate_id: 3)
-  Hiking.create( name:"武稜一秀", level: 1, day: 72, miles: 1,  intro:"this is really wierld2", cate_id: 1)
-  Hiking.create( name:"武稜二秀", level: 2, day: 72, miles: 2,  intro:"this is really wierld3", cate_id: 2)
-  Hiking.create( name:"武稜三秀", level: 3, day: 72, miles: 3,  intro:"this is really wierld4", cate_id: 3)
-  Hiking.create( name:"武稜四秀", level: 4, day: 72, miles: 4,  intro:"this is really wierld5", cate_id: 1)
-  Hiking.create( name:"武稜五秀", level: 5, day: 72, miles: 5,  intro:"this is really wierld6", cate_id: 2)
+  Hiking.create( id: 1, name:"其他路線", title:"其他路線", level: 3, day: 72, miles: 6,  intro:"this is really wierld1", cate_id: 3)
+  Hiking.create( id: 2, name:"武稜一秀", title:"五稜一秀", level: 1, day: 72, miles: 1,  intro:"this is really wierld2", cate_id: 1)
+  Hiking.create( id: 3, name:"武稜二秀", title:"五稜二秀", level: 2, day: 72, miles: 2,  intro:"this is really wierld3", cate_id: 2)
+  Hiking.create( id: 4, name:"武稜三秀", title:"五稜三秀", level: 3, day: 72, miles: 3,  intro:"this is really wierld4", cate_id: 3)
+  Hiking.create( id: 5, name:"武稜四秀", title:"五稜四秀", level: 4, day: 72, miles: 4,  intro:"this is really wierld5", cate_id: 1)
+  Hiking.create( id: 6, name:"武稜五秀", title:"五稜五秀", level: 5, day: 72, miles: 5,  intro:"this is really wierld6", cate_id: 2)
 
 puts "Default Hiking created!"
 
