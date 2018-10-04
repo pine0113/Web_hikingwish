@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20181001144625) do
 
   create_table "hikings", force: :cascade do |t|
     t.string "name"
+    t.string "title"
     t.string "image"
     t.integer "level"
     t.integer "day"
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20181001144625) do
     t.string "name"
     t.date "start_date"
     t.date "end_date"
+    t.integer "hiking_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,8 +94,8 @@ ActiveRecord::Schema.define(version: 20181001144625) do
   create_table "plans", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.date "start_date", default: "2018-09-25"
-    t.date "end_date", default: "2018-09-25"
+    t.date "start_date", default: "2018-10-03"
+    t.date "end_date", default: "2018-10-03"
     t.integer "budget_bottom", default: 0
     t.integer "budget_top", default: 0
     t.integer "budget_final"

@@ -26,7 +26,7 @@
 </div>
 
 <label>備註</label>
-<%= f.text_area :intro, class: "form-control bg-light" %>
+<%= f.text_area :intro, :maxlength => 250, :cols => "10", :rows => "5", class: "form-control bg-light" %>
 
 
 <label>組團方式</label>

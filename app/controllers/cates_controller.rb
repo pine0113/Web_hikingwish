@@ -11,15 +11,19 @@ class CatesController < ApplicationController
   end
 
   def short
-    @plans = Plan.where('numberofday_id < 4').limit(10)
+    @plans = Plan.where('numberofday_id < 2').limit(10)
+  end
+
+  def overnight
+    plans1 = Plan.where('numberofday_id >= 2')
+    plans2 = Plan.where('numberofday_id <= 4')
+
+    @plans = plans1 & plans2
+    
   end
 
   def long
     @plans = Plan.where('numberofday_id > 4').limit(10)
-  end
-
-  def long
-    @plans = Plan.where("day >= 6" ) 
   end
 
   private

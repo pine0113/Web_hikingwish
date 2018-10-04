@@ -21,7 +21,8 @@ namespace :dev do
         hiking_id: Hiking.all.sample.id,
         transport_mode: rand(1...4),
         fee_mode: rand(1...4),
-        food_mode: rand(1...3)
+        food_mode: rand(1...3),
+        description: FFaker::Lorem::sentence(30)
       )
     end
 

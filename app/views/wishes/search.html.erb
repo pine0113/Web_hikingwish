@@ -1,7 +1,8 @@
 <div class="wish_container">
 
- <%= render partial: 'wish_status', locals: { wish: @wish } %>
 
+<%- render partial: 'wish_status', locals: { wish: @wish } -%> 
+  <%= render partial: 'wish', locals: { wish: @wish } %>
 
   <h4>符合此願望條件的計畫</h4>
 

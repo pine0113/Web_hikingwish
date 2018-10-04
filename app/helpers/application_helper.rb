@@ -3,6 +3,11 @@ module ApplicationHelper
     'I can jiggle'
   end
 
+  def hiking_select
+    [["其他路線", "1"],["武陵一秀", "2"],["武陵二秀", "3"],["武陵三秀", "4"],
+      ["武陵四秀", "5"],["武陵五秀", "6"]]
+  end
+
   def howmanydays(numberofday_id)
     if numberofday_id == 1
         "一天一夜"
@@ -61,7 +66,7 @@ module ApplicationHelper
     end
   end
 
-   def fee_mode_select
+  def fee_mode_select
     options_for_select([["皆可", "1"],["預先收費，不退不補", "2"],["預先收費，多退少補", "3"],["結算後均攤", "4"]])
   end 
 
@@ -75,8 +80,23 @@ module ApplicationHelper
     end
   end
 
-   def food_mode_select
+  def food_mode_select
     options_for_select([["皆可", "1"],["公糧公炊 費用分擔", "2"],["包餐", "3"]])
   end 
+
+  def wish_hiking_chart(wish_hiking_top_name)
+    wish_hiking_top = Wish.top(:hiking_id, 8)
+    wish_hiking_top_name = {"其他路線" => wish_hiking_top[1], "武陵一秀" => wish_hiking_top[2],"武陵二秀" => wish_hiking_top[3],
+      "武陵三秀" => wish_hiking_top[4],"武陵四秀" => wish_hiking_top[5],"武陵五秀" => wish_hiking_top[6]}
+    wish_hiking_top_name = wish_hiking_top_name.compact
+  end
+
+  def wish_hikingtime_chart(wish_hikingtime_top_name)
+    wish_hikingtime_top = Wish.top(:hiking_id, 8)
+    wish_hikingtime_top_name = {"其他路線" => wish_hiking_top[1], "武陵一秀" => wish_hiking_top[2],"武陵二秀" => wish_hiking_top[3],
+      "武陵三秀" => wish_hiking_top[4],"武陵四秀" => wish_hiking_top[5],"武陵五秀" => wish_hiking_top[6]}
+    wish_hiking_top_name = wish_hiking_top_name.compact
+  end
+
 
 end
