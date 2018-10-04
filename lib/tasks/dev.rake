@@ -7,11 +7,11 @@ namespace :dev do
   task fake_wishes: :environment do
     Wish.destroy_all
     hiking_sample = ["武陵二秀", "嘉明湖", "合歡東峰"]
-    40.times do
-      endday = Faker::Date.forward(100)
+    100.times do
+      endday = Faker::Date.forward(200)
       Wish.create!(
         name:  FFaker::Name.first_name,
-        start_date: Faker::Date.between(10.days.ago, endday),
+        start_date: Faker::Date.between(100.days.ago, endday),
         end_date: endday,
         user_id: User.all.sample.id,
         level: rand(1...5),
