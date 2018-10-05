@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(version: 20181001144625) do
   create_table "plans", force: :cascade do |t|
     t.string "name"
     t.string "image"
-    t.date "start_date", default: "2018-10-04"
-    t.date "end_date", default: "2018-10-04"
+    t.date "start_date", default: "2018-10-05"
+    t.date "end_date", default: "2018-10-05"
     t.integer "budget_bottom", default: 0
     t.integer "budget_top", default: 0
     t.integer "budget_final"

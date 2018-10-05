@@ -1,6 +1,6 @@
 class WishesController < ApplicationController
   before_action :set_wish, :only => [:edit, :update, :destroy, :search, :make_plan]
-  before_action :authenticate_user!, :only => [:index, :create, :edit, :update, :destroy, :search, :make_plan]
+  before_action :authenticate_user!, :only => [:index, :create, :edit, :update, :destroy, :search, :make_plan, :statistics]
 
 
   def index
@@ -51,10 +51,6 @@ class WishesController < ApplicationController
 
     @plans = plans1 & plans2 & plans3 & plans
 
-  end
-
-  def show
-    @wish = wish.find(params[:id])
   end
 
   def update

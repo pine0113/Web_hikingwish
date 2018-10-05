@@ -32,6 +32,9 @@ Rails.application.routes.draw do
       get :plan
       get :search
     end
+    collection do
+      get :statistics
+    end
   end
 
   resources :plans do
