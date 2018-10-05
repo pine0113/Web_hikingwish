@@ -2,15 +2,9 @@
   <div class="container">
     <h3 class="display-5">登山計畫</h3>
     <p class="lead">你所參與的登山計畫，就快要可以出發摟！</p>
-    還是要... <%= link_to '開新的計劃', new_plan_path, class: "btn btn-outline-info" %> <%= link_to ' 看看別人的登山計畫', all_plans_path, class: "btn btn-outline-info" %>
+    還是要... <%= link_to '開新的計劃', new_plan_path, class: "btn btn-outline-info" %> <%= link_to ' 看看別人的登山計畫', all_plans_path, class: "btn btn-outline-info" %>&nbsp 或者是... <%= link_to '觀察一下大家的願望', statistics_wishes_path, class: "btn btn-outline-info" %>
   </div>
 </div>
-<h4>使用者願望分佈</h4>
-<div class="row">
-  <%= pie_chart wish_hiking_chart(:wish_hiking_top_name), class: "col-sm-4", id: "hiking-chart", width: "400px", height: "400px" , display: "inline-block", type: "line" %>
-  <%= pie_chart Wish.group_by_month(:start_date, format: "%b %Y").count, class: "col-sm-4", id: "time-chart", width: "400px", height: "400px", display: "inline-block", type: "line" %>
-</div>
-<%= column_chart Wish.joins(:hiking).group(:title).group_by_month(:start_date, format: "%b %Y").count, stacked: true,  label: "hiking.name" %>
 
 <div class="btn-group" role="group" aria-label="Plan_type">
   <%= link_to "已參加", plans_path, class: "btn btn-outline-info" %> 
