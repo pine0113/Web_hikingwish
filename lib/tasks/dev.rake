@@ -11,12 +11,12 @@ namespace :dev do
       endday = Faker::Date.forward(200)
       Wish.create!(
         name:  FFaker::Name.first_name,
-        start_date: Faker::Date.between(100.days.ago, endday),
+        start_date: Faker::Date.between(5.days.ago, endday),
         end_date: endday,
         user_id: User.all.sample.id,
         level: rand(1...5),
         numberofday_id: rand(1...10),
-        budget_bottom: rand(5000),
+        budget_bottom: rand(1000...5000),
         budget_top: rand(5000...10000),
         hiking_id: Hiking.all.sample.id,
         transport_mode: rand(1...4),
@@ -38,17 +38,17 @@ namespace :dev do
 
   task fake_plans: :environment do
     Plan.destroy_all
-    20.times do
-      endday = Faker::Date.forward(100)
+    100.times do
+      endday = Faker::Date.forward(200)
       Plan.create!(
         name:  FFaker::Name.first_name,
-        start_date: Faker::Date.between(10.days.ago, endday),
+        start_date: Faker::Date.between(100.days.ago, endday),
         end_date: endday,
         owner_id: User.all.sample.id,
         level: rand(1...5),
         numberofday_id: rand(1...10),
         hiking_id: Hiking.all.sample.id,
-        budget_bottom: rand(5000),
+        budget_bottom: rand(20000),
         budget_top: rand(5000...10000),
         transport_mode: rand(1...3),
         fee_mode: rand(1...3),

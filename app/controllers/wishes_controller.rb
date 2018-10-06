@@ -33,10 +33,20 @@ class WishesController < ApplicationController
 
   def search
     hiking = @wish.hiking
-    @wish.food_mode == 1 ? plans1 = Plan.all : plans1 = Plan.all.where("food_mode = #{@wish.food_mode}") + Plan.all.where("food_mode = 1")
-    @wish.transport_mode == 1 ? plans2 = Plan.all : plans2 = Plan.all.where("transport_mode = #{@wish.transport_mode}") + Plan.all.where("transport_mode = 1")
-    @wish.fee_mode == 1 ? plans3 = Plan.all : plans3 = Plan.all.where("fee_mode = #{@wish.fee_mode}") + Plan.all.where("fee_mode = 1")
-    #plan4 = Plan.where("budget_final <= #{@wish.budget_top} and budget_final >= #{@wish.budget_top} ")
+    #plans1 = Plan.all.where("start_date >= #{@wish.start_date}")
+    #plans2 = Plan.all.where("start_date <= #{@wish.end_date}")
+    if @wish.start_date.nil?
+      plans3 = Plan.all
+    else
+      plans3 = Plan.all.where(:start_date => @wish.start_date..@wish.end_date)
+    end
+
+    if @wish.budget_bottom.nil?
+      plans4 = Plan.all
+    else
+      plans4 = Plan.all.where(:budget_bottom => @wish.budget_bottom..@wish.budget_top)
+    end
+    #@wish.fee_mode == 1 ? plans3 = Plan.all : plans3 = Plan.all.where("fee_mode = #{@wish.fee_mode}") + Plan.all.where("fee_mode = 1")
 
       case params[:type]
         when 'owned'
@@ -49,7 +59,11 @@ class WishesController < ApplicationController
           plans = Plan.all.where("hiking_id = #{hiking.id}") - current_user.applied_plans - current_user.invited_plans - current_user.plans
       end
 
-    @plans = plans1 & plans2 & plans3 & plans
+    if (plans3 == nil || plans4 == nil || plans ==nil)
+      @plans = []
+    else
+      @plans = plans3 & plans4 & plans
+    end
 
   end
 
