@@ -21,7 +21,7 @@
                       <span class="badge badge-light"><i class="fas fa-dollar-sign"></i>費用</span>  尚未決定 
                       
                       <% unless (plan.budget_bottom.nil? && plan.budget_top.nil?) %>
-                      | <span class="badge badge-light">預算</span> <%= plan.budget_bottom %> ~ <%= plan.budget_top %> 
+                      | <span class="badge badge-light">預計費用：</span> <%= plan.budget_bottom %>
                       <% end %>
 
                   <% else %>

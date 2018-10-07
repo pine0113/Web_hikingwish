@@ -3,6 +3,20 @@ namespace :dev do
 
   task all: [:fake_wishes, :fake_plans]
 
+  task fake_users: :environment do
+    #User.destroy_all
+    3.times do |i|
+      name = FFaker::Name::first_name
+
+      user = User.create!(
+        name: name,
+        email: "#{name}@example.co",
+        password: "12345678",      
+        role: "user"
+      )
+    end
+    puts "now you have #{User.count} users data"
+  end
 
   task fake_wishes: :environment do
     Wish.destroy_all
