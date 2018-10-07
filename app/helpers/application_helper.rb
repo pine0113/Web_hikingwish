@@ -98,5 +98,14 @@ module ApplicationHelper
     wish_hiking_top_name = wish_hiking_top_name.compact
   end
 
+  def plan_image(plan)
+      @image = plan.image_url
+      if @image.nil?
+          @plan_image = image_tag("/uploads/plan/image/default.jpg", alt: plan.name, width: 200, height: 150)
+      else
+          @plan_image = image_tag(@image, alt: plan.name, width: 200, height: 150)
+      end
+      return @plan_image
+  end
 
 end
