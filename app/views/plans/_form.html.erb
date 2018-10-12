@@ -61,16 +61,16 @@
 <label>費用預算</label><br>
 計費方式 <br>
   <div class="form-check form-check-inline">
-      <%= f.radio_button :money_type, '預先收費，不退不捕', class: "form-check-input" %>
-      <%= label :money_type, '預先收費，不退不捕', class: "form-check-label" %>
+      <%= f.radio_button :fee_mode, 2, class: "form-check-input" %>
+      <%= label :fee_mode, '預先收費，不退不補', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-      <%= f.radio_button :money_type, '預先收費，多退少補', class: "form-check-input" %>
-      <%= label :money_type, '預先收費，多退少補', class: "form-check-label" %>
+      <%= f.radio_button :fee_mode, 3, class: "form-check-input" %>
+      <%= label :fee_mode, '預先收費，多退少補', class: "form-check-label" %>
   </div>
   <div class="form-check form-check-inline">
-      <%= f.radio_button :money_type, '結算後均攤', class: "form-check-input" %>
-      <%= label :money_type, '結算後均攤', class: "form-check-label" %>
+      <%= f.radio_button :fee_mode, '結算後均攤', class: "form-check-input" %>
+      <%= label :fee_mode, '結算後均攤', class: "form-check-label" %>
   </div>
 
 
