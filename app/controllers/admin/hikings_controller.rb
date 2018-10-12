@@ -1,5 +1,5 @@
 class Admin::HikingsController < ApplicationController
-  before_action :find_hiking, only: [:edit, :update, :destroy]
+  before_action :set_hiking, only: [:edit, :update, :destroy]
 
   def index
     @hikings = Hiking.all
@@ -46,7 +46,7 @@ class Admin::HikingsController < ApplicationController
     params.require(:hiking).permit(:name, :image, :level, :day, :miles, :intro)
   end
 
-  def find_hiking
+  def set_hiking
     @hiking = Hiking.find(params[:id])
   end
 
