@@ -4,9 +4,10 @@ module ApplicationHelper
   end
 
   def hiking_select
-    [["其他路線", "1"],["嘉明湖", "2"],["玉山", "3"],["雪山", "4"],
-      ["松蘿湖", "5"],["合歡山", "6"]]
+    [["其他路線", "1"],["玉山", "2"],["嘉明湖", "3"],["松蘿湖", "4"],
+      ["雪山", "5"],["水漾森林", "6"],["合歡北峰", "6"]
   end
+
 
   def howmanydays(numberofday_id)
     if numberofday_id == 1
