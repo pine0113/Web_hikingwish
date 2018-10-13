@@ -192,10 +192,10 @@ $ cap production deploy
 > 
 > 這是從 AlphaCamp 大航道課程 Demo Day 2 中所建立的團隊
 
-| <a href="https://github.com/pine0113" target="_blank">**綠島**</a> | <a href="https://github.com/pinkg023" target="_blank">**浪浪**</a> | <a href="https://github.com/DuncanYe" target="_blank">**DuncanYe**</a> |
-| :---: |:---:| :---:|
-| ![](https://avatars1.githubusercontent.com/u/4540530?s=200)   | ![](https://avatars2.githubusercontent.com/u/32866430?s=200) | ![](https://avatars0.githubusercontent.com/u/32873800?s=200) |
-| <a href="http://github.com/pine0113" target="_blank">`github.com/pine0113`</a> | <a href="https://github.com/pinkg023" target="_blank">`github.com/pinkg023 `</a> | <a href="https://github.com/DuncanYe" target="_blank">`github.com/DuncanYe `</a> |
+| <a href="https://github.com/pine0113" target="_blank">**綠島**</a> | <a href="https://github.com/pinkg023" target="_blank">**浪浪**</a> |
+| :---: |:---:|
+| ![](https://avatars1.githubusercontent.com/u/4540530?s=200)   | ![](https://avatars2.githubusercontent.com/u/32866430?s=200)  |
+| <a href="http://github.com/pine0113" target="_blank">`github.com/pine0113`</a> | <a href="https://github.com/pinkg023" target="_blank">`github.com/pinkg023 `</a>  |
 
 
 ---
