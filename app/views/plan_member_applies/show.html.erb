@@ -1,18 +1,54 @@
-<%= link_to "計畫列表", plans_path + "?type=applied" ,class: "btn btn-light" %>
-<%= link_to "計畫詳情", plan_path(@apply.plan) ,class: "btn btn-light" %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h2> <%= @apply.user.name %>  與  <%= @apply.plan.owner.name %> 的對話  </h2>
+    <p class="lead"> <%= @apply.user.name %> 想申請加入 <%= @apply.plan.name %> ，一起聊聊對於這個計畫有什麼期待吧！ </p>
+    <%= link_to "回到計畫列表", plans_path + "?type=applied" ,class: "btn btn-light" %>
+    <%= link_to "檢視計畫詳情", plan_path(@apply.plan) ,class: "btn btn-light" %>
+  </div>
+</div>
 
 <%= form_for @messenge do |f|  %>
 
     <%= f.hidden_field :chatable_type, value: @apply.class.name %>
     <%= f.hidden_field :chatable_id, value: @apply.id %>
-    <%= f.text_field :content , class: "form-control", placeholder: "What do you want to say?" %>
-    <%= f.submit '發送',class: "btn btn-info", name: nil %>
+    <table width="600px">
+        <tr>
+            <td>
+                <%= f.text_field :content , class: "form-control", placeholder: "What do you want to say?" %>
+            </td>
+            <td>  <%= f.submit '發送',class: "btn btn-info", name: nil %></td>
+        </tr>  
+     </table>
+   
 <% end %>
 
+<div id="messenges">
 <% unless @messenges.nil? %>
-    <% @messenges.each do |m| %>
 
-        <%= m.user.name %> : <%= m.content%> <small> <%=time_ago_in_words(m.created_at)%> </small><br>
+    <% @messenges.each do |m| %>
+        <% if m.user != current_user %>
+          <div class="mes">
+            <div class="other_mes_content">
+                <div class="other_messenge"> 
+                    <%= m.content%> 
+                </div>
+                <small> <%=time_ago_in_words(m.created_at)%> </small>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <% else %>
+            <div class="mes">
+                <div class="user_mes_content">
+                 
+                    <div class="user_messenge">
+                        <%= m.content%> 
+                    </div>
+                    <small> <%=time_ago_in_words(m.created_at)%> </small>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        <% end %>
 
     <% end %> 
 <% end %>
+</div>

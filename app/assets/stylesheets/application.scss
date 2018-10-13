@@ -273,3 +273,39 @@ font-size:20px;
 .col-centered{
     margin: 0 auto;
 }
+
+#messenges{
+    width:700px;
+    height:200px;
+}
+
+.mes
+{
+    width:700px;
+    display:block;
+}
+
+.user_mes_content
+{
+    float:left;
+    display:block;
+}
+.other_mes_content
+{
+    float:right;
+    display:block;
+}
+
+.other_messenge
+{
+    border-radius: 10px;
+    padding:20px;
+    background-color:#eeeeee;  
+}
+
+.user_messenge
+{
+    border-radius: 10px;
+    background-color:#F2FFF2;
+    padding:20px;
+}
