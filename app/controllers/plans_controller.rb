@@ -2,7 +2,7 @@ class PlansController < ApplicationController
   before_action :set_plan, :authenticate_user!, :only =>  [:show, :edit, :update, :destroy,
                                                            :prepare, :prepare_team, 
                                                           :invite_member, :search, :apply, :lock, :compelete]
-  before_action :authenticate_user!, :only =>  [:index]                                                       
+  before_action :authenticate_user!, :only =>  [:index, :apply]                                                       
 
   def index
     if user_signed_in?
