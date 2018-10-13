@@ -29,5 +29,11 @@ class ApplicationController < ActionController::Base
     params.require(:page).permit(:name, :start_date, :end_date, :hiking_id)
   end  
 
+  def authenticate_admin
+    unless current_user.admin?
+      flash[:alert] = "Not allow!"
+      redirect_to root_path
+    end
+  end
 
 end
