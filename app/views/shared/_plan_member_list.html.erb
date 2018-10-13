@@ -1,4 +1,4 @@
-<div class="member_list"> <span class="badge badge-light"> 隊員  <%= plan.members.count %>/7</span>  
+<div class="member_list"> <span class="badge badge-light"> 隊員  <%= plan.members.count %> </span>  
     <% plan.members.each do |user| %>
         <% if user.avatar? %>
           <%= image_tag user.avatar, width: "50px" %>
