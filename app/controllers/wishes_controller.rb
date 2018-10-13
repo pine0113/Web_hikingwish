@@ -59,7 +59,7 @@ class WishesController < ApplicationController
         plans = Plan.all.where("hiking_id = #{hiking.id}") - current_user.applied_plans - current_user.invited_plans - current_user.plans
       end
 
-      @plans = plans3 & plans4 & plans
+      @plans = plans
 
   end
 
